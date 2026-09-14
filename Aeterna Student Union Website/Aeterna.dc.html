@@ -1,0 +1,441 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="stylesheet" href="_ds/nocturne-859bdda2-3298-43a7-bfcf-1e9d261fa53c/styles.css">
+<script src="_ds/nocturne-859bdda2-3298-43a7-bfcf-1e9d261fa53c/_ds_bundle.js"></script>
+<script src="./image-slot.js"></script>
+<style>
+body{margin:0;background:var(--color-bg);color:var(--color-text)}
+a{color:var(--color-accent);text-decoration:none}
+a:hover{color:var(--color-accent-400)}
+summary::-webkit-details-marker{display:none}
+summary::marker{content:''}
+details[open] .chev{transform:rotate(45deg)}
+</style>
+</helmet>
+<div style="min-height:100vh;background:var(--color-bg);overflow-x:hidden">
+
+<div style="position:sticky;top:0;z-index:20;backdrop-filter:blur(14px);background:color-mix(in srgb, #161826 82%, transparent);box-shadow:0 1px 0 var(--color-divider)">
+<nav class="nav" style="max-width:1180px;margin:0 auto;padding:14px clamp(20px,4vw,48px);gap:28px">
+<span class="nav-brand" style="letter-spacing:0.22em;font-size:17px;margin-right:auto">AETERNA</span>
+<a href="#promises" style="opacity:.75">Promises</a>
+<a href="#cabinet" style="opacity:.75">Cabinet</a>
+<a href="#manifesto" style="opacity:.75">Manifesto</a>
+<a href="#trail" style="opacity:.75">Trail</a>
+<a href="#faq" style="opacity:.75">FAQ</a>
+<a class="btn btn-primary" href="#manifesto">Read the manifesto</a>
+</nav>
+</div>
+
+<header style="position:relative;max-width:1180px;margin:0 auto;padding:clamp(48px,8vw,104px) clamp(20px,4vw,48px) 0">
+<div style="position:absolute;top:-140px;left:-120px;width:560px;height:560px;border-radius:50%;background:radial-gradient(circle, rgba(145,132,217,0.20), transparent 66%);pointer-events:none"></div>
+<div style="position:relative;display:flex;flex-direction:column;gap:22px;max-width:760px">
+<span class="tag tag-outline" style="align-self:flex-start">Student Union Cabinet · 2026</span>
+<h1 style="font-size:clamp(46px,9vw,104px);line-height:0.94;letter-spacing:-0.04em;margin:0">Aeterna</h1>
+<p style="font-size:clamp(17px,2vw,22px);line-height:1.5;max-width:620px;margin:0;color:color-mix(in srgb, var(--color-text) 78%, transparent);text-wrap:pretty">A cabinet of eighteen students who'd rather fix the small things properly than promise the big things loudly. Here's who we are, and everything we intend to do.</p>
+<div style="display:flex;flex-wrap:wrap;gap:12px;padding-top:6px">
+<a class="btn btn-primary" href="#manifesto" style="padding:10px 20px">Read the manifesto</a>
+<a class="btn btn-secondary" href="#cabinet" style="padding:10px 20px">Meet the 18</a>
+</div>
+</div>
+</header>
+
+<section style="max-width:1180px;margin:0 auto;padding:clamp(32px,5vw,64px) clamp(20px,4vw,48px)">
+<div class="lighten" style="position:relative;width:100%;aspect-ratio:21/8;border-radius:var(--radius-lg);overflow:hidden;box-shadow:var(--shadow-sm)">
+<image-slot id="aeterna-banner" shape="rect" placeholder="Drop the Aeterna banner here (wide, dark background works best)"></image-slot>
+</div>
+<p class="text-muted" style="font-size:12px;margin:10px 0 0">Banner placeholder — drag your artwork onto it and it stays put.</p>
+</section>
+
+<section id="promises" style="max-width:1180px;margin:0 auto;padding:clamp(40px,6vw,80px) clamp(20px,4vw,48px);scroll-margin-top:80px">
+<h6 style="color:var(--color-accent);margin:0 0 18px">What we're running on</h6>
+<div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:2px;background:var(--color-divider);border-radius:var(--radius-md);overflow:hidden">
+<div style="background:var(--color-bg);padding:26px 24px;display:flex;flex-direction:column;gap:8px">
+<span style="font-size:11px;letter-spacing:0.12em;color:var(--color-accent)">01</span>
+<h4 style="margin:0">A union you can actually reach</h4>
+<p style="margin:0;font-size:14px;color:color-mix(in srgb, var(--color-text) 70%, transparent)">Published office hours, one inbox, and a public log of every complaint and what happened to it.</p>
+</div>
+<div style="background:var(--color-bg);padding:26px 24px;display:flex;flex-direction:column;gap:8px">
+<span style="font-size:11px;letter-spacing:0.12em;color:var(--color-accent)">02</span>
+<h4 style="margin:0">Money in the open</h4>
+<p style="margin:0;font-size:14px;color:color-mix(in srgb, var(--color-text) 70%, transparent)">Every rupee of union spending posted each term, line by line, before anyone has to ask.</p>
+</div>
+<div style="background:var(--color-bg);padding:26px 24px;display:flex;flex-direction:column;gap:8px">
+<span style="font-size:11px;letter-spacing:0.12em;color:var(--color-accent)">03</span>
+<h4 style="margin:0">Campus that works at 2am</h4>
+<p style="margin:0;font-size:14px;color:color-mix(in srgb, var(--color-text) 70%, transparent)">Longer library hours, lit walkways, working laundry, and a mess menu students vote on.</p>
+</div>
+<div style="background:var(--color-bg);padding:26px 24px;display:flex;flex-direction:column;gap:8px">
+<span style="font-size:11px;letter-spacing:0.12em;color:var(--color-accent)">04</span>
+<h4 style="margin:0">Clubs first, ceremony later</h4>
+<p style="margin:0;font-size:14px;color:color-mix(in srgb, var(--color-text) 70%, transparent)">Faster fund approvals, shared equipment, and fests planned with clubs instead of around them.</p>
+</div>
+</div>
+<p class="text-muted" style="font-size:12px;margin:12px 0 0">Placeholder copy — swap in your four real headline promises.</p>
+</section>
+
+<section id="cabinet" style="max-width:1180px;margin:0 auto;padding:clamp(40px,6vw,80px) clamp(20px,4vw,48px);scroll-margin-top:80px">
+<div style="display:flex;align-items:baseline;gap:14px;flex-wrap:wrap;margin-bottom:6px">
+<h2 style="margin:0">Meet the cabinet</h2>
+<span class="text-muted" style="font-size:13px">Eighteen members · portraits coming</span>
+</div>
+<hr class="hr" style="margin:18px 0 30px">
+<div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(190px,1fr));gap:clamp(16px,2.4vw,28px)">
+
+<div style="display:flex;flex-direction:column;gap:12px">
+<div class="lighten" style="position:relative;aspect-ratio:4/5;border-radius:var(--radius-md);overflow:hidden;box-shadow:var(--shadow-sm)"><image-slot id="aeterna-m01" shape="rect" placeholder="Photo 01"></image-slot></div>
+<div style="display:flex;flex-direction:column;gap:3px">
+<span style="font-family:var(--font-heading);font-weight:500;font-size:16px">Name Surname</span>
+<span style="font-size:12px;letter-spacing:0.06em;text-transform:uppercase;color:var(--color-accent)">President</span>
+<div style="display:flex;gap:10px;margin-top:6px"><a href="#" style="font-size:11px;opacity:.7">Instagram</a><a href="#" style="font-size:11px;opacity:.7">LinkedIn</a></div>
+</div>
+</div>
+
+<div style="display:flex;flex-direction:column;gap:12px">
+<div class="lighten" style="position:relative;aspect-ratio:4/5;border-radius:var(--radius-md);overflow:hidden;box-shadow:var(--shadow-sm)"><image-slot id="aeterna-m02" shape="rect" placeholder="Photo 02"></image-slot></div>
+<div style="display:flex;flex-direction:column;gap:3px">
+<span style="font-family:var(--font-heading);font-weight:500;font-size:16px">Name Surname</span>
+<span style="font-size:12px;letter-spacing:0.06em;text-transform:uppercase;color:var(--color-accent)">Vice President</span>
+<div style="display:flex;gap:10px;margin-top:6px"><a href="#" style="font-size:11px;opacity:.7">Instagram</a><a href="#" style="font-size:11px;opacity:.7">LinkedIn</a></div>
+</div>
+</div>
+
+<div style="display:flex;flex-direction:column;gap:12px">
+<div class="lighten" style="position:relative;aspect-ratio:4/5;border-radius:var(--radius-md);overflow:hidden;box-shadow:var(--shadow-sm)"><image-slot id="aeterna-m03" shape="rect" placeholder="Photo 03"></image-slot></div>
+<div style="display:flex;flex-direction:column;gap:3px">
+<span style="font-family:var(--font-heading);font-weight:500;font-size:16px">Name Surname</span>
+<span style="font-size:12px;letter-spacing:0.06em;text-transform:uppercase;color:var(--color-accent)">General Secretary</span>
+<div style="display:flex;gap:10px;margin-top:6px"><a href="#" style="font-size:11px;opacity:.7">Instagram</a><a href="#" style="font-size:11px;opacity:.7">LinkedIn</a></div>
+</div>
+</div>
+
+<div style="display:flex;flex-direction:column;gap:12px">
+<div class="lighten" style="position:relative;aspect-ratio:4/5;border-radius:var(--radius-md);overflow:hidden;box-shadow:var(--shadow-sm)"><image-slot id="aeterna-m04" shape="rect" placeholder="Photo 04"></image-slot></div>
+<div style="display:flex;flex-direction:column;gap:3px">
+<span style="font-family:var(--font-heading);font-weight:500;font-size:16px">Name Surname</span>
+<span style="font-size:12px;letter-spacing:0.06em;text-transform:uppercase;color:var(--color-accent)">Joint Secretary</span>
+<div style="display:flex;gap:10px;margin-top:6px"><a href="#" style="font-size:11px;opacity:.7">Instagram</a><a href="#" style="font-size:11px;opacity:.7">LinkedIn</a></div>
+</div>
+</div>
+
+<div style="display:flex;flex-direction:column;gap:12px">
+<div class="lighten" style="position:relative;aspect-ratio:4/5;border-radius:var(--radius-md);overflow:hidden;box-shadow:var(--shadow-sm)"><image-slot id="aeterna-m05" shape="rect" placeholder="Photo 05"></image-slot></div>
+<div style="display:flex;flex-direction:column;gap:3px">
+<span style="font-family:var(--font-heading);font-weight:500;font-size:16px">Name Surname</span>
+<span style="font-size:12px;letter-spacing:0.06em;text-transform:uppercase;color:var(--color-accent)">Treasurer</span>
+<div style="display:flex;gap:10px;margin-top:6px"><a href="#" style="font-size:11px;opacity:.7">Instagram</a><a href="#" style="font-size:11px;opacity:.7">LinkedIn</a></div>
+</div>
+</div>
+
+<div style="display:flex;flex-direction:column;gap:12px">
+<div class="lighten" style="position:relative;aspect-ratio:4/5;border-radius:var(--radius-md);overflow:hidden;box-shadow:var(--shadow-sm)"><image-slot id="aeterna-m06" shape="rect" placeholder="Photo 06"></image-slot></div>
+<div style="display:flex;flex-direction:column;gap:3px">
+<span style="font-family:var(--font-heading);font-weight:500;font-size:16px">Name Surname</span>
+<span style="font-size:12px;letter-spacing:0.06em;text-transform:uppercase;color:var(--color-accent)">Cultural Secretary</span>
+<div style="display:flex;gap:10px;margin-top:6px"><a href="#" style="font-size:11px;opacity:.7">Instagram</a><a href="#" style="font-size:11px;opacity:.7">LinkedIn</a></div>
+</div>
+</div>
+
+<div style="display:flex;flex-direction:column;gap:12px">
+<div class="lighten" style="position:relative;aspect-ratio:4/5;border-radius:var(--radius-md);overflow:hidden;box-shadow:var(--shadow-sm)"><image-slot id="aeterna-m07" shape="rect" placeholder="Photo 07"></image-slot></div>
+<div style="display:flex;flex-direction:column;gap:3px">
+<span style="font-family:var(--font-heading);font-weight:500;font-size:16px">Name Surname</span>
+<span style="font-size:12px;letter-spacing:0.06em;text-transform:uppercase;color:var(--color-accent)">Sports Secretary</span>
+<div style="display:flex;gap:10px;margin-top:6px"><a href="#" style="font-size:11px;opacity:.7">Instagram</a><a href="#" style="font-size:11px;opacity:.7">LinkedIn</a></div>
+</div>
+</div>
+
+<div style="display:flex;flex-direction:column;gap:12px">
+<div class="lighten" style="position:relative;aspect-ratio:4/5;border-radius:var(--radius-md);overflow:hidden;box-shadow:var(--shadow-sm)"><image-slot id="aeterna-m08" shape="rect" placeholder="Photo 08"></image-slot></div>
+<div style="display:flex;flex-direction:column;gap:3px">
+<span style="font-family:var(--font-heading);font-weight:500;font-size:16px">Name Surname</span>
+<span style="font-size:12px;letter-spacing:0.06em;text-transform:uppercase;color:var(--color-accent)">Technical Secretary</span>
+<div style="display:flex;gap:10px;margin-top:6px"><a href="#" style="font-size:11px;opacity:.7">Instagram</a><a href="#" style="font-size:11px;opacity:.7">LinkedIn</a></div>
+</div>
+</div>
+
+<div style="display:flex;flex-direction:column;gap:12px">
+<div class="lighten" style="position:relative;aspect-ratio:4/5;border-radius:var(--radius-md);overflow:hidden;box-shadow:var(--shadow-sm)"><image-slot id="aeterna-m09" shape="rect" placeholder="Photo 09"></image-slot></div>
+<div style="display:flex;flex-direction:column;gap:3px">
+<span style="font-family:var(--font-heading);font-weight:500;font-size:16px">Name Surname</span>
+<span style="font-size:12px;letter-spacing:0.06em;text-transform:uppercase;color:var(--color-accent)">Academic Affairs</span>
+<div style="display:flex;gap:10px;margin-top:6px"><a href="#" style="font-size:11px;opacity:.7">Instagram</a><a href="#" style="font-size:11px;opacity:.7">LinkedIn</a></div>
+</div>
+</div>
+
+<div style="display:flex;flex-direction:column;gap:12px">
+<div class="lighten" style="position:relative;aspect-ratio:4/5;border-radius:var(--radius-md);overflow:hidden;box-shadow:var(--shadow-sm)"><image-slot id="aeterna-m10" shape="rect" placeholder="Photo 10"></image-slot></div>
+<div style="display:flex;flex-direction:column;gap:3px">
+<span style="font-family:var(--font-heading);font-weight:500;font-size:16px">Name Surname</span>
+<span style="font-size:12px;letter-spacing:0.06em;text-transform:uppercase;color:var(--color-accent)">Media &amp; Design</span>
+<div style="display:flex;gap:10px;margin-top:6px"><a href="#" style="font-size:11px;opacity:.7">Instagram</a><a href="#" style="font-size:11px;opacity:.7">LinkedIn</a></div>
+</div>
+</div>
+
+<div style="display:flex;flex-direction:column;gap:12px">
+<div class="lighten" style="position:relative;aspect-ratio:4/5;border-radius:var(--radius-md);overflow:hidden;box-shadow:var(--shadow-sm)"><image-slot id="aeterna-m11" shape="rect" placeholder="Photo 11"></image-slot></div>
+<div style="display:flex;flex-direction:column;gap:3px">
+<span style="font-family:var(--font-heading);font-weight:500;font-size:16px">Name Surname</span>
+<span style="font-size:12px;letter-spacing:0.06em;text-transform:uppercase;color:var(--color-accent)">Publicity Head</span>
+<div style="display:flex;gap:10px;margin-top:6px"><a href="#" style="font-size:11px;opacity:.7">Instagram</a><a href="#" style="font-size:11px;opacity:.7">LinkedIn</a></div>
+</div>
+</div>
+
+<div style="display:flex;flex-direction:column;gap:12px">
+<div class="lighten" style="position:relative;aspect-ratio:4/5;border-radius:var(--radius-md);overflow:hidden;box-shadow:var(--shadow-sm)"><image-slot id="aeterna-m12" shape="rect" placeholder="Photo 12"></image-slot></div>
+<div style="display:flex;flex-direction:column;gap:3px">
+<span style="font-family:var(--font-heading);font-weight:500;font-size:16px">Name Surname</span>
+<span style="font-size:12px;letter-spacing:0.06em;text-transform:uppercase;color:var(--color-accent)">Hostel Affairs</span>
+<div style="display:flex;gap:10px;margin-top:6px"><a href="#" style="font-size:11px;opacity:.7">Instagram</a><a href="#" style="font-size:11px;opacity:.7">LinkedIn</a></div>
+</div>
+</div>
+
+<div style="display:flex;flex-direction:column;gap:12px">
+<div class="lighten" style="position:relative;aspect-ratio:4/5;border-radius:var(--radius-md);overflow:hidden;box-shadow:var(--shadow-sm)"><image-slot id="aeterna-m13" shape="rect" placeholder="Photo 13"></image-slot></div>
+<div style="display:flex;flex-direction:column;gap:3px">
+<span style="font-family:var(--font-heading);font-weight:500;font-size:16px">Name Surname</span>
+<span style="font-size:12px;letter-spacing:0.06em;text-transform:uppercase;color:var(--color-accent)">Alumni Relations</span>
+<div style="display:flex;gap:10px;margin-top:6px"><a href="#" style="font-size:11px;opacity:.7">Instagram</a><a href="#" style="font-size:11px;opacity:.7">LinkedIn</a></div>
+</div>
+</div>
+
+<div style="display:flex;flex-direction:column;gap:12px">
+<div class="lighten" style="position:relative;aspect-ratio:4/5;border-radius:var(--radius-md);overflow:hidden;box-shadow:var(--shadow-sm)"><image-slot id="aeterna-m14" shape="rect" placeholder="Photo 14"></image-slot></div>
+<div style="display:flex;flex-direction:column;gap:3px">
+<span style="font-family:var(--font-heading);font-weight:500;font-size:16px">Name Surname</span>
+<span style="font-size:12px;letter-spacing:0.06em;text-transform:uppercase;color:var(--color-accent)">Women's Development</span>
+<div style="display:flex;gap:10px;margin-top:6px"><a href="#" style="font-size:11px;opacity:.7">Instagram</a><a href="#" style="font-size:11px;opacity:.7">LinkedIn</a></div>
+</div>
+</div>
+
+<div style="display:flex;flex-direction:column;gap:12px">
+<div class="lighten" style="position:relative;aspect-ratio:4/5;border-radius:var(--radius-md);overflow:hidden;box-shadow:var(--shadow-sm)"><image-slot id="aeterna-m15" shape="rect" placeholder="Photo 15"></image-slot></div>
+<div style="display:flex;flex-direction:column;gap:3px">
+<span style="font-family:var(--font-heading);font-weight:500;font-size:16px">Name Surname</span>
+<span style="font-size:12px;letter-spacing:0.06em;text-transform:uppercase;color:var(--color-accent)">Events Coordinator</span>
+<div style="display:flex;gap:10px;margin-top:6px"><a href="#" style="font-size:11px;opacity:.7">Instagram</a><a href="#" style="font-size:11px;opacity:.7">LinkedIn</a></div>
+</div>
+</div>
+
+<div style="display:flex;flex-direction:column;gap:12px">
+<div class="lighten" style="position:relative;aspect-ratio:4/5;border-radius:var(--radius-md);overflow:hidden;box-shadow:var(--shadow-sm)"><image-slot id="aeterna-m16" shape="rect" placeholder="Photo 16"></image-slot></div>
+<div style="display:flex;flex-direction:column;gap:3px">
+<span style="font-family:var(--font-heading);font-weight:500;font-size:16px">Name Surname</span>
+<span style="font-size:12px;letter-spacing:0.06em;text-transform:uppercase;color:var(--color-accent)">Finance Coordinator</span>
+<div style="display:flex;gap:10px;margin-top:6px"><a href="#" style="font-size:11px;opacity:.7">Instagram</a><a href="#" style="font-size:11px;opacity:.7">LinkedIn</a></div>
+</div>
+</div>
+
+<div style="display:flex;flex-direction:column;gap:12px">
+<div class="lighten" style="position:relative;aspect-ratio:4/5;border-radius:var(--radius-md);overflow:hidden;box-shadow:var(--shadow-sm)"><image-slot id="aeterna-m17" shape="rect" placeholder="Photo 17"></image-slot></div>
+<div style="display:flex;flex-direction:column;gap:3px">
+<span style="font-family:var(--font-heading);font-weight:500;font-size:16px">Name Surname</span>
+<span style="font-size:12px;letter-spacing:0.06em;text-transform:uppercase;color:var(--color-accent)">Outreach Coordinator</span>
+<div style="display:flex;gap:10px;margin-top:6px"><a href="#" style="font-size:11px;opacity:.7">Instagram</a><a href="#" style="font-size:11px;opacity:.7">LinkedIn</a></div>
+</div>
+</div>
+
+<div style="display:flex;flex-direction:column;gap:12px">
+<div class="lighten" style="position:relative;aspect-ratio:4/5;border-radius:var(--radius-md);overflow:hidden;box-shadow:var(--shadow-sm)"><image-slot id="aeterna-m18" shape="rect" placeholder="Photo 18"></image-slot></div>
+<div style="display:flex;flex-direction:column;gap:3px">
+<span style="font-family:var(--font-heading);font-weight:500;font-size:16px">Name Surname</span>
+<span style="font-size:12px;letter-spacing:0.06em;text-transform:uppercase;color:var(--color-accent)">Sustainability Head</span>
+<div style="display:flex;gap:10px;margin-top:6px"><a href="#" style="font-size:11px;opacity:.7">Instagram</a><a href="#" style="font-size:11px;opacity:.7">LinkedIn</a></div>
+</div>
+</div>
+
+</div>
+<p class="text-muted" style="font-size:12px;margin:18px 0 0">Eighteen photo slots — drag each portrait in, then replace the name and post beside it.</p>
+</section>
+
+<section id="manifesto" style="position:relative;scroll-margin-top:80px;background:linear-gradient(180deg, transparent, color-mix(in srgb, var(--color-section) 26%, transparent) 18%, color-mix(in srgb, var(--color-section) 26%, transparent) 82%, transparent)">
+<div style="max-width:1180px;margin:0 auto;padding:clamp(48px,7vw,96px) clamp(20px,4vw,48px);display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:clamp(24px,4vw,56px);align-items:start">
+<div style="display:flex;flex-direction:column;gap:14px;position:sticky;top:92px">
+<h6 style="color:var(--color-accent);margin:0">The manifesto</h6>
+<h2 style="margin:0;font-size:clamp(30px,4vw,44px)">Eight commitments, in plain language</h2>
+<p style="margin:0;font-size:15px;color:color-mix(in srgb, var(--color-text) 72%, transparent);max-width:38ch">Open any one to read the detail. Each will carry the real text from your manifesto document, unedited.</p>
+<a class="btn btn-secondary" href="#contact" style="align-self:flex-start;margin-top:6px">Download the full PDF</a>
+</div>
+<div style="display:flex;flex-direction:column;gap:2px">
+
+<details style="border-bottom:1px solid var(--color-divider)">
+<summary style="display:flex;align-items:center;gap:14px;padding:18px 4px;cursor:pointer;list-style:none" style-hover="background:color-mix(in srgb, var(--color-text) 5%, transparent)">
+<span style="font-size:11px;letter-spacing:0.12em;color:var(--color-accent);min-width:24px">01</span>
+<span style="font-family:var(--font-heading);font-size:18px;flex:1">Transparency in everything we spend</span>
+<span class="chev" style="width:8px;height:8px;border-right:1.5px solid var(--color-accent);border-bottom:1.5px solid var(--color-accent);transform:rotate(-45deg);transition:transform .2s ease;flex:none"></span>
+</summary>
+<p style="margin:0 0 18px;padding-left:38px;font-size:14px;line-height:1.65;color:color-mix(in srgb, var(--color-text) 76%, transparent);max-width:62ch">Placeholder. A termly public ledger of union income and expenditure, posted on this site within two weeks of each cycle closing, with receipts for anything above a set threshold and a short written note on every decision we took to spend it.</p>
+</details>
+
+<details style="border-bottom:1px solid var(--color-divider)">
+<summary style="display:flex;align-items:center;gap:14px;padding:18px 4px;cursor:pointer;list-style:none" style-hover="background:color-mix(in srgb, var(--color-text) 5%, transparent)">
+<span style="font-size:11px;letter-spacing:0.12em;color:var(--color-accent);min-width:24px">02</span>
+<span style="font-family:var(--font-heading);font-size:18px;flex:1">Academic support that reaches first-years</span>
+<span class="chev" style="width:8px;height:8px;border-right:1.5px solid var(--color-accent);border-bottom:1.5px solid var(--color-accent);transform:rotate(-45deg);transition:transform .2s ease;flex:none"></span>
+</summary>
+<p style="margin:0 0 18px;padding-left:38px;font-size:14px;line-height:1.65;color:color-mix(in srgb, var(--color-text) 76%, transparent);max-width:62ch">Placeholder. A peer-mentoring pairing run in the first month, a shared archive of past papers and notes by department, and a standing channel to raise grading and scheduling issues without going through six offices first.</p>
+</details>
+
+<details style="border-bottom:1px solid var(--color-divider)">
+<summary style="display:flex;align-items:center;gap:14px;padding:18px 4px;cursor:pointer;list-style:none" style-hover="background:color-mix(in srgb, var(--color-text) 5%, transparent)">
+<span style="font-size:11px;letter-spacing:0.12em;color:var(--color-accent);min-width:24px">03</span>
+<span style="font-family:var(--font-heading);font-size:18px;flex:1">Hostel and mess conditions, taken seriously</span>
+<span class="chev" style="width:8px;height:8px;border-right:1.5px solid var(--color-accent);border-bottom:1.5px solid var(--color-accent);transform:rotate(-45deg);transition:transform .2s ease;flex:none"></span>
+</summary>
+<p style="margin:0 0 18px;padding-left:38px;font-size:14px;line-height:1.65;color:color-mix(in srgb, var(--color-text) 76%, transparent);max-width:62ch">Placeholder. Monthly mess feedback that actually changes the menu, a maintenance tracker students can see, and a published escalation path when a complaint sits unanswered for more than a week.</p>
+</details>
+
+<details style="border-bottom:1px solid var(--color-divider)">
+<summary style="display:flex;align-items:center;gap:14px;padding:18px 4px;cursor:pointer;list-style:none" style-hover="background:color-mix(in srgb, var(--color-text) 5%, transparent)">
+<span style="font-size:11px;letter-spacing:0.12em;color:var(--color-accent);min-width:24px">04</span>
+<span style="font-family:var(--font-heading);font-size:18px;flex:1">Clubs funded fast, not favourably</span>
+<span class="chev" style="width:8px;height:8px;border-right:1.5px solid var(--color-accent);border-bottom:1.5px solid var(--color-accent);transform:rotate(-45deg);transition:transform .2s ease;flex:none"></span>
+</summary>
+<p style="margin:0 0 18px;padding-left:38px;font-size:14px;line-height:1.65;color:color-mix(in srgb, var(--color-text) 76%, transparent);max-width:62ch">Placeholder. One application form, a published rubric, a two-week decision deadline, and a shared inventory so three clubs stop buying the same speaker every year.</p>
+</details>
+
+<details style="border-bottom:1px solid var(--color-divider)">
+<summary style="display:flex;align-items:center;gap:14px;padding:18px 4px;cursor:pointer;list-style:none" style-hover="background:color-mix(in srgb, var(--color-text) 5%, transparent)">
+<span style="font-size:11px;letter-spacing:0.12em;color:var(--color-accent);min-width:24px">05</span>
+<span style="font-family:var(--font-heading);font-size:18px;flex:1">Safety and wellbeing on campus</span>
+<span class="chev" style="width:8px;height:8px;border-right:1.5px solid var(--color-accent);border-bottom:1.5px solid var(--color-accent);transform:rotate(-45deg);transition:transform .2s ease;flex:none"></span>
+</summary>
+<p style="margin:0 0 18px;padding-left:38px;font-size:14px;line-height:1.65;color:color-mix(in srgb, var(--color-text) 76%, transparent);max-width:62ch">Placeholder. Lighting and transport audits walked at night by students, a counselling route that doesn't require a professor's signature, and a confidential reporting channel with a named person responsible for it.</p>
+</details>
+
+<details style="border-bottom:1px solid var(--color-divider)">
+<summary style="display:flex;align-items:center;gap:14px;padding:18px 4px;cursor:pointer;list-style:none" style-hover="background:color-mix(in srgb, var(--color-text) 5%, transparent)">
+<span style="font-size:11px;letter-spacing:0.12em;color:var(--color-accent);min-width:24px">06</span>
+<span style="font-family:var(--font-heading);font-size:18px;flex:1">Sports and fitness beyond the team sheet</span>
+<span class="chev" style="width:8px;height:8px;border-right:1.5px solid var(--color-accent);border-bottom:1.5px solid var(--color-accent);transform:rotate(-45deg);transition:transform .2s ease;flex:none"></span>
+</summary>
+<p style="margin:0 0 18px;padding-left:38px;font-size:14px;line-height:1.65;color:color-mix(in srgb, var(--color-text) 76%, transparent);max-width:62ch">Placeholder. Open ground slots published weekly, equipment that can be borrowed without a captain's approval, and intramural leagues for people who are not on any team.</p>
+</details>
+
+<details style="border-bottom:1px solid var(--color-divider)">
+<summary style="display:flex;align-items:center;gap:14px;padding:18px 4px;cursor:pointer;list-style:none" style-hover="background:color-mix(in srgb, var(--color-text) 5%, transparent)">
+<span style="font-size:11px;letter-spacing:0.12em;color:var(--color-accent);min-width:24px">07</span>
+<span style="font-family:var(--font-heading);font-size:18px;flex:1">A greener, quieter campus</span>
+<span class="chev" style="width:8px;height:8px;border-right:1.5px solid var(--color-accent);border-bottom:1.5px solid var(--color-accent);transform:rotate(-45deg);transition:transform .2s ease;flex:none"></span>
+</summary>
+<p style="margin:0 0 18px;padding-left:38px;font-size:14px;line-height:1.65;color:color-mix(in srgb, var(--color-text) 76%, transparent);max-width:62ch">Placeholder. Refill stations before plastic bans, segregated waste that is actually collected separately, and a yearly audit published alongside the budget.</p>
+</details>
+
+<details style="border-bottom:1px solid var(--color-divider)">
+<summary style="display:flex;align-items:center;gap:14px;padding:18px 4px;cursor:pointer;list-style:none" style-hover="background:color-mix(in srgb, var(--color-text) 5%, transparent)">
+<span style="font-size:11px;letter-spacing:0.12em;color:var(--color-accent);min-width:24px">08</span>
+<span style="font-family:var(--font-heading);font-size:18px;flex:1">Accountability after the election</span>
+<span class="chev" style="width:8px;height:8px;border-right:1.5px solid var(--color-accent);border-bottom:1.5px solid var(--color-accent);transform:rotate(-45deg);transition:transform .2s ease;flex:none"></span>
+</summary>
+<p style="margin:0 0 18px;padding-left:38px;font-size:14px;line-height:1.65;color:color-mix(in srgb, var(--color-text) 76%, transparent);max-width:62ch">Placeholder. This page stays up. Every promise above gets a status — done, in progress, blocked, with the reason — updated each term so you can hold us to the exact words we used.</p>
+</details>
+
+</div>
+</div>
+</section>
+
+<sc-if value="{{ showTrail }}" hint-placeholder-val="{{ true }}">
+<section id="trail" style="max-width:1180px;margin:0 auto;padding:clamp(40px,6vw,80px) clamp(20px,4vw,48px);scroll-margin-top:80px">
+<h6 style="color:var(--color-accent);margin:0 0 8px">Campaign trail</h6>
+<h2 style="margin:0 0 24px">Where to find us</h2>
+<div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:18px">
+<div class="card elev-sm" style="padding:20px">
+<span class="card-kicker">Mon · 14 Sep</span>
+<span class="card-title">Open floor, Main Lawn</span>
+<p class="card-body">Bring one thing you'd change about campus. We write all of them down.</p>
+<span class="card-meta">6:00 pm</span>
+</div>
+<div class="card elev-sm" style="padding:20px">
+<span class="card-kicker">Wed · 16 Sep</span>
+<span class="card-title">Hostel walkthrough</span>
+<p class="card-body">Block by block, room to room, listening before we publish the hostel plan.</p>
+<span class="card-meta">8:00 pm</span>
+</div>
+<div class="card elev-sm" style="padding:20px">
+<span class="card-kicker">Fri · 18 Sep</span>
+<span class="card-title">Candidates' debate</span>
+<p class="card-body">Auditorium. All cabinets on stage, questions from the floor, no scripts.</p>
+<span class="card-meta">5:30 pm</span>
+</div>
+<div class="card elev-sm" style="padding:20px;box-shadow:0 0 0 1px var(--color-accent)">
+<span class="card-kicker">Tue · 22 Sep</span>
+<span class="card-title">Polling day</span>
+<p class="card-body">Booths open across campus. Carry your student ID.</p>
+<span class="card-meta">9:00 am – 4:00 pm</span>
+</div>
+</div>
+<p class="text-muted" style="font-size:12px;margin:14px 0 0">Placeholder dates — send me the real schedule and I'll set them.</p>
+</section>
+</sc-if>
+
+<sc-if value="{{ showFaq }}" hint-placeholder-val="{{ true }}">
+<section id="faq" style="max-width:1180px;margin:0 auto;padding:clamp(40px,6vw,80px) clamp(20px,4vw,48px);scroll-margin-top:80px">
+<h2 style="margin:0 0 4px">Questions we keep getting</h2>
+<hr class="hr" style="margin:16px 0 10px">
+<div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:6px 40px">
+<details style="border-bottom:1px solid var(--color-divider);padding:14px 0">
+<summary style="cursor:pointer;list-style:none;font-family:var(--font-heading);font-size:15px">Who can vote in this election?</summary>
+<p style="margin:10px 0 0;font-size:14px;color:color-mix(in srgb, var(--color-text) 74%, transparent)">Placeholder answer — eligibility rules go here.</p>
+</details>
+<details style="border-bottom:1px solid var(--color-divider);padding:14px 0">
+<summary style="cursor:pointer;list-style:none;font-family:var(--font-heading);font-size:15px">How is Aeterna funded?</summary>
+<p style="margin:10px 0 0;font-size:14px;color:color-mix(in srgb, var(--color-text) 74%, transparent)">Placeholder answer — campaign funding and spending caps.</p>
+</details>
+<details style="border-bottom:1px solid var(--color-divider);padding:14px 0">
+<summary style="cursor:pointer;list-style:none;font-family:var(--font-heading);font-size:15px">Can I join the campaign?</summary>
+<p style="margin:10px 0 0;font-size:14px;color:color-mix(in srgb, var(--color-text) 74%, transparent)">Placeholder answer — volunteering and how to reach the team.</p>
+</details>
+<details style="border-bottom:1px solid var(--color-divider);padding:14px 0">
+<summary style="cursor:pointer;list-style:none;font-family:var(--font-heading);font-size:15px">What happens if a promise can't be kept?</summary>
+<p style="margin:10px 0 0;font-size:14px;color:color-mix(in srgb, var(--color-text) 74%, transparent)">Placeholder answer — we publish the blocker and the reason.</p>
+</details>
+</div>
+</section>
+</sc-if>
+
+<footer id="contact" style="scroll-margin-top:80px;border-top:1px solid var(--color-divider);background:color-mix(in srgb, var(--color-surface) 55%, transparent)">
+<div style="max-width:1180px;margin:0 auto;padding:clamp(40px,6vw,72px) clamp(20px,4vw,48px);display:flex;flex-wrap:wrap;gap:40px;justify-content:space-between;align-items:flex-start">
+<div style="display:flex;flex-direction:column;gap:12px;max-width:420px">
+<span style="font-family:var(--font-heading);font-size:22px;letter-spacing:0.2em">AETERNA</span>
+<p style="margin:0;font-size:14px;color:color-mix(in srgb, var(--color-text) 72%, transparent)">Write to us about anything — a broken tap, a bad rule, an idea. We answer every message.</p>
+<a class="btn btn-primary" href="mailto:hello@aeterna.example" style="align-self:flex-start">hello@aeterna.example</a>
+</div>
+<div style="display:flex;gap:56px;flex-wrap:wrap">
+<div style="display:flex;flex-direction:column;gap:8px">
+<h6 style="margin:0 0 2px;color:color-mix(in srgb, var(--color-text) 55%, transparent)">Pages</h6>
+<a href="#promises" style="font-size:14px;opacity:.8">Promises</a>
+<a href="#cabinet" style="font-size:14px;opacity:.8">Cabinet</a>
+<a href="#manifesto" style="font-size:14px;opacity:.8">Manifesto</a>
+</div>
+<div style="display:flex;flex-direction:column;gap:8px">
+<h6 style="margin:0 0 2px;color:color-mix(in srgb, var(--color-text) 55%, transparent)">Follow</h6>
+<a href="#" style="font-size:14px;opacity:.8">Instagram</a>
+<a href="#" style="font-size:14px;opacity:.8">LinkedIn</a>
+<a href="#" style="font-size:14px;opacity:.8">WhatsApp</a>
+</div>
+</div>
+</div>
+<p class="text-muted" style="max-width:1180px;margin:0 auto;padding:0 clamp(20px,4vw,48px) 32px;font-size:11px">Placeholder site for the Aeterna cabinet · replace banner, portraits and manifesto text with the real files.</p>
+</footer>
+
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;showTrail&quot;:{&quot;editor&quot;:&quot;boolean&quot;,&quot;default&quot;:true,&quot;tsType&quot;:&quot;boolean&quot;,&quot;section&quot;:&quot;Sections&quot;},&quot;showFaq&quot;:{&quot;editor&quot;:&quot;boolean&quot;,&quot;default&quot;:true,&quot;tsType&quot;:&quot;boolean&quot;,&quot;section&quot;:&quot;Sections&quot;}}">
+class Component extends DCLogic {
+  renderVals() {
+    return {
+      showTrail: this.props.showTrail ?? true,
+      showFaq: this.props.showFaq ?? true,
+    };
+  }
+}
+</script>
+</body>
+</html>
