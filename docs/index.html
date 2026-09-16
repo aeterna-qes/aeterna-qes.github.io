@@ -1,0 +1,1490 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Aeterna — QES Students' Union 伊利沙伯中學學生會</title>
+<meta name="description" content="Aeterna, the Students' Union Cabinet of Queen Elizabeth School — manifesto, activities, student welfare discounts, school calendar and contact.">
+<meta name="theme-color" content="#efe6fd">
+<link rel="preload" as="script" href="https://unpkg.com/react@18.3.1/umd/react.production.min.js" crossorigin>
+<link rel="preload" as="script" href="https://unpkg.com/react-dom@18.3.1/umd/react-dom.production.min.js" crossorigin>
+<link rel="preload" as="image" type="image/webp" href="photos/banner.webp" fetchpriority="high">
+<script src="./support.js"></script>
+<script>
+(function(){
+  var block=function(e){e.preventDefault();return false;};
+  document.addEventListener('contextmenu',block);
+  document.addEventListener('dragstart',function(e){if(e.target&&e.target.tagName==='IMG')block(e);});
+  document.addEventListener('keydown',function(e){
+    var k=(e.key||'').toLowerCase();
+    if(k==='f12'||((e.ctrlKey||e.metaKey)&&(k==='u'||k==='s'))||((e.ctrlKey||e.metaKey)&&e.shiftKey&&(k==='i'||k==='j'||k==='c'))) block(e);
+  });
+})();
+</script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="manifest" href="manifest.json">
+<link rel="apple-touch-icon" href="photos/apple-touch-icon.png">
+<link rel="icon" href="photos/icon-192.png">
+<meta name="apple-mobile-web-app-title" content="Aeterna">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="mobile-web-app-capable" content="yes">
+<link rel="stylesheet" href="_ds/nocturne-859bdda2-3298-43a7-bfcf-1e9d261fa53c/styles.css">
+<script src="_ds/nocturne-859bdda2-3298-43a7-bfcf-1e9d261fa53c/_ds_bundle.js"></script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+<script src="./welfare-data-global.js"></script>
+<script src="./calendar-data-global.js"></script>
+<link href="https://fonts.googleapis.com/css2?family=Caveat+Brush&amp;family=Cormorant+Garamond:ital,wght@1,300;1,400&amp;family=Playfair+Display:ital,wght@1,500&amp;family=Italiana&amp;family=Marcellus&amp;family=Noto+Serif+TC:wght@300;400;500;600&amp;family=Inter:wght@400;500;600&amp;display=swap" rel="stylesheet">
+<style>
+:root{
+--ae-bg:#efe6fd; --ae-bg-deep:#e2d2fa; --ae-panel:#faf6ff;
+--ae-ink:#3a2b62; --ae-ink-soft:#5f5088; --ae-line:#cdb6f2;
+--ae-gold:#e8930f; --ae-gold-light:#fbc75a; --ae-lilac:#b490ef;
+}
+@font-face{font-family:'AeLatinPunct';src:local('Georgia'),local('Times New Roman'),local('Iowan Old Style'),local('Liberation Serif');unicode-range:U+0022,U+0027,U+2018-201F,U+2032-2036}
+body{margin:0;background:var(--ae-bg);color:var(--ae-ink);font-family:'AeLatinPunct',"Noto Serif TC","Inter",serif}
+a{color:#8a5cd8;text-decoration:none}
+a:hover{color:var(--ae-gold)}
+h1,h2,h3,h4,h5,h6{font-family:'AeLatinPunct',"Noto Serif TC","Inter",serif;color:var(--ae-ink)}
+[data-zh]{display:none}
+[data-lang="zh"] [data-zh]{display:revert}
+[data-lang="zh"] p[data-zh],p[data-en]{display:block}
+[data-lang="zh"] [data-en]{display:none}
+.ph-front{opacity:1;transition:opacity .3s ease}
+.ph-swap:hover .ph-front{opacity:0}
+.ph-swap:hover .ph-front{pointer-events:none}
+.ph-back{opacity:0;transition:opacity .3s ease}
+.ph-swap:hover .ph-back{opacity:1}
+.ph-edit1 .ph-swap:hover .ph-front{opacity:1;pointer-events:auto}
+.ph-edit1 .ph-swap:hover .ph-back{opacity:0}
+.ph-edit1 .ph-badge{opacity:0}
+.ph-edit2 .ph-front{opacity:0;pointer-events:none}
+.ph-edit2 .ph-back{opacity:1}
+.ph-edit2 .ph-badge{opacity:1}
+.mem{width:var(--mw)}
+.mem-card{position:relative;padding:16px}
+.open-1 .mem-1,.open-2 .mem-2,.open-3 .mem-3,.open-4 .mem-4,.open-5 .mem-5,.open-6 .mem-6,.open-7 .mem-7,.open-8 .mem-8,.open-9 .mem-9,.open-10 .mem-10,.open-11 .mem-11,.open-12 .mem-12,.open-13 .mem-13,.open-14 .mem-14,.open-15 .mem-15{height:var(--mh)}
+.open-1 .mem-1 .mem-info,.open-2 .mem-2 .mem-info,.open-3 .mem-3 .mem-info,.open-4 .mem-4 .mem-info,.open-5 .mem-5 .mem-info,.open-6 .mem-6 .mem-info,.open-7 .mem-7 .mem-info,.open-8 .mem-8 .mem-info,.open-9 .mem-9 .mem-info,.open-10 .mem-10 .mem-info,.open-11 .mem-11 .mem-info,.open-12 .mem-12 .mem-info,.open-13 .mem-13 .mem-info,.open-14 .mem-14 .mem-info,.open-15 .mem-15 .mem-info{cursor:default}
+.mem-inner{display:flex;flex-direction:column;gap:14px}
+.mem-info{cursor:pointer}
+.mem-info span,.mem-info p,.mem-bio span,.mem-bio p{background-color:transparent !important;font-family:inherit !important;color:inherit !important}
+.mem-bio{display:grid;grid-template-rows:0fr;opacity:0}
+.mem-bio>div{overflow:hidden;min-height:0}
+.mem-more{transition:opacity .25s ease}
+.mem-close{display:none}
+.mem-photo{width:100%;flex:none}
+.mem-backdrop{position:fixed;inset:0;background:rgba(52,38,90,.42);backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);opacity:0;pointer-events:none;transition:opacity .4s ease;z-index:55}
+.open-1 .mem-backdrop,.open-2 .mem-backdrop,.open-3 .mem-backdrop,.open-4 .mem-backdrop,.open-5 .mem-backdrop,.open-6 .mem-backdrop,.open-7 .mem-backdrop,.open-8 .mem-backdrop,.open-9 .mem-backdrop,.open-10 .mem-backdrop,.open-11 .mem-backdrop,.open-12 .mem-backdrop,.open-13 .mem-backdrop,.open-14 .mem-backdrop,.open-15 .mem-backdrop{opacity:1;pointer-events:auto}
+@keyframes memIn{from{opacity:0;transform:translate(-50%,-50%) scale(.965)}to{opacity:1;transform:translate(-50%,-50%) scale(1)}}
+@keyframes memFromLeft{from{opacity:0;transform:translateX(-34px)}to{opacity:1;transform:translateX(0)}}
+@keyframes memFromRight{from{opacity:0;transform:translateX(34px)}to{opacity:1;transform:translateX(0)}}
+.open-1 .mem-1 .mem-card,.open-2 .mem-2 .mem-card,.open-3 .mem-3 .mem-card,.open-4 .mem-4 .mem-card,.open-5 .mem-5 .mem-card,.open-6 .mem-6 .mem-card,.open-7 .mem-7 .mem-card,.open-8 .mem-8 .mem-card,.open-9 .mem-9 .mem-card,.open-10 .mem-10 .mem-card,.open-11 .mem-11 .mem-card,.open-12 .mem-12 .mem-card,.open-13 .mem-13 .mem-card,.open-14 .mem-14 .mem-card,.open-15 .mem-15 .mem-card{position:fixed;top:50%;left:50%;width:min(900px,92vw);max-width:92vw;max-height:88vh;overflow-y:auto;z-index:60;padding:26px;box-shadow:0 0 0 1.5px var(--ae-gold-light),0 30px 70px rgba(52,38,90,.34);animation:memIn .4s cubic-bezier(.4,0,.2,1) both}
+.open-1 .mem-1 .mem-inner,.open-2 .mem-2 .mem-inner,.open-3 .mem-3 .mem-inner,.open-4 .mem-4 .mem-inner,.open-5 .mem-5 .mem-inner,.open-6 .mem-6 .mem-inner,.open-7 .mem-7 .mem-inner,.open-8 .mem-8 .mem-inner,.open-9 .mem-9 .mem-inner,.open-10 .mem-10 .mem-inner,.open-11 .mem-11 .mem-inner,.open-12 .mem-12 .mem-inner,.open-13 .mem-13 .mem-inner,.open-14 .mem-14 .mem-inner,.open-15 .mem-15 .mem-inner{flex-direction:row;align-items:flex-start;gap:28px}
+.open-1 .mem-1 .mem-photo,.open-2 .mem-2 .mem-photo,.open-3 .mem-3 .mem-photo,.open-4 .mem-4 .mem-photo,.open-5 .mem-5 .mem-photo,.open-6 .mem-6 .mem-photo,.open-7 .mem-7 .mem-photo,.open-8 .mem-8 .mem-photo,.open-9 .mem-9 .mem-photo,.open-10 .mem-10 .mem-photo,.open-11 .mem-11 .mem-photo,.open-12 .mem-12 .mem-photo,.open-13 .mem-13 .mem-photo,.open-14 .mem-14 .mem-photo,.open-15 .mem-15 .mem-photo{width:min(300px,40%);animation:memFromLeft .5s cubic-bezier(.22,.9,.3,1) .1s both}
+.open-1 .mem-1 .mem-info,.open-2 .mem-2 .mem-info,.open-3 .mem-3 .mem-info,.open-4 .mem-4 .mem-info,.open-5 .mem-5 .mem-info,.open-6 .mem-6 .mem-info,.open-7 .mem-7 .mem-info,.open-8 .mem-8 .mem-info,.open-9 .mem-9 .mem-info,.open-10 .mem-10 .mem-info,.open-11 .mem-11 .mem-info,.open-12 .mem-12 .mem-info,.open-13 .mem-13 .mem-info,.open-14 .mem-14 .mem-info,.open-15 .mem-15 .mem-info{animation:memFromRight .5s cubic-bezier(.22,.9,.3,1) .16s both}
+.open-1 .mem-1 .mem-bio,.open-2 .mem-2 .mem-bio,.open-3 .mem-3 .mem-bio,.open-4 .mem-4 .mem-bio,.open-5 .mem-5 .mem-bio,.open-6 .mem-6 .mem-bio,.open-7 .mem-7 .mem-bio,.open-8 .mem-8 .mem-bio,.open-9 .mem-9 .mem-bio,.open-10 .mem-10 .mem-bio,.open-11 .mem-11 .mem-bio,.open-12 .mem-12 .mem-bio,.open-13 .mem-13 .mem-bio,.open-14 .mem-14 .mem-bio,.open-15 .mem-15 .mem-bio{grid-template-rows:1fr;opacity:1}
+.open-1 .mem-1 .mem-more,.open-2 .mem-2 .mem-more,.open-3 .mem-3 .mem-more,.open-4 .mem-4 .mem-more,.open-5 .mem-5 .mem-more,.open-6 .mem-6 .mem-more,.open-7 .mem-7 .mem-more,.open-8 .mem-8 .mem-more,.open-9 .mem-9 .mem-more,.open-10 .mem-10 .mem-more,.open-11 .mem-11 .mem-more,.open-12 .mem-12 .mem-more,.open-13 .mem-13 .mem-more,.open-14 .mem-14 .mem-more,.open-15 .mem-15 .mem-more{opacity:0;height:0;margin:0}
+.open-1 .mem-1 .mem-close,.open-2 .mem-2 .mem-close,.open-3 .mem-3 .mem-close,.open-4 .mem-4 .mem-close,.open-5 .mem-5 .mem-close,.open-6 .mem-6 .mem-close,.open-7 .mem-7 .mem-close,.open-8 .mem-8 .mem-close,.open-9 .mem-9 .mem-close,.open-10 .mem-10 .mem-close,.open-11 .mem-11 .mem-close,.open-12 .mem-12 .mem-close,.open-13 .mem-13 .mem-close,.open-14 .mem-14 .mem-close,.open-15 .mem-15 .mem-close{display:flex}
+@media (max-width:640px){.open-1 .mem-1 .mem-inner,.open-2 .mem-2 .mem-inner,.open-3 .mem-3 .mem-inner,.open-4 .mem-4 .mem-inner,.open-5 .mem-5 .mem-inner,.open-6 .mem-6 .mem-inner,.open-7 .mem-7 .mem-inner,.open-8 .mem-8 .mem-inner,.open-9 .mem-9 .mem-inner,.open-10 .mem-10 .mem-inner,.open-11 .mem-11 .mem-inner,.open-12 .mem-12 .mem-inner,.open-13 .mem-13 .mem-inner,.open-14 .mem-14 .mem-inner,.open-15 .mem-15 .mem-inner{flex-direction:column}.open-1 .mem-1 .mem-photo,.open-2 .mem-2 .mem-photo,.open-3 .mem-3 .mem-photo,.open-4 .mem-4 .mem-photo,.open-5 .mem-5 .mem-photo,.open-6 .mem-6 .mem-photo,.open-7 .mem-7 .mem-photo,.open-8 .mem-8 .mem-photo,.open-9 .mem-9 .mem-photo,.open-10 .mem-10 .mem-photo,.open-11 .mem-11 .mem-photo,.open-12 .mem-12 .mem-photo,.open-13 .mem-13 .mem-photo,.open-14 .mem-14 .mem-photo,.open-15 .mem-15 .mem-photo{width:100%}}
+.ph-badge{opacity:0;transition:opacity .3s ease}
+.ph-swap:hover .ph-badge{opacity:1}
+::selection{background:rgba(232,147,15,.28)}
+:focus-visible{outline:2px solid var(--ae-gold);outline-offset:2px}
+@keyframes aeFadeIn{from{opacity:0}to{opacity:1}}
+@keyframes aeRise{from{opacity:0;transform:translateY(22px) scale(.97)}to{opacity:1;transform:translateY(0) scale(1)}}
+@keyframes aeRing{0%,72%,100%{transform:rotate(0)}78%{transform:rotate(13deg)}84%{transform:rotate(-11deg)}90%{transform:rotate(7deg)}95%{transform:rotate(-4deg)}}
+.ae-bell:hover svg{animation:aeRing 1.6s ease both}
+</style>
+</helmet>
+<template id="__bundler_thumbnail"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><rect width="100" height="100" fill="#efe6fd"></rect><circle cx="50" cy="46" r="17" fill="none" stroke="#e8930f" stroke-width="1.5"></circle><path d="M50 33l3.2 9.9h10.4l-8.4 6.1 3.2 9.9-8.4-6.1-8.4 6.1 3.2-9.9-8.4-6.1h10.4z" fill="#e8930f"></path><text x="50" y="80" text-anchor="middle" font-family="Georgia, serif" font-size="13" fill="#3a2b62">Aeterna</text></svg></template>
+<div data-lang="{{ lang }}" style="min-height:100vh;background:linear-gradient(180deg,#efe6fd 0%,#f6f0ff 42%,#efe6fd 100%)">
+
+<div style="position:sticky;top:0;z-index:30;backdrop-filter:blur(14px);background:rgba(239,230,253,.82);box-shadow:0 1px 0 var(--ae-line)">
+<nav style="max-width:1120px;margin:0 auto;padding:11px clamp(16px,4vw,36px);display:flex;align-items:center;gap:22px;flex-wrap:wrap">
+<a href="#top" style="font-family:'Caveat Brush',cursive;font-size:26px;line-height:1;color:var(--ae-gold);margin-right:auto">Aeterna</a>
+<button type="button" onClick="{{ goHome }}" style="{{ homeNav }}"><span data-en="">Home</span><span data-zh="">首頁</span></button>
+<button type="button" onClick="{{ goAbout }}" style="{{ aboutNav }}"><span data-en="">About us</span><span data-zh="">關於我們</span></button>
+<button type="button" onClick="{{ goManifesto }}" style="{{ manifestoNav }}"><span data-en="">Manifesto</span><span data-zh="">政綱</span></button>
+<button type="button" onClick="{{ goActivities }}" style="{{ activitiesNav }}"><span data-en="">Activities</span><span data-zh="">活動</span></button>
+<button type="button" onClick="{{ goWelfare }}" style="{{ welfareNav }}"><span data-en="">Welfare</span><span data-zh="">福利</span></button>
+<button type="button" onClick="{{ goCountdown }}" style="{{ countdownNav }}"><span data-en>Countdown</span><span data-zh>倒數</span></button>
+<button type="button" onClick="{{ goCalendar }}" style="{{ calendarNav }}"><span data-en>Calendar</span><span data-zh>校曆</span></button>
+<button type="button" onClick="{{ goContact }}" style="{{ contactNav }}"><span data-en="">Contact</span><span data-zh="">聯絡我們</span></button>
+<sc-if value="{{ pushEnabled }}" hint-placeholder-val="{{ false }}">
+<button type="button" class="ae-bell" onClick="{{ openPush }}" title="{{ bellTitle }}" aria-label="{{ bellTitle }}" style="{{ bellStyle }}" style-hover="border-color:#e8930f;color:#e8930f">
+<svg viewBox="0 0 24 24" width="17" height="17" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" style="display:block;transform-origin:50% 3px">
+<path d="M6.3 9.6a5.7 5.7 0 0 1 11.4 0c0 4 1 5.4 1.8 6.2a.7.7 0 0 1-.5 1.2H5a.7.7 0 0 1-.5-1.2c.8-.8 1.8-2.2 1.8-6.2Z"></path>
+<path d="M9.7 19.6a2.6 2.6 0 0 0 4.6 0"></path>
+</svg>
+<span style="{{ bellDotStyle }}"></span>
+</button>
+</sc-if>
+<div style="display:flex;border:1px solid var(--ae-line);border-radius:999px;overflow:hidden;background:var(--ae-panel)">
+<button type="button" onClick="{{ setZh }}" style="{{ zhBtnStyle }}">中文</button>
+<button type="button" onClick="{{ setEn }}" style="{{ enBtnStyle }}">EN</button>
+</div>
+</nav>
+</div>
+
+<sc-if value="{{ pushOpen }}" hint-placeholder-val="{{ false }}">
+<div style="position:fixed;inset:0;z-index:60;display:flex;align-items:center;justify-content:center;padding:18px">
+<div onClick="{{ closePush }}" style="position:absolute;inset:0;background:rgba(58,43,98,.42);backdrop-filter:blur(7px);animation:aeFadeIn .26s ease both"></div>
+<div role="dialog" aria-modal="true" style="position:relative;width:100%;max-width:460px;max-height:88vh;overflow:auto;padding:30px clamp(22px,4vw,34px) 26px;background:var(--ae-panel);border-radius:20px;box-shadow:0 1px 0 var(--ae-line),0 26px 70px rgba(58,43,98,.3);animation:aeRise .34s cubic-bezier(.2,.8,.2,1) both">
+<button type="button" onClick="{{ closePush }}" aria-label="Close" style="position:absolute;top:15px;right:15px;display:flex;align-items:center;justify-content:center;width:31px;height:31px;border:1px solid var(--ae-line);border-radius:50%;background:transparent;color:var(--ae-ink-soft);font-size:15px;line-height:1;cursor:pointer" style-hover="border-color:#e8930f;color:#e8930f">×</button>
+
+<div style="display:flex;flex-direction:column;gap:16px">
+<div style="display:flex;flex-direction:column;align-items:center;gap:11px;text-align:center">
+<span style="display:flex;align-items:center;justify-content:center;width:52px;height:52px;border-radius:50%;background:linear-gradient(150deg,#fbc75a,#eb9a12);color:#fff;box-shadow:0 8px 22px rgba(232,147,15,.3)">
+<svg viewBox="0 0 24 24" width="25" height="25" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M6.3 9.6a5.7 5.7 0 0 1 11.4 0c0 4 1 5.4 1.8 6.2a.7.7 0 0 1-.5 1.2H5a.7.7 0 0 1-.5-1.2c.8-.8 1.8-2.2 1.8-6.2Z"></path><path d="M9.7 19.6a2.6 2.6 0 0 0 4.6 0"></path></svg>
+</span>
+<h3 style="margin:0;font-family:'Marcellus',serif;font-size:25px;font-weight:400;letter-spacing:0.04em"><span data-en>Notifications</span><span data-zh>通知</span></h3>
+<p style="margin:0;font-size:14px;line-height:1.85;color:var(--ae-ink-soft);max-width:34ch"><span data-en>Get an alert on your phone when Aeterna posts something that matters — events, deadlines, new welfare offers.</span><span data-zh>當 Aeterna 發佈重要消息時，在手機上收到提示——活動、截止日期、新的福利優惠。</span></p>
+</div>
+
+<sc-if value="{{ pushUnconfigured }}" hint-placeholder-val="{{ true }}">
+<div style="display:flex;flex-direction:column;gap:10px;padding:17px 19px;background:linear-gradient(135deg,#f7f1ff,#efe2ff);border-radius:14px;box-shadow:0 1px 0 var(--ae-line)">
+<span style="display:flex;align-items:center;gap:9px;font-size:14.5px;letter-spacing:0.03em"><span style="color:var(--ae-gold);font-size:14px">✦</span><span data-en>Coming soon</span><span data-zh>即將推出</span></span>
+<p style="margin:0;font-size:13px;line-height:1.8;color:var(--ae-ink-soft)"><span data-en>We're still setting this up. Follow us on Instagram in the meantime — we'll announce it there the moment it's live.</span><span data-zh>我們仍在設定中。請先在 Instagram 追蹤我們，功能一上線便會在那裡公佈。</span></p>
+</div>
+</sc-if>
+
+<sc-if value="{{ pushIsOn }}" hint-placeholder-val="{{ false }}">
+<div style="display:flex;flex-direction:column;gap:12px;padding:17px 19px;background:linear-gradient(135deg,#f7f1ff,#efe2ff);border-radius:14px;box-shadow:0 1px 0 var(--ae-line)">
+<span style="display:flex;align-items:center;gap:9px;font-size:15px;letter-spacing:0.03em"><span style="color:var(--ae-gold);font-size:15px">✦</span><span data-en>You're subscribed</span><span data-zh>你已訂閱通知</span></span>
+<p style="margin:0;font-size:13px;line-height:1.8;color:var(--ae-ink-soft)"><span data-en>To stop them, turn notifications off for this site in your browser settings.</span><span data-zh>如要停止接收，請在瀏覽器設定中關閉本網站的通知權限。</span></p>
+<sc-if value="{{ pushShowSubId }}" hint-placeholder-val="{{ false }}">
+<code style="font-family:'Inter',monospace;font-size:10.5px;line-height:1.6;color:var(--ae-ink-soft);word-break:break-all">id {{ pushSubId }}</code>
+</sc-if>
+</div>
+</sc-if>
+
+<sc-if value="{{ pushCanEnable }}" hint-placeholder-val="{{ false }}">
+<button type="button" onClick="{{ enablePush }}" style="display:flex;align-items:center;justify-content:center;gap:9px;width:100%;padding:14px 20px;border:0;border-radius:999px;background:linear-gradient(150deg,#fbc75a,#eb9a12);color:#fff;font-family:'Noto Serif TC',serif;font-size:15.5px;letter-spacing:0.05em;cursor:pointer;box-shadow:0 8px 22px rgba(232,147,15,.26);transition:transform .2s ease,box-shadow .2s ease" style-hover="transform:translateY(-2px);box-shadow:0 12px 28px rgba(232,147,15,.34)">
+<span>{{ pushBtnLabel }}</span>
+</button>
+<p style="margin:0;font-size:12.5px;line-height:1.75;color:var(--ae-ink-soft);text-align:center"><span data-en>Your browser will ask for permission. We never see your name or number.</span><span data-zh>瀏覽器會向你請求權限。我們不會得知你的姓名或電話號碼。</span></p>
+</sc-if>
+
+<sc-if value="{{ pushNeedsInstall }}" hint-placeholder-val="{{ false }}">
+<div style="display:flex;flex-direction:column;gap:13px;padding:18px 19px;background:linear-gradient(135deg,#f7f1ff,#efe2ff);border-radius:14px;box-shadow:0 1px 0 var(--ae-line)">
+<span style="font-size:14.5px;letter-spacing:0.03em"><span data-en>On iPhone, add Aeterna to your Home Screen first</span><span data-zh>iPhone 用戶請先將 Aeterna 加入主畫面</span></span>
+<ol style="margin:0;padding-left:20px;display:flex;flex-direction:column;gap:7px;font-size:13px;line-height:1.75;color:var(--ae-ink-soft)">
+<li><span data-en>Open this page in <strong style="font-weight:600">Safari</strong> — Chrome on iPhone can't do notifications</span><span data-zh>請用 <strong style="font-weight:600">Safari</strong> 開啟本頁——iPhone 版 Chrome 無法接收通知</span></li>
+<li><span data-en>Tap the Share button, then "Add to Home Screen"</span><span data-zh>輕觸「分享」按鈕，然後選擇「加入主畫面」</span></li>
+<li><span data-en>Open Aeterna from your Home Screen and tap the bell again</span><span data-zh>從主畫面開啟 Aeterna，再次輕觸鈴鐺圖示</span></li>
+</ol>
+<p style="margin:0;font-size:12.5px;line-height:1.7;color:var(--ae-ink-soft)"><span data-en>Apple only allows website notifications for sites saved this way, on iOS 16.4 or later.</span><span data-zh>Apple 只允許以此方式儲存的網站發送通知，並需 iOS 16.4 或以上。</span></p>
+</div>
+</sc-if>
+
+<sc-if value="{{ pushDenied }}" hint-placeholder-val="{{ false }}">
+<div style="display:flex;flex-direction:column;gap:10px;padding:17px 19px;background:linear-gradient(135deg,#f7f1ff,#efe2ff);border-radius:14px;box-shadow:0 1px 0 var(--ae-line)">
+<span style="font-size:14.5px;letter-spacing:0.03em"><span data-en>Notifications are blocked</span><span data-zh>通知已被封鎖</span></span>
+<p style="margin:0;font-size:13px;line-height:1.8;color:var(--ae-ink-soft)"><span data-en>You (or your browser) turned them down earlier. Open the padlock icon beside this page's address, set Notifications to Allow, then reload.</span><span data-zh>你或瀏覽器早前拒絕了請求。請點擊網址旁的鎖頭圖示，將「通知」設為「允許」，然後重新載入頁面。</span></p>
+</div>
+</sc-if>
+
+<sc-if value="{{ pushUnsupported }}" hint-placeholder-val="{{ false }}">
+<div style="display:flex;flex-direction:column;gap:10px;padding:17px 19px;background:linear-gradient(135deg,#f7f1ff,#efe2ff);border-radius:14px;box-shadow:0 1px 0 var(--ae-line)">
+<span style="font-size:14.5px;letter-spacing:0.03em"><span data-en>This browser can't do notifications</span><span data-zh>此瀏覽器不支援通知</span></span>
+<p style="margin:0;font-size:13px;line-height:1.8;color:var(--ae-ink-soft)"><span data-en>Try Chrome on Android, or Safari on an iPhone running iOS 16.4 or later. Meanwhile, follow us on Instagram.</span><span data-zh>請嘗試使用 Android 版 Chrome，或 iOS 16.4 或以上的 Safari。你亦可在 Instagram 追蹤我們。</span></p>
+</div>
+</sc-if>
+
+<sc-if value="{{ pushError }}" hint-placeholder-val="{{ false }}">
+<div style="display:flex;flex-direction:column;gap:8px;padding:15px 17px;background:#fff6e8;border-radius:14px;box-shadow:0 1px 0 rgba(232,147,15,.4)">
+<p style="margin:0;font-size:13px;line-height:1.8;color:#8f4409">{{ pushErrorMsg }}</p>
+<sc-if value="{{ pushHasDetail }}" hint-placeholder-val="{{ false }}">
+<code style="font-family:'Inter',monospace;font-size:11px;line-height:1.6;color:var(--ae-ink-soft);word-break:break-all">{{ pushDetail }}</code>
+</sc-if>
+</div>
+</sc-if>
+
+<div style="display:flex;align-items:center;gap:12px;padding-top:2px">
+<span style="flex:1;height:1px;background:linear-gradient(to right,transparent,var(--ae-line))"></span>
+<span style="font-size:11px;font-family:'Inter',sans-serif;letter-spacing:0.18em;text-transform:uppercase;color:var(--ae-ink-soft)"><span data-en>or</span><span data-zh>或</span></span>
+<span style="flex:1;height:1px;background:linear-gradient(to left,transparent,var(--ae-line))"></span>
+</div>
+<a href="https://www.instagram.com/qes_aeterna/" target="_blank" rel="noopener" style="display:flex;align-items:center;justify-content:center;gap:9px;padding:12px 18px;border:1px solid var(--ae-line);border-radius:999px;color:var(--ae-ink);font-size:14px;letter-spacing:0.04em;text-decoration:none" style-hover="border-color:#e8930f;color:#e8930f">
+<span data-en>Follow @qes_aeterna</span><span data-zh>追蹤 @qes_aeterna</span>
+</a>
+</div>
+</div>
+</div>
+</sc-if>
+
+<sc-if value="{{ isHome }}" hint-placeholder-val="{{ true }}">
+<header id="top" style="display:flex;flex-direction:column;align-items:center">
+<img src="photos/banner.webp" alt="Aeterna banner" fetchpriority="high" decoding="async" style="width:100%;max-width:1600px;display:block">
+</header>
+
+<section style="position:relative;padding:clamp(40px,6vw,76px) clamp(18px,4vw,36px) clamp(28px,4vw,48px);text-align:center;overflow:hidden">
+<div style="position:absolute;top:-120px;left:50%;transform:translateX(-50%);width:820px;height:420px;border-radius:50%;background:radial-gradient(ellipse,rgba(251,199,90,.26),rgba(251,199,90,0) 68%);pointer-events:none"></div>
+<div style="position:relative;display:flex;flex-direction:column;align-items:center;gap:14px">
+<h1 style="margin:0;font-family:'Caveat Brush',cursive;font-size:clamp(76px,15vw,176px);line-height:0.96;letter-spacing:0.01em;min-height:1em;color:#ef9c17;filter:drop-shadow(0 3px 10px rgba(216,135,20,.22))"><span style="{{ heroFont }}">Aeterna</span></h1>
+<p style="margin:0;font-family:'Inter',sans-serif;font-size:clamp(14px,1.6vw,17px);letter-spacing:0.34em;text-transform:uppercase;color:var(--ae-ink-soft)"><span data-en="">Proposed Cabinet No. 3</span><span data-zh="">三號候選內閣</span></p>
+<div style="display:flex;align-items:center;gap:14px;margin-top:6px">
+<span style="display:block;width:clamp(40px,9vw,100px);height:1px;background:linear-gradient(to right,transparent,var(--ae-line))"></span>
+<span style="color:var(--ae-gold);font-size:15px">✦</span>
+<span style="display:block;width:clamp(40px,9vw,100px);height:1px;background:linear-gradient(to left,transparent,var(--ae-line))"></span>
+</div>
+<p style="margin:2px 0 0;font-family:'Caveat Brush',cursive;font-size:clamp(20px,2.6vw,30px);color:var(--ae-lilac)">Ode to Aeterna, Rejoice for Memoria.</p>
+</div>
+</section>
+
+<section id="preface" style="scroll-margin-top:74px;padding:clamp(28px,4vw,52px) clamp(18px,4vw,36px)">
+<div style="max-width:760px;margin:0 auto;display:flex;flex-direction:column;gap:22px">
+<div style="display:flex;align-items:baseline;gap:14px">
+<h2 style="margin:0;font-size:clamp(26px,3.4vw,34px);font-weight:500;letter-spacing:0.06em"><span data-en="">Preface</span><span data-zh="">序言</span></h2>
+<span style="flex:1;height:1px;background:linear-gradient(to right,var(--ae-line),transparent)"></span>
+</div>
+<blockquote style="margin:0;padding:22px 26px;background:var(--ae-panel);border-radius:14px;box-shadow:0 1px 0 var(--ae-line),0 10px 28px rgba(122,86,190,.08)">
+<p style="margin:0;font-size:clamp(17px,2vw,21px);line-height:1.85;color:var(--ae-ink);letter-spacing:0.04em"><span data-zh="">「寄蜉蝣於天地，渺滄海之一粟。」</span><span data-en="">"We place our mayfly lives in heaven and earth — a single grain in the vast blue sea."</span></p>
+</blockquote>
+<p style="margin:0;font-size:16.5px;line-height:2.05;color:var(--ae-ink);text-wrap:pretty;letter-spacing:0.02em"><span data-zh="">人類短暫的生命在永恆的宇宙面前，顯得何其渺小。時節更替，歲月流轉。我們在校園中追尋的青春，彷彿終將隨歲月消散。然而，縱使世間的永恆遙不可及，那些在生命中轉瞬即逝的美好，卻能如劃破夜空的流星，在記憶深處凝結成永不磨滅的光芒，於剎那間成就永恆。日後驀然回首，我們依然會因這份深藏於心底的溫暖而會心一笑。</span><span data-en="">Against an eternal universe, a human life is brief and small. Seasons turn, years pass, and the youth we chase on this campus seems destined to dissolve with them. Yet even if eternity itself lies beyond our reach, the fleeting good in a life can streak across the night like a meteor and settle deep in memory as a light that never fades — eternity, made in an instant. Years from now, looking back, that warmth kept quietly in our hearts will still bring a smile.</span></p>
+</div>
+</section>
+
+<section id="vision" style="scroll-margin-top:74px;padding:clamp(28px,4vw,52px) clamp(18px,4vw,36px) clamp(48px,7vw,92px)">
+<div style="max-width:760px;margin:0 auto;display:flex;flex-direction:column;gap:22px">
+<div style="display:flex;align-items:baseline;gap:14px">
+<h2 style="margin:0;font-size:clamp(26px,3.4vw,34px);font-weight:500;letter-spacing:0.06em"><span data-en="">Our vision</span><span data-zh="">我們的願景</span></h2>
+<span style="flex:1;height:1px;background:linear-gradient(to right,var(--ae-line),transparent)"></span>
+</div>
+
+<p style="margin:0;font-size:16.5px;line-height:2.05;text-wrap:pretty;letter-spacing:0.02em"><span data-zh="">Aeterna 正希望能成為大家記憶中的那顆流星。在短短一年的任期內，我們願為大家的校園生活抹上最絢麗的色彩，在漫長夜空中劃下一道最亮眼的光芒。我們期待透過多元化的活動與細緻的服務，將這段獨屬於大家的青蔥歲月凝聚成永恆，成為各位日後面對挑戰時源源不絕的動力。「落紅不是無情物，化作春泥更護花」，流星雖然終會落下，但它所化作的回憶，依然能滋養並照亮他人的心田。</span><span data-en="">Aeterna hopes to be that meteor in your memory. In a term of only one year, we want to colour your school life as brightly as we can, and draw one clear line of light across a long night. Through varied activities and attentive service, we hope to gather these green years into something lasting — a source of strength when you meet challenges later on. As the verse goes, fallen petals are not unfeeling things: turned to spring soil, they nourish the flowers still to come. A meteor falls, but the memory it becomes can still light and feed the hearts of others.</span></p>
+
+<blockquote style="margin:0;padding:22px 26px;background:linear-gradient(135deg,#f6efff,#efe2ff);border-radius:14px;box-shadow:0 1px 0 var(--ae-line)">
+<p style="margin:0;font-size:clamp(16px,1.9vw,20px);line-height:1.9;letter-spacing:0.04em"><span data-zh="">「星星發亮，是為了讓每一個人有一天都能找到屬於自己的星星。」</span><span data-en="">"The stars shine so that one day everyone may find their own star."</span></p>
+</blockquote>
+
+<p style="margin:0;font-size:16.5px;line-height:2.05;text-wrap:pretty;letter-spacing:0.02em"><span data-zh="">Aeterna 深信，我們帶來的微光能化為大家追尋自我的勇氣；在追隨星光的同時，各位亦能成為指引他人的璀璨星辰。因此，Aeterna 致力於為伊中學生搭建展現與發掘才華的舞台，透過一系列創新活動（如 Project: Imposter、QE 畫廊等），陪伴大家尋覓獨一無二的光芒。同時，我們亦會用心傳承伊中的傳統活動，延續這份美好。在此期間，我們將堅守崗位，定格大家的颯爽英姿，與各位攜手共建更美好的校園，留下最精彩的青春印記。</span><span data-en="">We believe the small light we bring can become the courage to seek yourselves; and that in following the starlight, each of you may become a star that guides others. So Aeterna is committed to building stages where QE students can show and discover their talents — through new initiatives such as Project: Imposter and the QE Gallery — accompanying you as you search for a light that is entirely your own. At the same time we will carry our school's traditional events forward with care. Throughout, we will stay at our posts, capture you at your best, and build a better campus alongside you.</span></p>
+
+<blockquote style="margin:0;padding:22px 26px;background:linear-gradient(135deg,#f6efff,#efe2ff);border-radius:14px;box-shadow:0 1px 0 var(--ae-line)">
+<p style="margin:0;font-size:clamp(16px,1.9vw,20px);line-height:1.9;letter-spacing:0.04em"><span data-zh="">「天行健，君子以自強不息；地勢坤，君子以厚德載物。」</span><span data-en="">"Heaven moves without ceasing; so the noble strive on. Earth bears all things; so the noble carry others with virtue."</span></p>
+</blockquote>
+
+<p style="margin:0;font-size:16.5px;line-height:2.05;text-wrap:pretty;letter-spacing:0.02em"><span data-zh="">Aeterna 將力求進步、盡善盡美，亦當包容萬物、追求共融。我們將秉承「修己善群」的校訓，傾聽每位同學的心聲，築起學生與學校之間最堅實的橋樑。憑藉敏銳的觀察與累積的經驗，我們定能凝聚力量、優化校園生活，為這段青春留下最真摯的感悟。</span><span data-en="">Aeterna will strive to improve and to do things well, while remaining open and inclusive. Holding to the school motto — to cultivate oneself and serve the community — we will listen to every student and build the firmest bridge between the student body and the school. With careful observation and the experience we have gathered, we will bring people together, improve campus life, and leave these years with something sincerely felt.</span></p>
+
+<p style="margin:0;font-size:16.5px;line-height:2.05;text-wrap:pretty;letter-spacing:0.02em"><span data-zh="">中學生涯對我們每一個人而言，都承載著無可替代的重大意義。面對大家對中學生活的百般憧憬，Aeterna 在此鄭重承諾，我們必將全力以赴，讓這一年如同璀璨奪目的流星劃過歲月，為大家刻下最完美、最深刻的青春印記。</span><span data-en="">Secondary school carries a weight none of us can replace. Faced with all that you hope this time will be, Aeterna promises this: we will give everything we have, so that this year passes like a brilliant meteor through the years — and leaves the deepest possible mark on your youth.</span></p>
+
+<div style="display:flex;align-items:center;gap:14px;justify-content:center;padding-top:10px">
+<span style="display:block;width:clamp(40px,10vw,120px);height:1px;background:linear-gradient(to right,transparent,var(--ae-line))"></span>
+<span style="font-family:'Caveat Brush',cursive;font-size:26px;color:var(--ae-gold)">Aeterna</span>
+<span style="display:block;width:clamp(40px,10vw,120px);height:1px;background:linear-gradient(to left,transparent,var(--ae-line))"></span>
+</div>
+</div>
+</section>
+
+</sc-if>
+
+<sc-if value="{{ isAbout }}" hint-placeholder-val="{{ false }}">
+<section style="padding:clamp(44px,7vw,88px) clamp(18px,4vw,36px) clamp(48px,7vw,92px)">
+<div style="max-width:1120px;margin:0 auto;display:flex;flex-direction:column;gap:clamp(26px,4vw,44px)">
+<div style="display:flex;flex-direction:column;align-items:center;gap:10px;text-align:center">
+<h2 style="margin:0;font-family:'Marcellus',serif;font-size:clamp(34px,5vw,52px);font-weight:400;letter-spacing:0.05em"><span data-en="">About us</span><span data-zh="">關於我們</span></h2>
+<div style="display:flex;align-items:center;gap:12px;margin-top:4px">
+<span style="display:block;width:clamp(30px,7vw,80px);height:1px;background:linear-gradient(to right,transparent,var(--ae-line))"></span>
+<span style="color:var(--ae-gold);font-size:14px">✦</span>
+<span style="display:block;width:clamp(30px,7vw,80px);height:1px;background:linear-gradient(to left,transparent,var(--ae-line))"></span>
+</div>
+</div>
+
+<div class="{{ memWrapClass }}" style="{{ memWrapStyle }}">
+<div class="mem-backdrop" onClick="{{ closeMem }}"></div>
+<div style="display:flex;flex-wrap:wrap;justify-content:center;align-items:flex-start;gap:clamp(16px,2.4vw,30px)"><div class="mem mem-2" style="--mw:230px;max-width:100%">
+<div class="mem-card" style="display:flex;flex-direction:column;gap:14px;background:var(--ae-panel);border-radius:16px;box-shadow:0 1px 0 var(--ae-line),0 10px 26px rgba(122,86,190,.07)">
+<button type="button" class="mem-close" onClick="{{ closeMem }}" style="position:absolute;top:14px;right:14px;z-index:4;align-items:center;justify-content:center;width:32px;height:32px;border:1px solid var(--ae-line);border-radius:50%;background:#fff;color:var(--ae-ink-soft);font-size:15px;cursor:pointer;line-height:1">×</button>
+<div class="mem-inner">
+<div class="mem-photo">
+<div class="ph-swap" style="position:relative;aspect-ratio:3/4;border-radius:11px;overflow:hidden;background:#ece1fb"><div class="ph-back" style="position:absolute;inset:0"><img src="photos/ae-p02-b.webp" alt="" loading="lazy" decoding="async" style="width:100%;height:100%;object-fit:contain;display:block" /></div><div class="ph-front" style="position:absolute;inset:0;z-index:2"><img src="photos/ae-p02.webp" alt="" loading="lazy" decoding="async" style="width:100%;height:100%;object-fit:contain;display:block" /></div><span class="ph-badge" style="position:absolute;right:9px;bottom:9px;z-index:3;padding:3px 9px;border-radius:999px;background:linear-gradient(150deg,#fbc75a,#eb9a12);color:#fff;font-family:'Inter',sans-serif;font-size:10px;letter-spacing:0.1em;pointer-events:none">2</span></div>
+</div>
+<div class="mem-info" onClick="{{ mem2 }}" style="display:flex;flex-direction:column;gap:5px;flex:1;min-width:0">
+<span style="font-size:11px;font-family:'Inter',sans-serif;letter-spacing:0.16em;color:var(--ae-gold)">02</span>
+<span data-en="" style="font-size:18px;letter-spacing:0.04em">Yammy</span><span data-zh="" style="font-size:18px;letter-spacing:0.04em"><span>楊詠堯 Yammy</span></span>
+<span data-en="" style="font-size:13.5px;color:var(--ae-ink-soft)">Internal Vice President</span><span data-zh="" style="font-size:13.5px;color:var(--ae-ink-soft)">內務副會長</span>
+<span data-en="" style="font-size:13px;line-height:1.75;color:var(--ae-ink-soft)"><span style="color: rgb(12, 16, 20); font-family: -apple-system, BlinkMacSystemFont, &quot;Segoe UI&quot;, Roboto, Helvetica, Arial, sans-serif; background-color: rgb(255, 255, 255)">"Be the change that you wish to see in the world.”</span></span><span data-zh="" style="font-size:13px;line-height:1.75;color:var(--ae-ink-soft)"><span>"Be the change that you wish to see in the world.”</span></span>
+<div class="mem-bio"><div><p data-en="" style="margin:12px 0 0;font-size:13.5px;line-height:1.95;color:var(--ae-ink);white-space:pre-line"><span style="color: rgb(12, 16, 20); font-family: -apple-system, BlinkMacSystemFont, &quot;Segoe UI&quot;, Roboto, Helvetica, Arial, sans-serif; white-space: normal; background-color: rgb(255, 255, 255)">Hellooo everyone! I’m Yeung Wing Yiu from class 5C, and you can call me Yammy🙌🏻 It’s a huge honor to meet you all as Aeterna’s Internal Vice President!🌟</span><br style="color: rgb(12, 16, 20); font-family: -apple-system, BlinkMacSystemFont, &quot;Segoe UI&quot;, Roboto, Helvetica, Arial, sans-serif; white-space: normal; background-color: rgb(255, 255, 255)"><br style="color: rgb(12, 16, 20); font-family: -apple-system, BlinkMacSystemFont, &quot;Segoe UI&quot;, Roboto, Helvetica, Arial, sans-serif; white-space: normal; background-color: rgb(255, 255, 255)"><span style="color: rgb(12, 16, 20); font-family: -apple-system, BlinkMacSystemFont, &quot;Segoe UI&quot;, Roboto, Helvetica, Arial, sans-serif; white-space: normal; background-color: rgb(255, 255, 255)">​From being the backstage leader of the English Drama Club 🎭 , to my past Student Union work, I’ve always given my all. These experiences have turned into my interest, correspondingly sharpened my organizational and coordination skills, giving me full confidence to manage student welfare and major events smoothly!</span><br style="color: rgb(12, 16, 20); font-family: -apple-system, BlinkMacSystemFont, &quot;Segoe UI&quot;, Roboto, Helvetica, Arial, sans-serif; white-space: normal; background-color: rgb(255, 255, 255)"><br style="color: rgb(12, 16, 20); font-family: -apple-system, BlinkMacSystemFont, &quot;Segoe UI&quot;, Roboto, Helvetica, Arial, sans-serif; white-space: normal; background-color: rgb(255, 255, 255)"><span style="color: rgb(12, 16, 20); font-family: -apple-system, BlinkMacSystemFont, &quot;Segoe UI&quot;, Roboto, Helvetica, Arial, sans-serif; white-space: normal; background-color: rgb(255, 255, 255)">Seeing your trust in us made me realize we need to step up and prove ourselves. So ​please give me and Aeterna a chance to create unforgettable memories with you and make this starry sky truly special🌠 I’ll stay passionate and true to my goal of serving you all!🌟</span><br style="color: rgb(12, 16, 20); font-family: -apple-system, BlinkMacSystemFont, &quot;Segoe UI&quot;, Roboto, Helvetica, Arial, sans-serif; white-space: normal; background-color: rgb(255, 255, 255)"><br style="color: rgb(12, 16, 20); font-family: -apple-system, BlinkMacSystemFont, &quot;Segoe UI&quot;, Roboto, Helvetica, Arial, sans-serif; white-space: normal; background-color: rgb(255, 255, 255)"><span style="color: rgb(12, 16, 20); font-family: -apple-system, BlinkMacSystemFont, &quot;Segoe UI&quot;, Roboto, Helvetica, Arial, sans-serif; white-space: normal; background-color: rgb(255, 255, 255)">​Journeys end, but memories last forever. We hope Aeterna can be by your side in the days ahead. Thank you for your support!</span><br style="color: rgb(12, 16, 20); font-family: -apple-system, BlinkMacSystemFont, &quot;Segoe UI&quot;, Roboto, Helvetica, Arial, sans-serif; white-space: normal; background-color: rgb(255, 255, 255)"><br style="color: rgb(12, 16, 20); font-family: -apple-system, BlinkMacSystemFont, &quot;Segoe UI&quot;, Roboto, Helvetica, Arial, sans-serif; white-space: normal; background-color: rgb(255, 255, 255)"><span style="color: rgb(12, 16, 20); font-family: -apple-system, BlinkMacSystemFont, &quot;Segoe UI&quot;, Roboto, Helvetica, Arial, sans-serif; white-space: normal; background-color: rgb(255, 255, 255)"></span></p><p data-zh="" style="margin:12px 0 0;font-size:13.5px;line-height:1.95;color:var(--ae-ink);white-space:pre-line"><span>Helloooo大家好！我係5C嘅楊詠堯Yammy🙌🏻好榮幸今年可以作為Aeterna嘅內務副主席同大家見面！</span><span>過往不論係 English Drama幕後🎭定係學生會嘅工作，我都一直秉持住認真投入嘅態度處理。而喺相關方向努力亦都成為咗我嘅興趣。我相信呢d eca經驗，有效咁鍛鍊咗我嘅組織能力同協調技巧。我有信心喺處理welfare同各項大型活動時，都能夠井井有條、迎刃而解！</span><span>我深刻明白，我哋肩負住大家嘅期待。正因為大家信任我哋，我哋先更應該企出嚟，用行動證明自己值得呢份支持。希望大家可以俾我,俾Aeterna一個機會，為大家創造一段永誌難忘嘅美好回憶，為呢片星空賦予獨一無二嘅意義🌠而我亦都會繼續保持熱誠，堅守為大家服務嘅初衷！🌟</span><span>旅途終有盡頭，但記憶唔會。希望喺接下嚟嘅日子，有Aeterna伴隨左右。請大家多多指教！</span></p></div></div>
+<span class="mem-more" style="margin-top:8px;font-family:'Inter',sans-serif;font-size:11px;letter-spacing:0.14em;text-transform:uppercase;color:var(--ae-gold)"><span data-en="">Read more →</span><span data-zh="">閱讀更多 →</span></span>
+</div>
+</div>
+</div>
+</div><div class="mem mem-1" style="--mw:250px;max-width:100%">
+<div class="mem-card" style="display:flex;flex-direction:column;gap:14px;background:var(--ae-panel);border-radius:16px;box-shadow:0 0 0 1.5px var(--ae-gold-light),0 14px 34px rgba(122,86,190,.14)">
+<button type="button" class="mem-close" onClick="{{ closeMem }}" style="position:absolute;top:14px;right:14px;z-index:4;align-items:center;justify-content:center;width:32px;height:32px;border:1px solid var(--ae-line);border-radius:50%;background:#fff;color:var(--ae-ink-soft);font-size:15px;cursor:pointer;line-height:1">×</button>
+<div class="mem-inner">
+<div class="mem-photo">
+<div class="ph-swap" style="position:relative;aspect-ratio:3/4;border-radius:11px;overflow:hidden;background:#ece1fb"><div class="ph-back" style="position:absolute;inset:0"><img src="photos/ae-p01-b.webp" alt="" loading="lazy" decoding="async" style="width:100%;height:100%;object-fit:contain;display:block" /></div><div class="ph-front" style="position:absolute;inset:0;z-index:2"><img src="photos/ae-p01.webp" alt="" loading="lazy" decoding="async" style="width:100%;height:100%;object-fit:contain;display:block" /></div><span class="ph-badge" style="position:absolute;right:9px;bottom:9px;z-index:3;padding:3px 9px;border-radius:999px;background:linear-gradient(150deg,#fbc75a,#eb9a12);color:#fff;font-family:'Inter',sans-serif;font-size:10px;letter-spacing:0.1em;pointer-events:none">2</span></div>
+</div>
+<div class="mem-info" onClick="{{ mem1 }}" style="display:flex;flex-direction:column;gap:5px;flex:1;min-width:0">
+<span style="font-size:11px;font-family:'Inter',sans-serif;letter-spacing:0.16em;color:var(--ae-gold)">01</span>
+<span data-en="" style="font-size:18px;letter-spacing:0.04em">Charis</span><span data-zh="" style="font-size:18px;letter-spacing:0.04em"><span>程渙妍 </span><span>Charis</span></span>
+<span data-en="" style="font-size:13.5px;color:var(--ae-ink-soft)">President</span><span data-zh="" style="font-size:13.5px;color:var(--ae-ink-soft)">會長</span>
+<span data-en="" style="font-size:13px;line-height:1.75;color:var(--ae-ink-soft)">"Hope is like a road in the country; there was never a road, but when many people walk on it, the road comes into existence."</span><span data-zh="" style="font-size:13px;line-height:1.75;color:var(--ae-ink-soft)">「希望是本無所謂有，無所謂無的。這正如地上的路；其實地上本沒有路，走的人多了，也便成了路。」—— 魯迅</span>
+<div class="mem-bio"><div><p data-en="" style="margin:12px 0 0;font-size:13.5px;line-height:1.95;color:var(--ae-ink);white-space:pre-line"><span>Hii everyone! I'm Charis from Class 5A, the President of the Proposed Student Union Cabinet, Aeterna. ✨</span><br><br><span>Ever since I was young, I’ve deeply admired people who bring happiness to others. 🙂‍↕️ Sometimes, even a small gesture is enough to brighten someone's day. ❤️ But I don't want to stop here—by running for the Student Union, I hope to provide attentive service, actively advocate for your needs, and organize various school and external activities to create passionate, unforgettable youth memories for all QES students. 📷</span><br><br><span>I really enjoy organizing different types of events. Last year, I served as the Red Cross Chairperson, a Student Union member, an Astronomy Club Committee member, etc. 🙌🏻 Outside of these roles, I'm very interested in economics and psychology topics. 😍 Because of this, I realize that even if a beautiful memory fades over time, it remains in our subconscious, subtlely shaping our every step in the future. ❤️</span><br><br><span>Under the witness of shooting stars, I hope we can walk hand in hand to create a wonderful campus memory that uniquely belongs to us as QES students. 🌟</span></p><p data-zh="" style="margin:12px 0 0;font-size:13.5px;line-height:1.95;color:var(--ae-ink);white-space:pre-line"><span style="color: rgb(12, 16, 20); font-family: -apple-system, BlinkMacSystemFont, &quot;Segoe UI&quot;, Roboto, Helvetica, Arial, sans-serif; white-space: normal; background-color: rgb(255, 255, 255)">Haloo 大家好~ 我係候選內閣Aeterna嘅主席，5A班嘅程渙妍 Charis ✨</span><br style="color: rgb(12, 16, 20); font-family: -apple-system, BlinkMacSystemFont, &quot;Segoe UI&quot;, Roboto, Helvetica, Arial, sans-serif; white-space: normal; background-color: rgb(255, 255, 255)"><br style="color: rgb(12, 16, 20); font-family: -apple-system, BlinkMacSystemFont, &quot;Segoe UI&quot;, Roboto, Helvetica, Arial, sans-serif; white-space: normal; background-color: rgb(255, 255, 255)"><span style="color: rgb(12, 16, 20); font-family: -apple-system, BlinkMacSystemFont, &quot;Segoe UI&quot;, Roboto, Helvetica, Arial, sans-serif; white-space: normal; background-color: rgb(255, 255, 255)">由細到大，我都好仰慕可以為他人帶黎幸福嘅人 🙂‍↕️ 有時一個微細嘅舉動，就已經足以影響對方當日嘅心情 ❤️ 只係我不甘於此一一今次參選學生會，我希望可以透過適切嘅服務、積極嘅爭取，同埋籌備大大小小嘅校內外活動，為QES嘅同學留下青春熱血嘅回憶 📷</span><br style="color: rgb(12, 16, 20); font-family: -apple-system, BlinkMacSystemFont, &quot;Segoe UI&quot;, Roboto, Helvetica, Arial, sans-serif; white-space: normal; background-color: rgb(255, 255, 255)"><br style="color: rgb(12, 16, 20); font-family: -apple-system, BlinkMacSystemFont, &quot;Segoe UI&quot;, Roboto, Helvetica, Arial, sans-serif; white-space: normal; background-color: rgb(255, 255, 255)"><span style="color: rgb(12, 16, 20); font-family: -apple-system, BlinkMacSystemFont, &quot;Segoe UI&quot;, Roboto, Helvetica, Arial, sans-serif; white-space: normal; background-color: rgb(255, 255, 255)">我好鐘意籌備唔同類型嘅活動，上年亦都擔任Red Cross Chairperson, SU成員、Astron Club Committee 等等~ 🙌🏻 平時嘅我對經濟、心理學嘅topic都好有興趣 😍 亦係因為咁，我明白到一段美好嘅回憶，就算終有一日會被忘記，都始終會潛藏喺我哋嘅潛意識當中，影響住我哋未來嘅一舉一動 ❤️</span><br style="color: rgb(12, 16, 20); font-family: -apple-system, BlinkMacSystemFont, &quot;Segoe UI&quot;, Roboto, Helvetica, Arial, sans-serif; white-space: normal; background-color: rgb(255, 255, 255)"><br style="color: rgb(12, 16, 20); font-family: -apple-system, BlinkMacSystemFont, &quot;Segoe UI&quot;, Roboto, Helvetica, Arial, sans-serif; white-space: normal; background-color: rgb(255, 255, 255)"><span style="color: rgb(12, 16, 20); font-family: -apple-system, BlinkMacSystemFont, &quot;Segoe UI&quot;, Roboto, Helvetica, Arial, sans-serif; white-space: normal; background-color: rgb(255, 255, 255)">願未來我哋可以喺流星見證下，結伴同行，創造一段專屬於我哋QES學生嘅美好校園回憶 🌟</span></p></div></div><span class="mem-more" style="margin-top:8px;font-family:'Inter',sans-serif;font-size:11px;letter-spacing:0.14em;text-transform:uppercase;color:var(--ae-gold)"><span data-en="">Read more →</span><span data-zh="">閱讀更多 →</span></span>
+</div>
+</div>
+</div>
+</div><div class="mem mem-3" style="--mw:230px;max-width:100%">
+<div class="mem-card" style="display:flex;flex-direction:column;gap:14px;background:var(--ae-panel);border-radius:16px;box-shadow:0 1px 0 var(--ae-line),0 10px 26px rgba(122,86,190,.07)">
+<button type="button" class="mem-close" onClick="{{ closeMem }}" style="position:absolute;top:14px;right:14px;z-index:4;align-items:center;justify-content:center;width:32px;height:32px;border:1px solid var(--ae-line);border-radius:50%;background:#fff;color:var(--ae-ink-soft);font-size:15px;cursor:pointer;line-height:1">×</button>
+<div class="mem-inner">
+<div class="mem-photo">
+<div class="ph-swap" style="position:relative;aspect-ratio:3/4;border-radius:11px;overflow:hidden;background:#ece1fb"><div class="ph-back" style="position:absolute;inset:0"><img src="photos/ae-p03-b.webp" alt="" loading="lazy" decoding="async" style="width:100%;height:100%;object-fit:contain;display:block" /></div><div class="ph-front" style="position:absolute;inset:0;z-index:2"><img src="photos/ae-p03.webp" alt="" loading="lazy" decoding="async" style="width:100%;height:100%;object-fit:contain;display:block" /></div><span class="ph-badge" style="position:absolute;right:9px;bottom:9px;z-index:3;padding:3px 9px;border-radius:999px;background:linear-gradient(150deg,#fbc75a,#eb9a12);color:#fff;font-family:'Inter',sans-serif;font-size:10px;letter-spacing:0.1em;pointer-events:none">2</span></div>
+</div>
+<div class="mem-info" onClick="{{ mem3 }}" style="display:flex;flex-direction:column;gap:5px;flex:1;min-width:0">
+<span style="font-size:11px;font-family:'Inter',sans-serif;letter-spacing:0.16em;color:var(--ae-gold)">03</span>
+<span data-en="" style="font-size:18px;letter-spacing:0.04em">Jacky<br></span><span data-zh="" style="font-size:18px;letter-spacing:0.04em"><span>陳沃浩 </span><span>Jacky</span></span>
+<span data-en="" style="font-size:13.5px;color:var(--ae-ink-soft)">External Vice President</span><span data-zh="" style="font-size:13.5px;color:var(--ae-ink-soft)">外務副會長</span>
+<span data-en="" style="font-size:13px;line-height:1.75;color:var(--ae-ink-soft)"><span>"Keep your face always toward the sunshine, and shadows will fall behind you."</span></span><span data-zh="" style="font-size:13px;line-height:1.75;color:var(--ae-ink-soft)"><span style="color: rgb(12, 16, 20); font-family: -apple-system, BlinkMacSystemFont, &quot;Segoe UI&quot;, Roboto, Helvetica, Arial, sans-serif; background-color: rgb(255, 255, 255)">"Keep your face always toward the sunshine, and shadows will fall behind you."</span></span>
+<div class="mem-bio"><div><p data-en="" style="margin:12px 0 0;font-size:13.5px;line-height:1.95;color:var(--ae-ink);white-space:pre-line"><span style="color: rgb(12, 16, 20); font-family: -apple-system, BlinkMacSystemFont, &quot;Segoe UI&quot;, Roboto, Helvetica, Arial, sans-serif; white-space: pre-wrap; background-color: rgb(255, 255, 255)">Haloooo～～✨❗️I’m Chan Yuk Ho, External Vice-President of the proposed cabinet Aeterna. (*¯︶¯*)</span><br style="color: rgb(12, 16, 20); font-family: -apple-system, BlinkMacSystemFont, &quot;Segoe UI&quot;, Roboto, Helvetica, Arial, sans-serif; white-space: pre-wrap; background-color: rgb(255, 255, 255)"><br style="color: rgb(12, 16, 20); font-family: -apple-system, BlinkMacSystemFont, &quot;Segoe UI&quot;, Roboto, Helvetica, Arial, sans-serif; white-space: pre-wrap; background-color: rgb(255, 255, 255)"><span style="color: rgb(12, 16, 20); font-family: -apple-system, BlinkMacSystemFont, &quot;Segoe UI&quot;, Roboto, Helvetica, Arial, sans-serif; white-space: pre-wrap; background-color: rgb(255, 255, 255)">I usually enjoy swimming and playing table tennis.🏓</span><br style="color: rgb(12, 16, 20); font-family: -apple-system, BlinkMacSystemFont, &quot;Segoe UI&quot;, Roboto, Helvetica, Arial, sans-serif; white-space: pre-wrap; background-color: rgb(255, 255, 255)"><span style="color: rgb(12, 16, 20); font-family: -apple-system, BlinkMacSystemFont, &quot;Segoe UI&quot;, Roboto, Helvetica, Arial, sans-serif; white-space: pre-wrap; background-color: rgb(255, 255, 255)">Don’t be fooled—I may seem quiet when I’m alone, but once I’m with friends, I become super talkative 👽 Feel free to come chat with me or ask me for a game. 😼</span><br style="color: rgb(12, 16, 20); font-family: -apple-system, BlinkMacSystemFont, &quot;Segoe UI&quot;, Roboto, Helvetica, Arial, sans-serif; white-space: pre-wrap; background-color: rgb(255, 255, 255)"><br style="color: rgb(12, 16, 20); font-family: -apple-system, BlinkMacSystemFont, &quot;Segoe UI&quot;, Roboto, Helvetica, Arial, sans-serif; white-space: pre-wrap; background-color: rgb(255, 255, 255)"><span style="color: rgb(12, 16, 20); font-family: -apple-system, BlinkMacSystemFont, &quot;Segoe UI&quot;, Roboto, Helvetica, Arial, sans-serif; white-space: pre-wrap; background-color: rgb(255, 255, 255)">I hope to serve everyone with my passion and communication skills, make joint-school events run smoothly, and expand the boundaries of our campus. ⛓️‍💥</span><br style="color: rgb(12, 16, 20); font-family: -apple-system, BlinkMacSystemFont, &quot;Segoe UI&quot;, Roboto, Helvetica, Arial, sans-serif; white-space: pre-wrap; background-color: rgb(255, 255, 255)"><span style="color: rgb(12, 16, 20); font-family: -apple-system, BlinkMacSystemFont, &quot;Segoe UI&quot;, Roboto, Helvetica, Arial, sans-serif; white-space: pre-wrap; background-color: rgb(255, 255, 255)">Remember to look forward to our manifesto 🤟🏻 Please give me your guidance and support :P</span></p><p data-zh="" style="margin:12px 0 0;font-size:13.5px;line-height:1.95;color:var(--ae-ink);white-space:pre-line"><span>Haloooo～～✨❗️我係候選內閣Aeterna 嘅外務副主席陳沃浩(*¯︶¯*)</span><span>我平時就鍾意游水同打乒乓波🏓</span><span>唔好睇我自己一個嘅時候文文靜靜 但一遇到朋友嘅時候就好多嘢講👽歡迎大家嚟搵我傾吓偈 約吓波㗎😼</span><span>希望可以用我嘅熱忱同溝通能力服務大家 搞好聯校嘅活動 拓展校園嘅界限 ⛓️‍💥</span><span>期待我哋嘅manifesto🤟🏻請大家多多指教:P</span></p></div></div>
+<span class="mem-more" style="margin-top:8px;font-family:'Inter',sans-serif;font-size:11px;letter-spacing:0.14em;text-transform:uppercase;color:var(--ae-gold)"><span data-en="">Read more →</span><span data-zh="">閱讀更多 →</span></span>
+</div>
+</div>
+</div>
+</div></div>
+<div style="display:flex;flex-wrap:wrap;justify-content:center;align-items:flex-start;gap:clamp(16px,2.4vw,26px)"><div class="mem mem-4" style="--mw:215px;max-width:100%">
+<div class="mem-card" style="display:flex;flex-direction:column;gap:14px;background:var(--ae-panel);border-radius:16px;box-shadow:0 1px 0 var(--ae-line),0 10px 26px rgba(122,86,190,.07)">
+<button type="button" class="mem-close" onClick="{{ closeMem }}" style="position:absolute;top:14px;right:14px;z-index:4;align-items:center;justify-content:center;width:32px;height:32px;border:1px solid var(--ae-line);border-radius:50%;background:#fff;color:var(--ae-ink-soft);font-size:15px;cursor:pointer;line-height:1">×</button>
+<div class="mem-inner">
+<div class="mem-photo">
+<div class="ph-swap" style="position:relative;aspect-ratio:3/4;border-radius:11px;overflow:hidden;background:#ece1fb"><div class="ph-back" style="position:absolute;inset:0"><img src="photos/ae-p04-b.webp" alt="" loading="lazy" decoding="async" style="width:100%;height:100%;object-fit:contain;display:block" /></div><div class="ph-front" style="position:absolute;inset:0;z-index:2"><img src="photos/ae-p04.webp" alt="" loading="lazy" decoding="async" style="width:100%;height:100%;object-fit:contain;display:block" /></div><span class="ph-badge" style="position:absolute;right:9px;bottom:9px;z-index:3;padding:3px 9px;border-radius:999px;background:linear-gradient(150deg,#fbc75a,#eb9a12);color:#fff;font-family:'Inter',sans-serif;font-size:10px;letter-spacing:0.1em;pointer-events:none">2</span></div>
+</div>
+<div class="mem-info" onClick="{{ mem4 }}" style="display:flex;flex-direction:column;gap:5px;flex:1;min-width:0">
+<span style="font-size:11px;font-family:'Inter',sans-serif;letter-spacing:0.16em;color:var(--ae-gold)">04</span>
+<span data-en="" style="font-size:18px;letter-spacing:0.04em">Sun</span><span data-zh="" style="font-size:18px;letter-spacing:0.04em"><span style="color: rgb(12, 16, 20); font-family: -apple-system, BlinkMacSystemFont, &quot;Segoe UI&quot;, Roboto, Helvetica, Arial, sans-serif; letter-spacing: normal; background-color: rgb(255, 255, 255)">潘奕彰 Sun</span></span>
+<span data-en="" style="font-size:13.5px;color:var(--ae-ink-soft)">Financial Secretary</span><span data-zh="" style="font-size:13.5px;color:var(--ae-ink-soft)">財政秘書</span>
+<span data-en="" style="font-size:13px;line-height:1.75;color:var(--ae-ink-soft)">"A time will come to ride the wind and cleave the waves, I'll set my cloud-white sail and cross the sea which raves."</span><span data-zh="" style="font-size:13px;line-height:1.75;color:var(--ae-ink-soft)"><span style="color: rgb(12, 16, 20); font-family: -apple-system, BlinkMacSystemFont, &quot;Segoe UI&quot;, Roboto, Helvetica, Arial, sans-serif; background-color: rgb(255, 255, 255)">「乘風破浪會有時，直掛雲帆濟滄海」</span></span>
+<div class="mem-bio"><div><p data-en="" style="margin:12px 0 0;font-size:13.5px;line-height:1.95;color:var(--ae-ink);white-space:pre-line"><span style="color: rgb(12, 16, 20); font-family: -apple-system, BlinkMacSystemFont, &quot;Segoe UI&quot;, Roboto, Helvetica, Arial, sans-serif; white-space: normal; background-color: rgb(255, 255, 255)">Hi everyone! I'm Sun from Class 5A, and I serve as the Financial Secretary at Aeterna 💰! My biggest interest is computers 💻 – whether it's for studying or leisure, I just can't stay away from them 🙈. Although I usually seem pretty easy-going, when it comes to counting and managing finances, I am 100% serious and keep a close watch on every single penny of Aeterna's funds 👀! Remember to support Aeterna! 🙌</span></p><p data-zh="" style="margin:12px 0 0;font-size:13.5px;line-height:1.95;color:var(--ae-ink);white-space:pre-line"><span style="color: rgb(12, 16, 20); font-family: -apple-system, BlinkMacSystemFont, &quot;Segoe UI&quot;, Roboto, Helvetica, Arial, sans-serif; white-space: normal; background-color: rgb(255, 255, 255)">大家好！我係 5A 班嘅 Sun，喺 Aeterna 擔任 Financial Secretary 💰！我最大嘅興趣係電腦 💻，由讀書到消遣都離唔開佢 🙈。雖然平時睇落幾隨和，但講到計數同管數，我一定會百分百認真，睇實 Aeterna 每一分每一毫 👀！大家記得支持 Aeterna！🙌</span></p></div></div>
+<span class="mem-more" style="margin-top:8px;font-family:'Inter',sans-serif;font-size:11px;letter-spacing:0.14em;text-transform:uppercase;color:var(--ae-gold)"><span data-en="">Read more →</span><span data-zh="">閱讀更多 →</span></span>
+</div>
+</div>
+</div>
+</div><div class="mem mem-5" style="--mw:215px;max-width:100%">
+<div class="mem-card" style="display:flex;flex-direction:column;gap:14px;background:var(--ae-panel);border-radius:16px;box-shadow:0 1px 0 var(--ae-line),0 10px 26px rgba(122,86,190,.07)">
+<button type="button" class="mem-close" onClick="{{ closeMem }}" style="position:absolute;top:14px;right:14px;z-index:4;align-items:center;justify-content:center;width:32px;height:32px;border:1px solid var(--ae-line);border-radius:50%;background:#fff;color:var(--ae-ink-soft);font-size:15px;cursor:pointer;line-height:1">×</button>
+<div class="mem-inner">
+<div class="mem-photo">
+<div class="ph-swap" style="position:relative;aspect-ratio:3/4;border-radius:11px;overflow:hidden;background:#ece1fb"><div class="ph-back" style="position:absolute;inset:0"><img src="photos/ae-p05-b.webp" alt="" loading="lazy" decoding="async" style="width:100%;height:100%;object-fit:contain;display:block" /></div><div class="ph-front" style="position:absolute;inset:0;z-index:2"><img src="photos/ae-p05.webp" alt="" loading="lazy" decoding="async" style="width:100%;height:100%;object-fit:contain;display:block" /></div><span class="ph-badge" style="position:absolute;right:9px;bottom:9px;z-index:3;padding:3px 9px;border-radius:999px;background:linear-gradient(150deg,#fbc75a,#eb9a12);color:#fff;font-family:'Inter',sans-serif;font-size:10px;letter-spacing:0.1em;pointer-events:none">2</span></div>
+</div>
+<div class="mem-info" onClick="{{ mem5 }}" style="display:flex;flex-direction:column;gap:5px;flex:1;min-width:0">
+<span style="font-size:11px;font-family:'Inter',sans-serif;letter-spacing:0.16em;color:var(--ae-gold)">05</span>
+<span data-en="" style="font-size:18px;letter-spacing:0.04em">Yoyo</span><span data-zh="" style="font-size:18px;letter-spacing:0.04em">雷諾瑤 Yoyo</span>
+<span data-en="" style="font-size:13.5px;color:var(--ae-ink-soft)">Publicity Secretary</span><span data-zh="" style="font-size:13.5px;color:var(--ae-ink-soft)">宣傳秘書</span>
+<span data-en="" style="font-size:13px;line-height:1.75;color:var(--ae-ink-soft)"><span>“To see a Heaven in a Wild Flower”</span></span><span data-zh="" style="font-size:13px;line-height:1.75;color:var(--ae-ink-soft)"><span>「於野花之中，窺見天堂」</span></span>
+<div class="mem-bio"><div><p data-en="" style="margin:12px 0 0;font-size:13.5px;line-height:1.95;color:var(--ae-ink);white-space:pre-line"><span>Hello everyone, I am Yoyo. </span><span>I am a fairly quiet person. I spend much of my time drawing, as well as reading novels and observing the world around me.</span><span>I have joined Aeterna, hoping to meet different people and experience a variety of campus happenings to enrich my school life.</span><span>My motto is “To see a Heaven in a Wild Flower”, from Songs of Innocence by William Blake. It means finding beauty in small, ordinary things.</span><span>I am mainly responsible for designing. Your support would mean a great deal to me.</span></p><p data-zh="" style="margin:12px 0 0;font-size:13.5px;line-height:1.95;color:var(--ae-ink);white-space:pre-line"><span style="color: rgb(12, 16, 20); font-family: -apple-system, BlinkMacSystemFont, &quot;Segoe UI&quot;, Roboto, Helvetica, Arial, sans-serif; white-space: pre-wrap; background-color: rgb(255, 255, 255)">大家好，我係雷諾瑤~</span><br style="color: rgb(12, 16, 20); font-family: -apple-system, BlinkMacSystemFont, &quot;Segoe UI&quot;, Roboto, Helvetica, Arial, sans-serif; white-space: pre-wrap; background-color: rgb(255, 255, 255)"><span style="color: rgb(12, 16, 20); font-family: -apple-system, BlinkMacSystemFont, &quot;Segoe UI&quot;, Roboto, Helvetica, Arial, sans-serif; white-space: pre-wrap; background-color: rgb(255, 255, 255)">我性格比較安靜，平時會花唔少時間喺畫畫上面，亦都會睇下小說，鐘意觀察周圍嘅事物。</span><br style="color: rgb(12, 16, 20); font-family: -apple-system, BlinkMacSystemFont, &quot;Segoe UI&quot;, Roboto, Helvetica, Arial, sans-serif; white-space: pre-wrap; background-color: rgb(255, 255, 255)"><span style="color: rgb(12, 16, 20); font-family: -apple-system, BlinkMacSystemFont, &quot;Segoe UI&quot;, Roboto, Helvetica, Arial, sans-serif; white-space: pre-wrap; background-color: rgb(255, 255, 255)">今次加入學生會，係希望可以多啲接觸校園入面唔同嘅人同事，令自己嘅校園生活更加充實。</span><br style="color: rgb(12, 16, 20); font-family: -apple-system, BlinkMacSystemFont, &quot;Segoe UI&quot;, Roboto, Helvetica, Arial, sans-serif; white-space: pre-wrap; background-color: rgb(255, 255, 255)"><span style="color: rgb(12, 16, 20); font-family: -apple-system, BlinkMacSystemFont, &quot;Segoe UI&quot;, Roboto, Helvetica, Arial, sans-serif; white-space: pre-wrap; background-color: rgb(255, 255, 255)">我嘅motto係「於野花之中，窺見天堂」，出自 威廉·布萊克《天真之歌》，意思係從微小平凡嘅事物中望見美好。</span><br style="color: rgb(12, 16, 20); font-family: -apple-system, BlinkMacSystemFont, &quot;Segoe UI&quot;, Roboto, Helvetica, Arial, sans-serif; white-space: pre-wrap; background-color: rgb(255, 255, 255)"><span style="color: rgb(12, 16, 20); font-family: -apple-system, BlinkMacSystemFont, &quot;Segoe UI&quot;, Roboto, Helvetica, Arial, sans-serif; white-space: pre-wrap; background-color: rgb(255, 255, 255)">我主要負責design 嘅工作，請大家多多關照。</span></p></div></div>
+<span class="mem-more" style="margin-top:8px;font-family:'Inter',sans-serif;font-size:11px;letter-spacing:0.14em;text-transform:uppercase;color:var(--ae-gold)"><span data-en="">Read more →</span><span data-zh="">閱讀更多 →</span></span>
+</div>
+</div>
+</div>
+</div><div class="mem mem-6" style="--mw:215px;max-width:100%">
+<div class="mem-card" style="display:flex;flex-direction:column;gap:14px;background:var(--ae-panel);border-radius:16px;box-shadow:0 1px 0 var(--ae-line),0 10px 26px rgba(122,86,190,.07)">
+<button type="button" class="mem-close" onClick="{{ closeMem }}" style="position:absolute;top:14px;right:14px;z-index:4;align-items:center;justify-content:center;width:32px;height:32px;border:1px solid var(--ae-line);border-radius:50%;background:#fff;color:var(--ae-ink-soft);font-size:15px;cursor:pointer;line-height:1">×</button>
+<div class="mem-inner">
+<div class="mem-photo">
+<div class="ph-swap" style="position:relative;aspect-ratio:3/4;border-radius:11px;overflow:hidden;background:#ece1fb"><div class="ph-back" style="position:absolute;inset:0"><img src="photos/ae-p06-b.webp" alt="" loading="lazy" decoding="async" style="width:100%;height:100%;object-fit:contain;display:block" /></div><div class="ph-front" style="position:absolute;inset:0;z-index:2"><img src="photos/ae-p06.webp" alt="" loading="lazy" decoding="async" style="width:100%;height:100%;object-fit:contain;display:block" /></div><span class="ph-badge" style="position:absolute;right:9px;bottom:9px;z-index:3;padding:3px 9px;border-radius:999px;background:linear-gradient(150deg,#fbc75a,#eb9a12);color:#fff;font-family:'Inter',sans-serif;font-size:10px;letter-spacing:0.1em;pointer-events:none">2</span></div>
+</div>
+<div class="mem-info" onClick="{{ mem6 }}" style="display:flex;flex-direction:column;gap:5px;flex:1;min-width:0">
+<span style="font-size:11px;font-family:'Inter',sans-serif;letter-spacing:0.16em;color:var(--ae-gold)">06</span>
+<span data-en="" style="font-size:18px;letter-spacing:0.04em">Hannah</span><span data-zh="" style="font-size:18px;letter-spacing:0.04em"><span style="color: rgb(12, 16, 20); font-family: -apple-system, BlinkMacSystemFont, &quot;Segoe UI&quot;, Roboto, Helvetica, Arial, sans-serif; letter-spacing: normal; background-color: rgb(255, 255, 255)">陳芷萱 Hannah</span></span>
+<span data-en="" style="font-size:13.5px;color:var(--ae-ink-soft)">Publicity Secretary</span><span data-zh="" style="font-size:13.5px;color:var(--ae-ink-soft)">宣傳秘書</span>
+<span data-en="" style="font-size:13px;line-height:1.75;color:var(--ae-ink-soft)"><span style="color: rgb(12, 16, 20); font-family: -apple-system, BlinkMacSystemFont, &quot;Segoe UI&quot;, Roboto, Helvetica, Arial, sans-serif; background-color: rgb(255, 255, 255)">"It might not seem much for now, but without these small stepping stones you’ll never see the mountain you built yourself.”</span></span><span data-zh="" style="font-size:13px;line-height:1.75;color:var(--ae-ink-soft)"><span style="color: rgb(12, 16, 20); font-family: -apple-system, BlinkMacSystemFont, &quot;Segoe UI&quot;, Roboto, Helvetica, Arial, sans-serif; background-color: rgb(255, 255, 255)">"It might not seem much for now, but without these small stepping stones you’ll never see the mountain you built yourself.”</span></span>
+<div class="mem-bio"><div><p data-en="" style="margin:12px 0 0;font-size:13.5px;line-height:1.95;color:var(--ae-ink);white-space:pre-line"><span style="color: rgb(12, 16, 20); font-family: -apple-system, BlinkMacSystemFont, &quot;Segoe UI&quot;, Roboto, Helvetica, Arial, sans-serif; white-space: normal; background-color: rgb(255, 255, 255)">Hi everyoneee, I’m Chan Tsz Huen of class 5A, and you can call me Hanna😁😁</span><br style="color: rgb(12, 16, 20); font-family: -apple-system, BlinkMacSystemFont, &quot;Segoe UI&quot;, Roboto, Helvetica, Arial, sans-serif; white-space: normal; background-color: rgb(255, 255, 255)"><span style="color: rgb(12, 16, 20); font-family: -apple-system, BlinkMacSystemFont, &quot;Segoe UI&quot;, Roboto, Helvetica, Arial, sans-serif; white-space: normal; background-color: rgb(255, 255, 255)">Whether it be Pipa🎵, drawing✍️or drama🎭, you’ll often times see me being quite the artsy person🔥🔥As a side note, I also have a knack for trying extremely weird food combinations (like soy sauce to fries, which totally tastes amazing😯)</span><br style="color: rgb(12, 16, 20); font-family: -apple-system, BlinkMacSystemFont, &quot;Segoe UI&quot;, Roboto, Helvetica, Arial, sans-serif; white-space: normal; background-color: rgb(255, 255, 255)"><span style="color: rgb(12, 16, 20); font-family: -apple-system, BlinkMacSystemFont, &quot;Segoe UI&quot;, Roboto, Helvetica, Arial, sans-serif; white-space: normal; background-color: rgb(255, 255, 255)">Actually, I fondly believe creation is quite a unique pastime of mine, and I especially enjoy it. Therefore, as one of Aeterna’s publicity secretaries I hope to bring my wonderful designs and artwork to the stage 🤩</span></p><p data-zh="" style="margin:12px 0 0;font-size:13.5px;line-height:1.95;color:var(--ae-ink);white-space:pre-line"><span style="color: rgb(12, 16, 20); font-family: -apple-system, BlinkMacSystemFont, &quot;Segoe UI&quot;, Roboto, Helvetica, Arial, sans-serif; white-space: normal; background-color: rgb(255, 255, 255)">Hiiii 大家好啊，我係5A班嘅陳芷萱，大家可以叫我Hanna😁😁</span><br style="color: rgb(12, 16, 20); font-family: -apple-system, BlinkMacSystemFont, &quot;Segoe UI&quot;, Roboto, Helvetica, Arial, sans-serif; white-space: normal; background-color: rgb(255, 255, 255)"><span style="color: rgb(12, 16, 20); font-family: -apple-system, BlinkMacSystemFont, &quot;Segoe UI&quot;, Roboto, Helvetica, Arial, sans-serif; white-space: normal; background-color: rgb(255, 255, 255)">平時無論係琵琶🎵、畫畫✍️又或者話劇🎭我都會去玩🔥🔥同埋任何千奇百怪嘅食物組合都特別鍾意（薯條+豉油？！）😨</span><br style="color: rgb(12, 16, 20); font-family: -apple-system, BlinkMacSystemFont, &quot;Segoe UI&quot;, Roboto, Helvetica, Arial, sans-serif; white-space: normal; background-color: rgb(255, 255, 255)"><span style="color: rgb(12, 16, 20); font-family: -apple-system, BlinkMacSystemFont, &quot;Segoe UI&quot;, Roboto, Helvetica, Arial, sans-serif; white-space: normal; background-color: rgb(255, 255, 255)">其實，只要係關於創作嘅事情我都會十分享受，所以身為Aeterna嘅publicity secretary 都希望可以為大家帶黎美好嘅畫作同埋design啦🤩</span></p></div></div>
+<span class="mem-more" style="margin-top:8px;font-family:'Inter',sans-serif;font-size:11px;letter-spacing:0.14em;text-transform:uppercase;color:var(--ae-gold)"><span data-en="">Read more →</span><span data-zh="">閱讀更多 →</span></span>
+</div>
+</div>
+</div>
+</div></div>
+<div style="display:flex;flex-wrap:wrap;justify-content:center;align-items:flex-start;gap:clamp(16px,2.4vw,22px)"><div class="mem mem-7" style="--mw:200px;max-width:100%">
+<div class="mem-card" style="display:flex;flex-direction:column;gap:14px;background:var(--ae-panel);border-radius:16px;box-shadow:0 1px 0 var(--ae-line),0 10px 26px rgba(122,86,190,.07)">
+<button type="button" class="mem-close" onClick="{{ closeMem }}" style="position:absolute;top:14px;right:14px;z-index:4;align-items:center;justify-content:center;width:32px;height:32px;border:1px solid var(--ae-line);border-radius:50%;background:#fff;color:var(--ae-ink-soft);font-size:15px;cursor:pointer;line-height:1">×</button>
+<div class="mem-inner">
+<div class="mem-photo">
+<div class="ph-swap" style="position:relative;aspect-ratio:3/4;border-radius:11px;overflow:hidden;background:#ece1fb"><div class="ph-back" style="position:absolute;inset:0"><img src="photos/ae-p07-b.webp" alt="" loading="lazy" decoding="async" style="width:100%;height:100%;object-fit:contain;display:block" /></div><div class="ph-front" style="position:absolute;inset:0;z-index:2"><img src="photos/ae-p07.webp" alt="" loading="lazy" decoding="async" style="width:100%;height:100%;object-fit:contain;display:block" /></div><span class="ph-badge" style="position:absolute;right:9px;bottom:9px;z-index:3;padding:3px 9px;border-radius:999px;background:linear-gradient(150deg,#fbc75a,#eb9a12);color:#fff;font-family:'Inter',sans-serif;font-size:10px;letter-spacing:0.1em;pointer-events:none">2</span></div>
+</div>
+<div class="mem-info" onClick="{{ mem7 }}" style="display:flex;flex-direction:column;gap:5px;flex:1;min-width:0">
+<span style="font-size:11px;font-family:'Inter',sans-serif;letter-spacing:0.16em;color:var(--ae-gold)">07</span>
+<span data-en="" style="font-size:18px;letter-spacing:0.04em">Angel</span><span data-zh="" style="font-size:18px;letter-spacing:0.04em"><span style="color: rgb(12, 16, 20); font-family: -apple-system, BlinkMacSystemFont, &quot;Segoe UI&quot;, Roboto, Helvetica, Arial, sans-serif; letter-spacing: normal; white-space: pre-wrap; background-color: rgb(255, 255, 255)">胡詩雅 Angel</span></span>
+<span data-en="" style="font-size:13.5px;color:var(--ae-ink-soft)">Internal Secretary</span><span data-zh="" style="font-size:13.5px;color:var(--ae-ink-soft)">內務秘書</span>
+<span data-en="" style="font-size:13px;line-height:1.75;color:var(--ae-ink-soft)">"Youth does not seem beautiful because it is short; rather, it seems short because it is beautiful."</span><span data-zh="" style="font-size:13px;line-height:1.75;color:var(--ae-ink-soft)"><span style="color: rgb(12, 16, 20); font-family: -apple-system, BlinkMacSystemFont, &quot;Segoe UI&quot;, Roboto, Helvetica, Arial, sans-serif; white-space: pre-wrap; background-color: rgb(255, 255, 255)">「青春不因短暫而顯得美麗，而是因美麗而顯得短暫。」</span></span>
+<div class="mem-bio"><div><p data-en="" style="margin:12px 0 0;font-size:13.5px;line-height:1.95;color:var(--ae-ink);white-space:pre-line"><span style="color: rgb(12, 16, 20); font-family: -apple-system, BlinkMacSystemFont, &quot;Segoe UI&quot;, Roboto, Helvetica, Arial, sans-serif; white-space: pre-wrap; background-color: rgb(255, 255, 255)">Hi, I'm Angel! My favorite things to do are reading and writing stories. In addition, I love joining different activities, school teams, and ECAs, such as the Red Cross Youth and the Home Economics Society.</span><br style="color: rgb(12, 16, 20); font-family: -apple-system, BlinkMacSystemFont, &quot;Segoe UI&quot;, Roboto, Helvetica, Arial, sans-serif; white-space: pre-wrap; background-color: rgb(255, 255, 255)"><br style="color: rgb(12, 16, 20); font-family: -apple-system, BlinkMacSystemFont, &quot;Segoe UI&quot;, Roboto, Helvetica, Arial, sans-serif; white-space: pre-wrap; background-color: rgb(255, 255, 255)"><span style="color: rgb(12, 16, 20); font-family: -apple-system, BlinkMacSystemFont, &quot;Segoe UI&quot;, Roboto, Helvetica, Arial, sans-serif; white-space: pre-wrap; background-color: rgb(255, 255, 255)">I've decided to run for the Student Union because I don't want to have any regrets during our secondary school years. I want to create unforgettable memories with all of you and help make our time here even better for everyone. I hope that when we look back on these days, we'll only remember the happy moments!</span><br style="color: rgb(12, 16, 20); font-family: -apple-system, BlinkMacSystemFont, &quot;Segoe UI&quot;, Roboto, Helvetica, Arial, sans-serif; white-space: pre-wrap; background-color: rgb(255, 255, 255)"><br style="color: rgb(12, 16, 20); font-family: -apple-system, BlinkMacSystemFont, &quot;Segoe UI&quot;, Roboto, Helvetica, Arial, sans-serif; white-space: pre-wrap; background-color: rgb(255, 255, 255)"><span style="color: rgb(12, 16, 20); font-family: -apple-system, BlinkMacSystemFont, &quot;Segoe UI&quot;, Roboto, Helvetica, Arial, sans-serif; white-space: pre-wrap; background-color: rgb(255, 255, 255)">Last but not least, 'Youth isn't beautiful because it's short; it feels short because it's beautiful.' I hope everyone's youth will be just as beautiful! 🤍</span></p><p data-zh="" style="margin:12px 0 0;font-size:13.5px;line-height:1.95;color:var(--ae-ink);white-space:pre-line"><span style="color: rgb(12, 16, 20); font-family: -apple-system, BlinkMacSystemFont, &quot;Segoe UI&quot;, Roboto, Helvetica, Arial, sans-serif; white-space: pre-wrap; background-color: rgb(255, 255, 255)">我係Angel ~ 平時最鐘意睇小說同寫小說，好鍾意周圍join唔同嘅活動，參加唔同嘅校隊同eca，例如係紅十字會、家政學會等等。因為唔想喺短暫嘅青春中留低遺憾，所以決定參選學生會，希望可以為同學爭取更美好嘅校園生活，創造一段最難忘嘅回憶，令大家每當回想起中學時光嗰陣都會展露出最燦爛嘅笑容~</span><br style="color: rgb(12, 16, 20); font-family: -apple-system, BlinkMacSystemFont, &quot;Segoe UI&quot;, Roboto, Helvetica, Arial, sans-serif; white-space: pre-wrap; background-color: rgb(255, 255, 255)"><br style="color: rgb(12, 16, 20); font-family: -apple-system, BlinkMacSystemFont, &quot;Segoe UI&quot;, Roboto, Helvetica, Arial, sans-serif; white-space: pre-wrap; background-color: rgb(255, 255, 255)"><span style="color: rgb(12, 16, 20); font-family: -apple-system, BlinkMacSystemFont, &quot;Segoe UI&quot;, Roboto, Helvetica, Arial, sans-serif; white-space: pre-wrap; background-color: rgb(255, 255, 255)">最後，「青春不因短暫而顯得美麗，而是因美麗而顯得短暫。」希望大家嘅青春都同樣美麗🤍</span></p></div></div>
+<span class="mem-more" style="margin-top:8px;font-family:'Inter',sans-serif;font-size:11px;letter-spacing:0.14em;text-transform:uppercase;color:var(--ae-gold)"><span data-en="">Read more →</span><span data-zh="">閱讀更多 →</span></span>
+</div>
+</div>
+</div>
+</div><div class="mem mem-8" style="--mw:200px;max-width:100%">
+<div class="mem-card" style="display:flex;flex-direction:column;gap:14px;background:var(--ae-panel);border-radius:16px;box-shadow:0 1px 0 var(--ae-line),0 10px 26px rgba(122,86,190,.07)">
+<button type="button" class="mem-close" onClick="{{ closeMem }}" style="position:absolute;top:14px;right:14px;z-index:4;align-items:center;justify-content:center;width:32px;height:32px;border:1px solid var(--ae-line);border-radius:50%;background:#fff;color:var(--ae-ink-soft);font-size:15px;cursor:pointer;line-height:1">×</button>
+<div class="mem-inner">
+<div class="mem-photo">
+<div class="ph-swap" style="position:relative;aspect-ratio:3/4;border-radius:11px;overflow:hidden;background:#ece1fb"><div class="ph-back" style="position:absolute;inset:0"><img src="photos/ae-p08-b.webp" alt="" loading="lazy" decoding="async" style="width:100%;height:100%;object-fit:contain;display:block" /></div><div class="ph-front" style="position:absolute;inset:0;z-index:2"><img src="photos/ae-p08.webp" alt="" loading="lazy" decoding="async" style="width:100%;height:100%;object-fit:contain;display:block" /></div><span class="ph-badge" style="position:absolute;right:9px;bottom:9px;z-index:3;padding:3px 9px;border-radius:999px;background:linear-gradient(150deg,#fbc75a,#eb9a12);color:#fff;font-family:'Inter',sans-serif;font-size:10px;letter-spacing:0.1em;pointer-events:none">2</span></div>
+</div>
+<div class="mem-info" onClick="{{ mem8 }}" style="display:flex;flex-direction:column;gap:5px;flex:1;min-width:0">
+<span style="font-size:11px;font-family:'Inter',sans-serif;letter-spacing:0.16em;color:var(--ae-gold)">08</span>
+<span data-en="" style="font-size:18px;letter-spacing:0.04em">Carson</span><span data-zh="" style="font-size:18px;letter-spacing:0.04em"><span style="color: rgb(12, 16, 20); font-family: -apple-system, BlinkMacSystemFont, &quot;Segoe UI&quot;, Roboto, Helvetica, Arial, sans-serif; letter-spacing: normal; background-color: rgb(255, 255, 255)">陳嘉健 Carson</span></span>
+<span data-en="" style="font-size:13.5px;color:var(--ae-ink-soft)">Internal Secretary</span><span data-zh="" style="font-size:13.5px;color:var(--ae-ink-soft)">內務秘書</span>
+<span data-en="" style="font-size:13px;line-height:1.75;color:var(--ae-ink-soft)">"You cannot shake hands with a clenched fist."</span><span data-zh="" style="font-size:13px;line-height:1.75;color:var(--ae-ink-soft)"><span style="color: rgb(12, 16, 20); font-family: -apple-system, BlinkMacSystemFont, &quot;Segoe UI&quot;, Roboto, Helvetica, Arial, sans-serif; background-color: rgb(255, 255, 255)">「握緊拳頭就無法和人握手」</span></span>
+<div class="mem-bio"><div><p data-en="" style="margin:12px 0 0;font-size:13.5px;line-height:1.95;color:var(--ae-ink);white-space:pre-line"><span style="color: rgb(12, 16, 20); font-family: -apple-system, BlinkMacSystemFont, &quot;Segoe UI&quot;, Roboto, Helvetica, Arial, sans-serif; white-space: normal; background-color: rgb(255, 255, 255)">Hello everyone! I'm Carson🤓. My favorite things to do are playing video games and sleeping, but don't let my chill vibe fool you—when it's time to work, I am extremely dedicated and reliable✅. The reason I'm running for the Student Union this year is that I often hear so many different ideas from my classmates. I want to bring everyone's voices together to make our campus life even better.</span><br style="color: rgb(12, 16, 20); font-family: -apple-system, BlinkMacSystemFont, &quot;Segoe UI&quot;, Roboto, Helvetica, Arial, sans-serif; white-space: normal; background-color: rgb(255, 255, 255)"><br style="color: rgb(12, 16, 20); font-family: -apple-system, BlinkMacSystemFont, &quot;Segoe UI&quot;, Roboto, Helvetica, Arial, sans-serif; white-space: normal; background-color: rgb(255, 255, 255)"><span style="color: rgb(12, 16, 20); font-family: -apple-system, BlinkMacSystemFont, &quot;Segoe UI&quot;, Roboto, Helvetica, Arial, sans-serif; white-space: normal; background-color: rgb(255, 255, 255)">Ships and world history are my absolute passions🛥️. In my free time, I love going out to look at the sea by myself, building model ships, and watching Western history videos online🌍. If you're into these things too, definitely reach out so we can chat😋!</span><br style="color: rgb(12, 16, 20); font-family: -apple-system, BlinkMacSystemFont, &quot;Segoe UI&quot;, Roboto, Helvetica, Arial, sans-serif; white-space: normal; background-color: rgb(255, 255, 255)"><br style="color: rgb(12, 16, 20); font-family: -apple-system, BlinkMacSystemFont, &quot;Segoe UI&quot;, Roboto, Helvetica, Arial, sans-serif; white-space: normal; background-color: rgb(255, 255, 255)"><span style="color: rgb(12, 16, 20); font-family: -apple-system, BlinkMacSystemFont, &quot;Segoe UI&quot;, Roboto, Helvetica, Arial, sans-serif; white-space: normal; background-color: rgb(255, 255, 255)">"You cannot shake hands with a clenched fist" is a quote I have always firmly believed in😺. I hope to shake hands and have great conversations with a lot more of you soon. Looking forward to a fantastic year ahead!🩵🩵🩵</span></p><p data-zh="" style="margin:12px 0 0;font-size:13.5px;line-height:1.95;color:var(--ae-ink);white-space:pre-line"><span style="color: rgb(12, 16, 20); font-family: -apple-system, BlinkMacSystemFont, &quot;Segoe UI&quot;, Roboto, Helvetica, Arial, sans-serif; white-space: normal; background-color: rgb(255, 255, 255)">大家好！我係Carson🤓平時最鍾意打機同瞓覺，不過，唔好睇我平時好chill咁，當我做嘢嗰陣都係好firm㗎✅我今年之所以會參選學生會係因為身邊嘅同學成日都有唔同意見，希望可以集合大家嘅意見，令校園生活變得更美好。</span><br style="color: rgb(12, 16, 20); font-family: -apple-system, BlinkMacSystemFont, &quot;Segoe UI&quot;, Roboto, Helvetica, Arial, sans-serif; white-space: normal; background-color: rgb(255, 255, 255)"><br style="color: rgb(12, 16, 20); font-family: -apple-system, BlinkMacSystemFont, &quot;Segoe UI&quot;, Roboto, Helvetica, Arial, sans-serif; white-space: normal; background-color: rgb(255, 255, 255)"><span style="color: rgb(12, 16, 20); font-family: -apple-system, BlinkMacSystemFont, &quot;Segoe UI&quot;, Roboto, Helvetica, Arial, sans-serif; white-space: normal; background-color: rgb(255, 255, 255)">船同世界史係我最鍾意嘅嘢🛥️我得閒會自己一個去睇海、砌船模，仲會上網睇西史片🌍如果你都鍾意呢兩樣，都可以搵我交流一下㗎😋</span><br style="color: rgb(12, 16, 20); font-family: -apple-system, BlinkMacSystemFont, &quot;Segoe UI&quot;, Roboto, Helvetica, Arial, sans-serif; white-space: normal; background-color: rgb(255, 255, 255)"><br style="color: rgb(12, 16, 20); font-family: -apple-system, BlinkMacSystemFont, &quot;Segoe UI&quot;, Roboto, Helvetica, Arial, sans-serif; white-space: normal; background-color: rgb(255, 255, 255)"><span style="color: rgb(12, 16, 20); font-family: -apple-system, BlinkMacSystemFont, &quot;Segoe UI&quot;, Roboto, Helvetica, Arial, sans-serif; white-space: normal; background-color: rgb(255, 255, 255)">「握緊拳頭就無法和人握手」係我一直堅信嘅說話😺希望之後可以同大家握多啲手，傾多啲偈啦。來年多多指教！🩵🩵🩵</span></p></div></div>
+<span class="mem-more" style="margin-top:8px;font-family:'Inter',sans-serif;font-size:11px;letter-spacing:0.14em;text-transform:uppercase;color:var(--ae-gold)"><span data-en="">Read more →</span><span data-zh="">閱讀更多 →</span></span>
+</div>
+</div>
+</div>
+</div><div class="mem mem-9" style="--mw:200px;max-width:100%">
+<div class="mem-card" style="display:flex;flex-direction:column;gap:14px;background:var(--ae-panel);border-radius:16px;box-shadow:0 1px 0 var(--ae-line),0 10px 26px rgba(122,86,190,.07)">
+<button type="button" class="mem-close" onClick="{{ closeMem }}" style="position:absolute;top:14px;right:14px;z-index:4;align-items:center;justify-content:center;width:32px;height:32px;border:1px solid var(--ae-line);border-radius:50%;background:#fff;color:var(--ae-ink-soft);font-size:15px;cursor:pointer;line-height:1">×</button>
+<div class="mem-inner">
+<div class="mem-photo">
+<div class="ph-swap" style="position:relative;aspect-ratio:3/4;border-radius:11px;overflow:hidden;background:#ece1fb"><div class="ph-back" style="position:absolute;inset:0"><img src="photos/ae-p09-b.webp" alt="" loading="lazy" decoding="async" style="width:100%;height:100%;object-fit:contain;display:block" /></div><div class="ph-front" style="position:absolute;inset:0;z-index:2"><img src="photos/ae-p09.webp" alt="" loading="lazy" decoding="async" style="width:100%;height:100%;object-fit:contain;display:block" /></div><span class="ph-badge" style="position:absolute;right:9px;bottom:9px;z-index:3;padding:3px 9px;border-radius:999px;background:linear-gradient(150deg,#fbc75a,#eb9a12);color:#fff;font-family:'Inter',sans-serif;font-size:10px;letter-spacing:0.1em;pointer-events:none">2</span></div>
+</div>
+<div class="mem-info" onClick="{{ mem9 }}" style="display:flex;flex-direction:column;gap:5px;flex:1;min-width:0">
+<span style="font-size:11px;font-family:'Inter',sans-serif;letter-spacing:0.16em;color:var(--ae-gold)">09</span>
+<span data-en="" style="font-size:18px;letter-spacing:0.04em">Daniel</span><span data-zh="" style="font-size:18px;letter-spacing:0.04em"><span style="color: rgb(12, 16, 20); font-family: -apple-system, BlinkMacSystemFont, &quot;Segoe UI&quot;, Roboto, Helvetica, Arial, sans-serif; letter-spacing: normal; background-color: rgb(255, 255, 255)">黃映悦 Daniel</span></span>
+<span data-en="" style="font-size:13.5px;color:var(--ae-ink-soft)">Internal Secretary</span><span data-zh="" style="font-size:13.5px;color:var(--ae-ink-soft)">內務秘書</span>
+<span data-en="" style="font-size:13px;line-height:1.75;color:var(--ae-ink-soft)"><span style="color: rgb(12, 16, 20); font-family: -apple-system, BlinkMacSystemFont, &quot;Segoe UI&quot;, Roboto, Helvetica, Arial, sans-serif; background-color: rgb(255, 255, 255)">'Wit beyond measure is man's greatest treasure.’</span></span><span data-zh="" style="font-size:13px;line-height:1.75;color:var(--ae-ink-soft)"><span style="color: rgb(12, 16, 20); font-family: -apple-system, BlinkMacSystemFont, &quot;Segoe UI&quot;, Roboto, Helvetica, Arial, sans-serif; background-color: rgb(255, 255, 255)">‘無與倫比的智慧是人類最寶貴的財富’</span></span>
+<div class="mem-bio"><div><p data-en="" style="margin:12px 0 0;font-size:13.5px;line-height:1.95;color:var(--ae-ink);white-space:pre-line"><span style="color: rgb(12, 16, 20); font-family: -apple-system, BlinkMacSystemFont, &quot;Segoe UI&quot;, Roboto, Helvetica, Arial, sans-serif; white-space: normal; background-color: rgb(255, 255, 255)">Salutations, everyone. I am Daniel, Internal Secretary of Aeterna.</span><br style="color: rgb(12, 16, 20); font-family: -apple-system, BlinkMacSystemFont, &quot;Segoe UI&quot;, Roboto, Helvetica, Arial, sans-serif; white-space: normal; background-color: rgb(255, 255, 255)"><span style="color: rgb(12, 16, 20); font-family: -apple-system, BlinkMacSystemFont, &quot;Segoe UI&quot;, Roboto, Helvetica, Arial, sans-serif; white-space: normal; background-color: rgb(255, 255, 255)">During my spare time, I prefer to indulge myself in International Chess or Chinese Chess.</span><br style="color: rgb(12, 16, 20); font-family: -apple-system, BlinkMacSystemFont, &quot;Segoe UI&quot;, Roboto, Helvetica, Arial, sans-serif; white-space: normal; background-color: rgb(255, 255, 255)"><span style="color: rgb(12, 16, 20); font-family: -apple-system, BlinkMacSystemFont, &quot;Segoe UI&quot;, Roboto, Helvetica, Arial, sans-serif; white-space: normal; background-color: rgb(255, 255, 255)">The reason I joined Aeterna was that I wanted to contribute to the school, and make my school life more fruitful.</span><br style="color: rgb(12, 16, 20); font-family: -apple-system, BlinkMacSystemFont, &quot;Segoe UI&quot;, Roboto, Helvetica, Arial, sans-serif; white-space: normal; background-color: rgb(255, 255, 255)"><span style="color: rgb(12, 16, 20); font-family: -apple-system, BlinkMacSystemFont, &quot;Segoe UI&quot;, Roboto, Helvetica, Arial, sans-serif; white-space: normal; background-color: rgb(255, 255, 255)">My motto is 'Wit beyond measure is man's greatest treasure', from J.K. Rowling's Harry Potter. Its meaning is that wisdom is much more pivotal than money and power, and that it is the most inestimable thing for humans.</span></p><p data-zh="" style="margin:12px 0 0;font-size:13.5px;line-height:1.95;color:var(--ae-ink);white-space:pre-line"><span style="color: rgb(12, 16, 20); font-family: -apple-system, BlinkMacSystemFont, &quot;Segoe UI&quot;, Roboto, Helvetica, Arial, sans-serif; white-space: normal; background-color: rgb(255, 255, 255)">大家好，我係5D班嘅黃映悅，係Aeterna嘅Internal Secretary。</span><br style="color: rgb(12, 16, 20); font-family: -apple-system, BlinkMacSystemFont, &quot;Segoe UI&quot;, Roboto, Helvetica, Arial, sans-serif; white-space: normal; background-color: rgb(255, 255, 255)"><span style="color: rgb(12, 16, 20); font-family: -apple-system, BlinkMacSystemFont, &quot;Segoe UI&quot;, Roboto, Helvetica, Arial, sans-serif; white-space: normal; background-color: rgb(255, 255, 255)">平時我比較鍾意捉下國際象棋或中國象棋。</span><br style="color: rgb(12, 16, 20); font-family: -apple-system, BlinkMacSystemFont, &quot;Segoe UI&quot;, Roboto, Helvetica, Arial, sans-serif; white-space: normal; background-color: rgb(255, 255, 255)"><span style="color: rgb(12, 16, 20); font-family: -apple-system, BlinkMacSystemFont, &quot;Segoe UI&quot;, Roboto, Helvetica, Arial, sans-serif; white-space: normal; background-color: rgb(255, 255, 255)">今年加入學生會係因為想為校園作出貢獻，為校園生活增添色彩。</span><br style="color: rgb(12, 16, 20); font-family: -apple-system, BlinkMacSystemFont, &quot;Segoe UI&quot;, Roboto, Helvetica, Arial, sans-serif; white-space: normal; background-color: rgb(255, 255, 255)"><span style="color: rgb(12, 16, 20); font-family: -apple-system, BlinkMacSystemFont, &quot;Segoe UI&quot;, Roboto, Helvetica, Arial, sans-serif; white-space: normal; background-color: rgb(255, 255, 255)">我嘅Motto係‘無與倫比的智慧是人類最寶貴的財富’，出自J.K.羅琳嘅哈利波特。佢嘅意思係智慧比金錢同權力等嘅事物更為重要，係對人類最有價值嘅。</span></p></div></div>
+<span class="mem-more" style="margin-top:8px;font-family:'Inter',sans-serif;font-size:11px;letter-spacing:0.14em;text-transform:uppercase;color:var(--ae-gold)"><span data-en="">Read more →</span><span data-zh="">閱讀更多 →</span></span>
+</div>
+</div>
+</div>
+</div><div class="mem mem-10" style="--mw:200px;max-width:100%">
+<div class="mem-card" style="display:flex;flex-direction:column;gap:14px;background:var(--ae-panel);border-radius:16px;box-shadow:0 1px 0 var(--ae-line),0 10px 26px rgba(122,86,190,.07)">
+<button type="button" class="mem-close" onClick="{{ closeMem }}" style="position:absolute;top:14px;right:14px;z-index:4;align-items:center;justify-content:center;width:32px;height:32px;border:1px solid var(--ae-line);border-radius:50%;background:#fff;color:var(--ae-ink-soft);font-size:15px;cursor:pointer;line-height:1">×</button>
+<div class="mem-inner">
+<div class="mem-photo">
+<div class="ph-swap" style="position:relative;aspect-ratio:3/4;border-radius:11px;overflow:hidden;background:#ece1fb"><div class="ph-back" style="position:absolute;inset:0"><img src="photos/ae-p10-b.webp" alt="" loading="lazy" decoding="async" style="width:100%;height:100%;object-fit:contain;display:block" /></div><div class="ph-front" style="position:absolute;inset:0;z-index:2"><img src="photos/ae-p10.webp" alt="" loading="lazy" decoding="async" style="width:100%;height:100%;object-fit:contain;display:block" /></div><span class="ph-badge" style="position:absolute;right:9px;bottom:9px;z-index:3;padding:3px 9px;border-radius:999px;background:linear-gradient(150deg,#fbc75a,#eb9a12);color:#fff;font-family:'Inter',sans-serif;font-size:10px;letter-spacing:0.1em;pointer-events:none">2</span></div>
+</div>
+<div class="mem-info" onClick="{{ mem10 }}" style="display:flex;flex-direction:column;gap:5px;flex:1;min-width:0">
+<span style="font-size:11px;font-family:'Inter',sans-serif;letter-spacing:0.16em;color:var(--ae-gold)">10</span>
+<span data-en="" style="font-size:18px;letter-spacing:0.04em">Samuel</span><span data-zh="" style="font-size:18px;letter-spacing:0.04em"><span style="color: rgb(12, 16, 20); font-family: -apple-system, BlinkMacSystemFont, &quot;Segoe UI&quot;, Roboto, Helvetica, Arial, sans-serif; letter-spacing: normal; background-color: rgb(255, 255, 255)">羅卓豐 Samuel</span></span>
+<span data-en="" style="font-size:13.5px;color:var(--ae-ink-soft)">Internal Secretary</span><span data-zh="" style="font-size:13.5px;color:var(--ae-ink-soft)">內務秘書</span>
+<span data-en="" style="font-size:13px;line-height:1.75;color:var(--ae-ink-soft)"><span style="color: rgb(12, 16, 20); font-family: -apple-system, BlinkMacSystemFont, &quot;Segoe UI&quot;, Roboto, Helvetica, Arial, sans-serif; background-color: rgb(255, 255, 255)">”Success is not final, failure is not fatal: it is the courage to continue that counts.”</span></span><span data-zh="" style="font-size:13px;line-height:1.75;color:var(--ae-ink-soft)"><span style="color: rgb(12, 16, 20); font-family: -apple-system, BlinkMacSystemFont, &quot;Segoe UI&quot;, Roboto, Helvetica, Arial, sans-serif; background-color: rgb(255, 255, 255)">”Success is not final, failure is not fatal: it is the courage to continue that counts.”</span></span>
+<div class="mem-bio"><div><p data-en="" style="margin:12px 0 0;font-size:13.5px;line-height:1.95;color:var(--ae-ink);white-space:pre-line"><span style="color: rgb(12, 16, 20); font-family: -apple-system, BlinkMacSystemFont, &quot;Segoe UI&quot;, Roboto, Helvetica, Arial, sans-serif; white-space: normal; background-color: rgb(255, 255, 255)">Hello everyone, I am Samuel Law of class 5A, and I'm running as one of the internal secretaries of Aeterna.</span><br style="color: rgb(12, 16, 20); font-family: -apple-system, BlinkMacSystemFont, &quot;Segoe UI&quot;, Roboto, Helvetica, Arial, sans-serif; white-space: normal; background-color: rgb(255, 255, 255)"><span style="color: rgb(12, 16, 20); font-family: -apple-system, BlinkMacSystemFont, &quot;Segoe UI&quot;, Roboto, Helvetica, Arial, sans-serif; white-space: normal; background-color: rgb(255, 255, 255)">I love playing chess, debating and reading. They shape my mind and remind me every voice matters. This is exactly why I join the Student Union: to turn the ideas into real actions.</span><br style="color: rgb(12, 16, 20); font-family: -apple-system, BlinkMacSystemFont, &quot;Segoe UI&quot;, Roboto, Helvetica, Arial, sans-serif; white-space: normal; background-color: rgb(255, 255, 255)"><span style="color: rgb(12, 16, 20); font-family: -apple-system, BlinkMacSystemFont, &quot;Segoe UI&quot;, Roboto, Helvetica, Arial, sans-serif; white-space: normal; background-color: rgb(255, 255, 255)">Aeterna is about creating the memorable moments and I am delighted to be part of the light that lasts.</span></p><p data-zh="" style="margin:12px 0 0;font-size:13.5px;line-height:1.95;color:var(--ae-ink);white-space:pre-line"><span style="color: rgb(12, 16, 20); font-family: -apple-system, BlinkMacSystemFont, &quot;Segoe UI&quot;, Roboto, Helvetica, Arial, sans-serif; white-space: normal; background-color: rgb(255, 255, 255)">大家好，我係5A嘅Samuel，今年會以Aeterna內務秘書身份參選。</span><br style="color: rgb(12, 16, 20); font-family: -apple-system, BlinkMacSystemFont, &quot;Segoe UI&quot;, Roboto, Helvetica, Arial, sans-serif; white-space: normal; background-color: rgb(255, 255, 255)"><span style="color: rgb(12, 16, 20); font-family: -apple-system, BlinkMacSystemFont, &quot;Segoe UI&quot;, Roboto, Helvetica, Arial, sans-serif; white-space: normal; background-color: rgb(255, 255, 255)">我鍾意捉棋、英辯同睇書。呢啲興趣令我習慣思考，理性看待問題，亦提醒我每個同學嘅聲音都好重要。</span><br style="color: rgb(12, 16, 20); font-family: -apple-system, BlinkMacSystemFont, &quot;Segoe UI&quot;, Roboto, Helvetica, Arial, sans-serif; white-space: normal; background-color: rgb(255, 255, 255)"><span style="color: rgb(12, 16, 20); font-family: -apple-system, BlinkMacSystemFont, &quot;Segoe UI&quot;, Roboto, Helvetica, Arial, sans-serif; white-space: normal; background-color: rgb(255, 255, 255)">正因為咁，我決定加入學生會，將意見變成真實嘅行動，一齊達成改變。我希望共同創造值得記住嘅時刻，持續發光發亮。</span></p></div></div>
+<span class="mem-more" style="margin-top:8px;font-family:'Inter',sans-serif;font-size:11px;letter-spacing:0.14em;text-transform:uppercase;color:var(--ae-gold)"><span data-en="">Read more →</span><span data-zh="">閱讀更多 →</span></span>
+</div>
+</div>
+</div>
+</div><div class="mem mem-11" style="--mw:200px;max-width:100%">
+<div class="mem-card" style="display:flex;flex-direction:column;gap:14px;background:var(--ae-panel);border-radius:16px;box-shadow:0 1px 0 var(--ae-line),0 10px 26px rgba(122,86,190,.07)">
+<button type="button" class="mem-close" onClick="{{ closeMem }}" style="position:absolute;top:14px;right:14px;z-index:4;align-items:center;justify-content:center;width:32px;height:32px;border:1px solid var(--ae-line);border-radius:50%;background:#fff;color:var(--ae-ink-soft);font-size:15px;cursor:pointer;line-height:1">×</button>
+<div class="mem-inner">
+<div class="mem-photo">
+<div class="ph-swap" style="position:relative;aspect-ratio:3/4;border-radius:11px;overflow:hidden;background:#ece1fb"><div class="ph-back" style="position:absolute;inset:0"><img src="photos/ae-p11-b.webp" alt="" loading="lazy" decoding="async" style="width:100%;height:100%;object-fit:contain;display:block" /></div><div class="ph-front" style="position:absolute;inset:0;z-index:2"><img src="photos/ae-p11.webp" alt="" loading="lazy" decoding="async" style="width:100%;height:100%;object-fit:contain;display:block" /></div><span class="ph-badge" style="position:absolute;right:9px;bottom:9px;z-index:3;padding:3px 9px;border-radius:999px;background:linear-gradient(150deg,#fbc75a,#eb9a12);color:#fff;font-family:'Inter',sans-serif;font-size:10px;letter-spacing:0.1em;pointer-events:none">2</span></div>
+</div>
+<div class="mem-info" onClick="{{ mem11 }}" style="display:flex;flex-direction:column;gap:5px;flex:1;min-width:0">
+<span style="font-size:11px;font-family:'Inter',sans-serif;letter-spacing:0.16em;color:var(--ae-gold)">11</span>
+<span data-en="" style="font-size:18px;letter-spacing:0.04em">Ryan</span><span data-zh="" style="font-size:18px;letter-spacing:0.04em"><span style="color: rgb(12, 16, 20); font-family: -apple-system, BlinkMacSystemFont, &quot;Segoe UI&quot;, Roboto, Helvetica, Arial, sans-serif; letter-spacing: normal; background-color: rgb(255, 255, 255)">陳德熙 Ryan</span></span>
+<span data-en="" style="font-size:13.5px;color:var(--ae-ink-soft)">Internal Secretary</span><span data-zh="" style="font-size:13.5px;color:var(--ae-ink-soft)">內務秘書</span>
+<span data-en="" style="font-size:13px;line-height:1.75;color:var(--ae-ink-soft)"><span style="color: rgb(12, 16, 20); font-family: -apple-system, BlinkMacSystemFont, &quot;Segoe UI&quot;, Roboto, Helvetica, Arial, sans-serif; background-color: rgb(255, 255, 255)">“one day at a time”</span><br style="color: rgb(12, 16, 20); font-family: -apple-system, BlinkMacSystemFont, &quot;Segoe UI&quot;, Roboto, Helvetica, Arial, sans-serif; background-color: rgb(255, 255, 255)"></span><span data-zh="" style="font-size:13px;line-height:1.75;color:var(--ae-ink-soft)"><span style="color: rgb(12, 16, 20); font-family: -apple-system, BlinkMacSystemFont, &quot;Segoe UI&quot;, Roboto, Helvetica, Arial, sans-serif; background-color: rgb(255, 255, 255)">“one day at a time”</span><br style="color: rgb(12, 16, 20); font-family: -apple-system, BlinkMacSystemFont, &quot;Segoe UI&quot;, Roboto, Helvetica, Arial, sans-serif; background-color: rgb(255, 255, 255)"></span>
+<div class="mem-bio"><div><p data-en="" style="margin:12px 0 0;font-size:13.5px;line-height:1.95;color:var(--ae-ink);white-space:pre-line"><span style="color: rgb(12, 16, 20); font-family: -apple-system, BlinkMacSystemFont, &quot;Segoe UI&quot;, Roboto, Helvetica, Arial, sans-serif; white-space: normal; background-color: rgb(255, 255, 255)">Hey guys 😆 I’m Ryan from Class 4A. I’m into badminton 🏸, so you’ll usually catch me on the court. Next year I’ll be joining the student union just to try out different roles and make my school life a bit more fun 🤗</span><br style="color: rgb(12, 16, 20); font-family: -apple-system, BlinkMacSystemFont, &quot;Segoe UI&quot;, Roboto, Helvetica, Arial, sans-serif; white-space: normal; background-color: rgb(255, 255, 255)"></p><p data-zh="" style="margin:12px 0 0;font-size:13.5px;line-height:1.95;color:var(--ae-ink);white-space:pre-line"><span style="color: rgb(12, 16, 20); font-family: -apple-system, BlinkMacSystemFont, &quot;Segoe UI&quot;, Roboto, Helvetica, Arial, sans-serif; white-space: normal; background-color: rgb(255, 255, 255)">大家好啊😆我係4A班嘅陳德熙，或者叫我Ryan都得。平時我都鍾意打羽毛球🏸，係操場入面都會搵到我。來年參選學生會係想體驗下唔同職位，等自己嘅校園生活豐富啲🤗</span><br style="color: rgb(12, 16, 20); font-family: -apple-system, BlinkMacSystemFont, &quot;Segoe UI&quot;, Roboto, Helvetica, Arial, sans-serif; white-space: normal; background-color: rgb(255, 255, 255)"></p></div></div>
+<span class="mem-more" style="margin-top:8px;font-family:'Inter',sans-serif;font-size:11px;letter-spacing:0.14em;text-transform:uppercase;color:var(--ae-gold)"><span data-en="">Read more →</span><span data-zh="">閱讀更多 →</span></span>
+</div>
+</div>
+</div>
+</div></div>
+<div style="display:flex;flex-wrap:wrap;justify-content:center;align-items:flex-start;gap:clamp(16px,2.4vw,22px)"><div class="mem mem-12" style="--mw:200px;max-width:100%">
+<div class="mem-card" style="display:flex;flex-direction:column;gap:14px;background:var(--ae-panel);border-radius:16px;box-shadow:0 1px 0 var(--ae-line),0 10px 26px rgba(122,86,190,.07)">
+<button type="button" class="mem-close" onClick="{{ closeMem }}" style="position:absolute;top:14px;right:14px;z-index:4;align-items:center;justify-content:center;width:32px;height:32px;border:1px solid var(--ae-line);border-radius:50%;background:#fff;color:var(--ae-ink-soft);font-size:15px;cursor:pointer;line-height:1">×</button>
+<div class="mem-inner">
+<div class="mem-photo">
+<div class="ph-swap" style="position:relative;aspect-ratio:3/4;border-radius:11px;overflow:hidden;background:#ece1fb"><div class="ph-back" style="position:absolute;inset:0"><img src="photos/ae-p12-b.webp" alt="" loading="lazy" decoding="async" style="width:100%;height:100%;object-fit:contain;display:block" /></div><div class="ph-front" style="position:absolute;inset:0;z-index:2"><img src="photos/ae-p12-v2.webp" alt="" style="width:100%;height:100%;object-fit:contain;display:block" /></div><span class="ph-badge" style="position:absolute;right:9px;bottom:9px;z-index:3;padding:3px 9px;border-radius:999px;background:linear-gradient(150deg,#fbc75a,#eb9a12);color:#fff;font-family:'Inter',sans-serif;font-size:10px;letter-spacing:0.1em;pointer-events:none">2</span></div>
+</div>
+<div class="mem-info" onClick="{{ mem12 }}" style="display:flex;flex-direction:column;gap:5px;flex:1;min-width:0">
+<span style="font-size:11px;font-family:'Inter',sans-serif;letter-spacing:0.16em;color:var(--ae-gold)">12</span>
+<span data-en="" style="font-size:18px;letter-spacing:0.04em">Louis</span><span data-zh="" style="font-size:18px;letter-spacing:0.04em"><span style="color: rgb(12, 16, 20); font-family: -apple-system, BlinkMacSystemFont, &quot;Segoe UI&quot;, Roboto, Helvetica, Arial, sans-serif; letter-spacing: normal; background-color: rgb(255, 255, 255)">陳沃煒 Louis</span></span>
+<span data-en="" style="font-size:13.5px;color:var(--ae-ink-soft)">External Secretary</span><span data-zh="" style="font-size:13.5px;color:var(--ae-ink-soft)">外務秘書</span>
+<span data-en="" style="font-size:13px;line-height:1.75;color:var(--ae-ink-soft)"><span style="color: rgb(12, 16, 20); font-family: -apple-system, BlinkMacSystemFont, &quot;Segoe UI&quot;, Roboto, Helvetica, Arial, sans-serif; background-color: rgb(255, 255, 255)">"Live as if you were to die tomorrow. Learn as if you were to live forever."</span></span><span data-zh="" style="font-size:13px;line-height:1.75;color:var(--ae-ink-soft)"><span style="color: rgb(12, 16, 20); font-family: -apple-system, BlinkMacSystemFont, &quot;Segoe UI&quot;, Roboto, Helvetica, Arial, sans-serif; background-color: rgb(255, 255, 255)">"Live as if you were to die tomorrow. Learn as if you were to live forever."</span></span>
+<div class="mem-bio"><div><p data-en="" style="margin:12px 0 0;font-size:13.5px;line-height:1.95;color:var(--ae-ink);white-space:pre-line"><span style="color: rgb(12, 16, 20); font-family: -apple-system, BlinkMacSystemFont, &quot;Segoe UI&quot;, Roboto, Helvetica, Arial, sans-serif; white-space: normal; background-color: rgb(255, 255, 255)">Hello everyone, I'm Louis! In my free time, I love playing table tennis 🏓, listening to music 🎶, and exploring different places for good food 😋👅. The reason I'm running for the Student Union this year is to develop my communication and problem-solving skills, as well as to enrich my school life 😝😝😝 Hope you can all support Aeterna 🙈🙈🙈</span></p><p data-zh="" style="margin:12px 0 0;font-size:13.5px;line-height:1.95;color:var(--ae-ink);white-space:pre-line"><span style="color: rgb(12, 16, 20); font-family: -apple-system, BlinkMacSystemFont, &quot;Segoe UI&quot;, Roboto, Helvetica, Arial, sans-serif; white-space: normal; background-color: rgb(255, 255, 255)">大家好，我係Louis，平時鍾意打乒乓波🏓同埋聽歌啦🎶，有時總會四處行吓食嘢😋👅我今年參選學生會嘅原因係可以培養自己嘅嘅溝通同埋解難能力，同豐富我嘅校園生活😝😝😝希望大家可以支持Aeterna🙈🙈🙈</span></p></div></div>
+<span class="mem-more" style="margin-top:8px;font-family:'Inter',sans-serif;font-size:11px;letter-spacing:0.14em;text-transform:uppercase;color:var(--ae-gold)"><span data-en="">Read more →</span><span data-zh="">閱讀更多 →</span></span>
+</div>
+</div>
+</div>
+</div><div class="mem mem-13" style="--mw:200px;max-width:100%">
+<div class="mem-card" style="display:flex;flex-direction:column;gap:14px;background:var(--ae-panel);border-radius:16px;box-shadow:0 1px 0 var(--ae-line),0 10px 26px rgba(122,86,190,.07)">
+<button type="button" class="mem-close" onClick="{{ closeMem }}" style="position:absolute;top:14px;right:14px;z-index:4;align-items:center;justify-content:center;width:32px;height:32px;border:1px solid var(--ae-line);border-radius:50%;background:#fff;color:var(--ae-ink-soft);font-size:15px;cursor:pointer;line-height:1">×</button>
+<div class="mem-inner">
+<div class="mem-photo">
+<div class="ph-swap" style="position:relative;aspect-ratio:3/4;border-radius:11px;overflow:hidden;background:#ece1fb"><div class="ph-back" style="position:absolute;inset:0"><img src="photos/ae-p13-b.webp" alt="" loading="lazy" decoding="async" style="width:100%;height:100%;object-fit:contain;display:block" /></div><div class="ph-front" style="position:absolute;inset:0;z-index:2"><img src="photos/ae-p13.webp" alt="" loading="lazy" decoding="async" style="width:100%;height:100%;object-fit:contain;display:block" /></div><span class="ph-badge" style="position:absolute;right:9px;bottom:9px;z-index:3;padding:3px 9px;border-radius:999px;background:linear-gradient(150deg,#fbc75a,#eb9a12);color:#fff;font-family:'Inter',sans-serif;font-size:10px;letter-spacing:0.1em;pointer-events:none">2</span></div>
+</div>
+<div class="mem-info" onClick="{{ mem13 }}" style="display:flex;flex-direction:column;gap:5px;flex:1;min-width:0">
+<span style="font-size:11px;font-family:'Inter',sans-serif;letter-spacing:0.16em;color:var(--ae-gold)">13</span>
+<span data-en="" style="font-size:18px;letter-spacing:0.04em">Robert</span><span data-zh="" style="font-size:18px;letter-spacing:0.04em"><span style="color: rgb(12, 16, 20); font-family: -apple-system, BlinkMacSystemFont, &quot;Segoe UI&quot;, Roboto, Helvetica, Arial, sans-serif; letter-spacing: normal; background-color: rgb(255, 255, 255)">羅振航 Robert</span></span>
+<span data-en="" style="font-size:13.5px;color:var(--ae-ink-soft)">External Secretary</span><span data-zh="" style="font-size:13.5px;color:var(--ae-ink-soft)">外務秘書</span>
+<span data-en="" style="font-size:13px;line-height:1.75;color:var(--ae-ink-soft)"><span style="color: rgb(12, 16, 20); font-family: -apple-system, BlinkMacSystemFont, &quot;Segoe UI&quot;, Roboto, Helvetica, Arial, sans-serif; background-color: rgb(255, 255, 255)">“Serious work, cheerful vibes. "</span></span><span data-zh="" style="font-size:13px;line-height:1.75;color:var(--ae-ink-soft)"><span style="color: rgb(12, 16, 20); font-family: -apple-system, BlinkMacSystemFont, &quot;Segoe UI&quot;, Roboto, Helvetica, Arial, sans-serif; background-color: rgb(255, 255, 255)">“Serious work, cheerful vibes. "</span></span>
+<div class="mem-bio"><div><p data-en="" style="margin:12px 0 0;font-size:13.5px;line-height:1.95;color:var(--ae-ink);white-space:pre-line"><span style="color: rgb(12, 16, 20); font-family: -apple-system, BlinkMacSystemFont, &quot;Segoe UI&quot;, Roboto, Helvetica, Arial, sans-serif; white-space: normal; background-color: rgb(255, 255, 255)">Hi everyone! I’m Robert from 5A, serving as External for Aeterna! My friends always tell me I’m a bit goofy, but honestly, that’s just my way of keeping life stress-free! I might seem a little random at times, but when it comes to work, I’m 100% locked in. Don't forget to show your support for Aeterna!</span></p><p data-zh="" style="margin:12px 0 0;font-size:13.5px;line-height:1.95;color:var(--ae-ink);white-space:pre-line"><span style="color: rgb(12, 16, 20); font-family: -apple-system, BlinkMacSystemFont, &quot;Segoe UI&quot;, Roboto, Helvetica, Arial, sans-serif; white-space: normal; background-color: rgb(255, 255, 255)">大家好！我係5A班嘅Robert，喺 ⁠Aeterna 擔任 ⁠External！平時身邊嘅朋友都話我傻吓傻吓，但其實我係用緊最輕鬆嘅態度去面對生活！雖然平時睇落有啲抽象⁠，但做事嘅時候我絕對會百分百認真⁠！大家記得支持 ⁠Aeterna！</span></p></div></div>
+<span class="mem-more" style="margin-top:8px;font-family:'Inter',sans-serif;font-size:11px;letter-spacing:0.14em;text-transform:uppercase;color:var(--ae-gold)"><span data-en="">Read more →</span><span data-zh="">閱讀更多 →</span></span>
+</div>
+</div>
+</div>
+</div><div class="mem mem-14" style="--mw:200px;max-width:100%">
+<div class="mem-card" style="display:flex;flex-direction:column;gap:14px;background:var(--ae-panel);border-radius:16px;box-shadow:0 1px 0 var(--ae-line),0 10px 26px rgba(122,86,190,.07)">
+<button type="button" class="mem-close" onClick="{{ closeMem }}" style="position:absolute;top:14px;right:14px;z-index:4;align-items:center;justify-content:center;width:32px;height:32px;border:1px solid var(--ae-line);border-radius:50%;background:#fff;color:var(--ae-ink-soft);font-size:15px;cursor:pointer;line-height:1">×</button>
+<div class="mem-inner">
+<div class="mem-photo">
+<div class="ph-swap" style="position:relative;aspect-ratio:3/4;border-radius:11px;overflow:hidden;background:#ece1fb"><div class="ph-back" style="position:absolute;inset:0"><img src="photos/ae-p14-b.webp" alt="" loading="lazy" decoding="async" style="width:100%;height:100%;object-fit:contain;display:block" /></div><div class="ph-front" style="position:absolute;inset:0;z-index:2"><img src="photos/ae-p14.webp" alt="" loading="lazy" decoding="async" style="width:100%;height:100%;object-fit:contain;display:block" /></div><span class="ph-badge" style="position:absolute;right:9px;bottom:9px;z-index:3;padding:3px 9px;border-radius:999px;background:linear-gradient(150deg,#fbc75a,#eb9a12);color:#fff;font-family:'Inter',sans-serif;font-size:10px;letter-spacing:0.1em;pointer-events:none">2</span></div>
+</div>
+<div class="mem-info" onClick="{{ mem14 }}" style="display:flex;flex-direction:column;gap:5px;flex:1;min-width:0">
+<span style="font-size:11px;font-family:'Inter',sans-serif;letter-spacing:0.16em;color:var(--ae-gold)">14</span>
+<span data-en="" style="font-size:18px;letter-spacing:0.04em">Joanna</span><span data-zh="" style="font-size:18px;letter-spacing:0.04em"><span style="color: rgb(12, 16, 20); font-family: -apple-system, BlinkMacSystemFont, &quot;Segoe UI&quot;, Roboto, Helvetica, Arial, sans-serif; letter-spacing: normal; background-color: rgb(255, 255, 255)">余穎欣 Joanna</span></span>
+<span data-en="" style="font-size:13.5px;color:var(--ae-ink-soft)">External Secretary</span><span data-zh="" style="font-size:13.5px;color:var(--ae-ink-soft)">外務秘書</span>
+<span data-en="" style="font-size:13px;line-height:1.75;color:var(--ae-ink-soft)"><span style="color: rgb(12, 16, 20); font-family: -apple-system, BlinkMacSystemFont, &quot;Segoe UI&quot;, Roboto, Helvetica, Arial, sans-serif; background-color: rgb(255, 255, 255)">“Always strive to be better.</span></span><span data-zh="" style="font-size:13px;line-height:1.75;color:var(--ae-ink-soft)"><span style="color: rgb(12, 16, 20); font-family: -apple-system, BlinkMacSystemFont, &quot;Segoe UI&quot;, Roboto, Helvetica, Arial, sans-serif; background-color: rgb(255, 255, 255)">“Always strive to be better.</span></span>
+<div class="mem-bio"><div><p data-en="" style="margin:12px 0 0;font-size:13.5px;line-height:1.95;color:var(--ae-ink);white-space:pre-line"><span style="color: rgb(12, 16, 20); font-family: -apple-system, BlinkMacSystemFont, &quot;Segoe UI&quot;, Roboto, Helvetica, Arial, sans-serif; white-space: normal; background-color: rgb(255, 255, 255)">Hi everyone! I'm Yu Wing Yan from class 4C. You can call me Fish 🐟.I love sports, such as basketball and badminton. I hope the events we organize in SU can create wonderful school memories for all of you!</span></p><p data-zh="" style="margin:12px 0 0;font-size:13.5px;line-height:1.95;color:var(--ae-ink);white-space:pre-line"><span style="color: rgb(12, 16, 20); font-family: -apple-system, BlinkMacSystemFont, &quot;Segoe UI&quot;, Roboto, Helvetica, Arial, sans-serif; white-space: normal; background-color: rgb(255, 255, 255)">Hi 大家好!我係4C班嘅余穎欣，大家都可以叫我魚或者fish🐟我平時鍾意運動，好似籃球、羽毛球等我都識少少。希望我哋搞嘅活動可以為大家留下美好嘅校園回憶！</span></p></div></div>
+<span class="mem-more" style="margin-top:8px;font-family:'Inter',sans-serif;font-size:11px;letter-spacing:0.14em;text-transform:uppercase;color:var(--ae-gold)"><span data-en="">Read more →</span><span data-zh="">閱讀更多 →</span></span>
+</div>
+</div>
+</div>
+</div><div class="mem mem-15" style="--mw:200px;max-width:100%">
+<div class="mem-card" style="display:flex;flex-direction:column;gap:14px;background:var(--ae-panel);border-radius:16px;box-shadow:0 1px 0 var(--ae-line),0 10px 26px rgba(122,86,190,.07)">
+<button type="button" class="mem-close" onClick="{{ closeMem }}" style="position:absolute;top:14px;right:14px;z-index:4;align-items:center;justify-content:center;width:32px;height:32px;border:1px solid var(--ae-line);border-radius:50%;background:#fff;color:var(--ae-ink-soft);font-size:15px;cursor:pointer;line-height:1">×</button>
+<div class="mem-inner">
+<div class="mem-photo">
+<div class="ph-swap" style="position:relative;aspect-ratio:3/4;border-radius:11px;overflow:hidden;background:#ece1fb"><div class="ph-back" style="position:absolute;inset:0"><img src="photos/ae-p15-b.webp" alt="" loading="lazy" decoding="async" style="width:100%;height:100%;object-fit:contain;display:block" /></div><div class="ph-front" style="position:absolute;inset:0;z-index:2"><img src="photos/ae-p15.webp" alt="" loading="lazy" decoding="async" style="width:100%;height:100%;object-fit:contain;display:block" /></div><span class="ph-badge" style="position:absolute;right:9px;bottom:9px;z-index:3;padding:3px 9px;border-radius:999px;background:linear-gradient(150deg,#fbc75a,#eb9a12);color:#fff;font-family:'Inter',sans-serif;font-size:10px;letter-spacing:0.1em;pointer-events:none">2</span></div>
+</div>
+<div class="mem-info" onClick="{{ mem15 }}" style="display:flex;flex-direction:column;gap:5px;flex:1;min-width:0">
+<span style="font-size:11px;font-family:'Inter',sans-serif;letter-spacing:0.16em;color:var(--ae-gold)">15</span>
+<span data-en="" style="font-size:18px;letter-spacing:0.04em">Alvin</span><span data-zh="" style="font-size:18px;letter-spacing:0.04em"><span style="color: rgb(12, 16, 20); font-family: -apple-system, BlinkMacSystemFont, &quot;Segoe UI&quot;, Roboto, Helvetica, Arial, sans-serif; letter-spacing: normal; background-color: rgb(255, 255, 255)">林信毅 Alvin</span></span>
+<span data-en="" style="font-size:13.5px;color:var(--ae-ink-soft)">External Secretary</span><span data-zh="" style="font-size:13.5px;color:var(--ae-ink-soft)">外務秘書</span>
+<span data-en="" style="font-size:13px;line-height:1.75;color:var(--ae-ink-soft)">"The traveler knows no boundaries; the brave know no fear."</span><span data-zh="" style="font-size:13px;line-height:1.75;color:var(--ae-ink-soft)"><span style="color: rgb(12, 16, 20); font-family: -apple-system, BlinkMacSystemFont, &quot;Segoe UI&quot;, Roboto, Helvetica, Arial, sans-serif; background-color: rgb(255, 255, 255)">「行者無疆,勇者無懼」</span></span>
+<div class="mem-bio"><div><p data-en="" style="margin:12px 0 0;font-size:13.5px;line-height:1.95;color:var(--ae-ink);white-space:pre-line"><span style="color: rgb(12, 16, 20); font-family: -apple-system, BlinkMacSystemFont, &quot;Segoe UI&quot;, Roboto, Helvetica, Arial, sans-serif; white-space: normal; background-color: rgb(255, 255, 255)">Hiiii! I'm Lam Shun Ngai, Alvin from 5A.👋🏻👋🏻</span><br style="color: rgb(12, 16, 20); font-family: -apple-system, BlinkMacSystemFont, &quot;Segoe UI&quot;, Roboto, Helvetica, Arial, sans-serif; white-space: normal; background-color: rgb(255, 255, 255)"><span style="color: rgb(12, 16, 20); font-family: -apple-system, BlinkMacSystemFont, &quot;Segoe UI&quot;, Roboto, Helvetica, Arial, sans-serif; white-space: normal; background-color: rgb(255, 255, 255)">Although I'm serving as External🗣️, I'm secretly an introvert learning to be more outgoing.🤷🏻‍♂️😩 Once we break the ice, I'm super talkative! 🫪l love traveling and sleeping in my free time,🥱✈️ and I'm deeply curious about everything around me.🤓🧐 Don't forget to take plenty of rest while studying hard!🙀😽 I'd super appreciate your support for Aeterna! 🙌🏻🙌🏻❤️‍🔥</span></p><p data-zh="" style="margin:12px 0 0;font-size:13.5px;line-height:1.95;color:var(--ae-ink);white-space:pre-line"><span style="color: rgb(12, 16, 20); font-family: -apple-system, BlinkMacSystemFont, &quot;Segoe UI&quot;, Roboto, Helvetica, Arial, sans-serif; white-space: normal; background-color: rgb(255, 255, 255)">Hiiii！我係 5A 林信毅 Alvin。 👋🏻👋🏻</span><br style="color: rgb(12, 16, 20); font-family: -apple-system, BlinkMacSystemFont, &quot;Segoe UI&quot;, Roboto, Helvetica, Arial, sans-serif; white-space: normal; background-color: rgb(255, 255, 255)"><span style="color: rgb(12, 16, 20); font-family: -apple-system, BlinkMacSystemFont, &quot;Segoe UI&quot;, Roboto, Helvetica, Arial, sans-serif; white-space: normal; background-color: rgb(255, 255, 255)">雖然我擔任 External🗣️，但其實我係個正在努力變 e 嘅 i 人🤷🏻‍♂️😩，熟咗之後就會有講不完嘅說話🫪！我平時最鍾意去旅行同瞓覺🥱✈️，對周圍嘅事物都充滿好奇心🤓🧐。大家記得讀書之餘記得都要多啲休息🙀😽，同埋多多支持 Aeterna！🙌🏻🙌🏻❤️‍🔥</span></p></div></div>
+<span class="mem-more" style="margin-top:8px;font-family:'Inter',sans-serif;font-size:11px;letter-spacing:0.14em;text-transform:uppercase;color:var(--ae-gold)"><span data-en="">Read more →</span><span data-zh="">閱讀更多 →</span></span>
+</div>
+</div>
+</div>
+</div></div>
+</div>
+</div>
+</section>
+</sc-if>
+
+<sc-if value="{{ isManifesto }}" hint-placeholder-val="{{ false }}">
+<section style="padding:clamp(70px,12vw,150px) clamp(18px,4vw,36px);display:flex;justify-content:center">
+<div style="display:flex;flex-direction:column;align-items:center;gap:16px;text-align:center">
+<span style="color:var(--ae-gold);font-size:20px">✦</span>
+<h2 style="margin:0;font-family:'Marcellus',serif;font-size:clamp(34px,5vw,52px);font-weight:400;letter-spacing:0.05em"><span data-en="">Manifesto</span><span data-zh="">政綱</span></h2>
+<p style="margin:0;font-family:'Caveat Brush',cursive;font-size:clamp(28px,4vw,44px);color:var(--ae-lilac)"><span data-en="">Coming soon</span><span data-zh="">即將推出</span></p>
+<p style="margin:0;font-size:14.5px;line-height:1.9;color:var(--ae-ink-soft);max-width:38ch"><span data-en="">Our full manifesto is being written. It will appear here.</span><span data-zh="">我們的完整政綱正在撰寫中，稍後於此發佈。</span></p>
+</div>
+</section>
+</sc-if>
+
+<sc-if value="{{ isActivities }}" hint-placeholder-val="{{ false }}">
+<section style="padding:clamp(70px,12vw,150px) clamp(18px,4vw,36px);display:flex;justify-content:center">
+<div style="display:flex;flex-direction:column;align-items:center;gap:16px;text-align:center">
+<span style="color:var(--ae-gold);font-size:20px">✦</span>
+<h2 style="margin:0;font-family:'Marcellus',serif;font-size:clamp(34px,5vw,52px);font-weight:400;letter-spacing:0.05em"><span data-en="">Activities</span><span data-zh="">活動</span></h2>
+<p style="margin:0;font-family:'Caveat Brush',cursive;font-size:clamp(28px,4vw,44px);color:var(--ae-lilac)"><span data-en="">Coming soon</span><span data-zh="">即將推出</span></p>
+<p style="margin:0;font-size:14.5px;line-height:1.9;color:var(--ae-ink-soft);max-width:38ch"><span data-en="">Our programme for the year is still taking shape. Watch this space.</span><span data-zh="">本年度的活動安排仍在籌備中，敬請期待。</span></p>
+</div>
+</section>
+</sc-if>
+
+<sc-if value="{{ isContact }}" hint-placeholder-val="{{ false }}">
+<section style="position:relative;padding:clamp(52px,8vw,104px) clamp(18px,4vw,36px) clamp(56px,8vw,104px);overflow:hidden">
+<div style="position:absolute;top:-160px;left:50%;transform:translateX(-50%);width:760px;height:420px;border-radius:50%;background:radial-gradient(ellipse,rgba(251,199,90,.24),rgba(251,199,90,0) 68%);pointer-events:none"></div>
+<div style="position:relative;max-width:680px;margin:0 auto;display:flex;flex-direction:column;gap:clamp(24px,4vw,38px)">
+<div style="display:flex;flex-direction:column;align-items:center;gap:12px;text-align:center">
+<span style="color:var(--ae-gold);font-size:18px">✦</span>
+<h2 style="margin:0;font-family:'Marcellus',serif;font-size:clamp(34px,5vw,52px);font-weight:400;letter-spacing:0.05em"><span data-en="">Contact us</span><span data-zh="">聯絡我們</span></h2>
+<p style="margin:0;font-size:15px;line-height:1.95;color:var(--ae-ink-soft);max-width:40ch"><span data-en="">A question, an idea, or something you want changed — reach us anywhere below.</span><span data-zh="">無論是疑問、構想，還是想改變的事——歡迎透過以下任何方式聯絡我們。</span></p>
+</div>
+<div style="display:flex;flex-direction:column;gap:14px">
+<a href="https://www.instagram.com/qes_aeterna/" target="_blank" rel="noopener" style="display:flex;align-items:center;gap:16px;padding:20px 22px;background:var(--ae-panel);border-radius:16px;box-shadow:0 1px 0 var(--ae-line),0 10px 26px rgba(122,86,190,.07);text-decoration:none;color:var(--ae-ink)" style-hover="box-shadow:0 1px 0 var(--ae-gold-light),0 14px 30px rgba(122,86,190,.16);transform:translateY(-2px)">
+<span style="flex:none;display:flex;align-items:center;justify-content:center;width:46px;height:46px;border-radius:50%;background:linear-gradient(150deg,#fbc75a,#eb9a12);color:#fff;font-family:'Inter',sans-serif;font-size:15px;letter-spacing:0.02em">IG</span>
+<span style="display:flex;flex-direction:column;gap:3px;min-width:0">
+<span style="font-size:17px;letter-spacing:0.04em"><span data-en="">Instagram</span><span data-zh="">Instagram</span></span>
+<span style="font-size:13px;color:var(--ae-ink-soft);font-family:'Inter',sans-serif">@qes_aeterna</span>
+</span>
+<span style="margin-left:auto;color:var(--ae-lilac);font-size:18px">→</span>
+</a>
+<a href="mailto:aeterna.qessu@gmail.com" style="display:flex;align-items:center;gap:16px;padding:20px 22px;background:var(--ae-panel);border-radius:16px;box-shadow:0 1px 0 var(--ae-line),0 10px 26px rgba(122,86,190,.07);text-decoration:none;color:var(--ae-ink)" style-hover="box-shadow:0 1px 0 var(--ae-gold-light),0 14px 30px rgba(122,86,190,.16);transform:translateY(-2px)">
+<span style="flex:none;display:flex;align-items:center;justify-content:center;width:46px;height:46px;border-radius:50%;background:linear-gradient(150deg,#fbc75a,#eb9a12);color:#fff;font-family:'Inter',sans-serif;font-size:15px;letter-spacing:0.02em">@</span>
+<span style="display:flex;flex-direction:column;gap:3px;min-width:0">
+<span style="font-size:17px;letter-spacing:0.04em"><span data-en="">Email</span><span data-zh="">電郵</span></span>
+<span style="font-size:13px;color:var(--ae-ink-soft);font-family:'Inter',sans-serif">aeterna.qessu@gmail.com</span>
+</span>
+<span style="margin-left:auto;color:var(--ae-lilac);font-size:18px">→</span>
+</a>
+<sc-if value="{{ pushEnabled }}" hint-placeholder-val="{{ false }}">
+<button type="button" onClick="{{ openPush }}" style="display:flex;align-items:center;gap:16px;width:100%;padding:20px 22px;background:var(--ae-panel);border:0;border-radius:16px;box-shadow:0 1px 0 var(--ae-line),0 10px 26px rgba(122,86,190,.07);color:var(--ae-ink);font-family:'Noto Serif TC',serif;text-align:left;cursor:pointer;transition:transform .2s ease,box-shadow .2s ease" style-hover="box-shadow:0 1px 0 var(--ae-gold-light),0 14px 30px rgba(122,86,190,.16);transform:translateY(-2px)">
+<span style="flex:none;display:flex;align-items:center;justify-content:center;width:46px;height:46px;border-radius:50%;background:linear-gradient(150deg,#fbc75a,#eb9a12);color:#fff">
+<svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M6.3 9.6a5.7 5.7 0 0 1 11.4 0c0 4 1 5.4 1.8 6.2a.7.7 0 0 1-.5 1.2H5a.7.7 0 0 1-.5-1.2c.8-.8 1.8-2.2 1.8-6.2Z"></path><path d="M9.7 19.6a2.6 2.6 0 0 0 4.6 0"></path></svg>
+</span>
+<span style="display:flex;flex-direction:column;gap:3px;min-width:0">
+<span style="font-size:17px;letter-spacing:0.04em"><span data-en>Phone notifications</span><span data-zh>手機通知</span></span>
+<span style="font-size:13px;color:var(--ae-ink-soft);line-height:1.6">{{ pushCardSub }}</span>
+</span>
+<span style="margin-left:auto;color:var(--ae-lilac);font-size:18px">→</span>
+</button>
+</sc-if>
+</div>
+<div style="display:flex;align-items:center;gap:14px;justify-content:center;padding-top:6px">
+<span style="display:block;width:clamp(30px,8vw,90px);height:1px;background:linear-gradient(to right,transparent,var(--ae-line))"></span>
+<span style="font-family:'Caveat Brush',cursive;font-size:24px;color:var(--ae-gold)">Aeterna</span>
+<span style="display:block;width:clamp(30px,8vw,90px);height:1px;background:linear-gradient(to left,transparent,var(--ae-line))"></span>
+</div>
+</div>
+</section>
+</sc-if>
+
+<sc-if value="{{ isWelfare }}" hint-placeholder-val="{{ false }}">
+<section style="padding:clamp(44px,7vw,88px) clamp(18px,4vw,36px) clamp(48px,7vw,92px)">
+<div style="max-width:1120px;margin:0 auto;display:flex;flex-direction:column;gap:clamp(22px,3vw,34px)">
+
+<div style="display:flex;flex-direction:column;align-items:center;gap:12px;text-align:center">
+<span style="color:var(--ae-gold);font-size:18px">✦</span>
+<h2 style="margin:0;font-family:'Marcellus',serif;font-size:clamp(34px,5vw,52px);font-weight:400;letter-spacing:0.05em"><span data-en="">Welfare</span><span data-zh="">學生福利</span></h2>
+<p style="margin:0;font-size:15px;line-height:1.95;color:var(--ae-ink-soft);max-width:44ch"><span data-en="">Discounts and offers for our students. Show your student card unless a shop says otherwise.</span><span data-zh="">為同學爭取的商戶優惠。除另有說明外，使用時請出示學生證。</span></p>
+<p style="margin:0;font-family:'Inter',sans-serif;font-size:12px;letter-spacing:0.2em;text-transform:uppercase;color:var(--ae-gold)">{{ shopCount }} <span data-en="">partners</span><span data-zh="">間合作商戶</span></p>
+</div>
+
+<div style="position:sticky;top:60px;z-index:10;display:flex;flex-direction:column;gap:12px;padding:14px;background:rgba(250,246,255,.92);backdrop-filter:blur(10px);border-radius:16px;box-shadow:0 1px 0 var(--ae-line),0 8px 22px rgba(122,86,190,.08)">
+<input type="text" value="{{ query }}" onInput="{{ onQuery }}" placeholder="{{ searchPlaceholder }}" style="width:100%;box-sizing:border-box;padding:10px 15px;border:1px solid var(--ae-line);border-radius:999px;background:#fff;font-family:'Noto Serif TC',serif;font-size:14px;color:var(--ae-ink);outline:none">
+<div style="display:flex;flex-wrap:wrap;gap:7px;justify-content:center">
+<sc-for list="{{ srcChips }}" as="chip" hint-placeholder-count="3">
+<button type="button" onClick="{{ chip.onClick }}" style="{{ chip.style }}">{{ chip.label }}</button>
+</sc-for>
+</div>
+<div style="display:flex;flex-wrap:wrap;gap:7px;justify-content:center">
+<sc-for list="{{ catChips }}" as="chip" hint-placeholder-count="6">
+<button type="button" onClick="{{ chip.onClick }}" style="{{ chip.style }}">{{ chip.label }}</button>
+</sc-for>
+</div>
+</div>
+
+<sc-for list="{{ groups }}" as="group" hint-placeholder-count="3">
+<div style="display:flex;flex-direction:column;gap:14px">
+<div style="display:flex;align-items:baseline;gap:12px">
+<h3 style="margin:0;font-family:'Marcellus',serif;font-size:clamp(20px,2.6vw,26px);font-weight:400;letter-spacing:0.05em">{{ group.title }}</h3>
+<span style="font-family:'Inter',sans-serif;font-size:11px;letter-spacing:0.14em;color:var(--ae-gold)">{{ group.count }}</span>
+<span style="flex:1;height:1px;background:linear-gradient(to right,var(--ae-line),transparent)"></span>
+</div>
+<div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(250px,1fr));gap:14px">
+<sc-for list="{{ group.shops }}" as="shop" hint-placeholder-count="6">
+<div style="display:flex;flex-direction:column;gap:9px;padding:18px 20px;background:var(--ae-panel);border-radius:14px;box-shadow:0 1px 0 var(--ae-line),0 8px 20px rgba(122,86,190,.06)">
+<span style="{{ shop.badgeStyle }}">{{ shop.badge }}</span>
+<span style="font-size:16.5px;letter-spacing:0.03em;line-height:1.4">{{ shop.name }}</span>
+<sc-if value="{{ shop.hasLink }}" hint-placeholder-val="{{ true }}">
+<a href="{{ shop.href }}" target="_blank" rel="noopener" style="font-family:'Inter',sans-serif;font-size:13px;letter-spacing:0.02em;color:#7346bd;word-break:break-all">{{ shop.ig }}</a>
+</sc-if>
+<span style="{{ shop.noteStyle }}">{{ shop.note }}</span>
+<span style="font-size:13.5px;line-height:1.8;color:var(--ae-ink-soft);white-space:pre-line">{{ shop.welfare }}</span>
+<span style="{{ shop.telStyle }}">{{ shop.tel }}</span>
+</div>
+</sc-for>
+</div>
+</div>
+</sc-for>
+
+<sc-if value="{{ noResults }}" hint-placeholder-val="{{ false }}">
+<p style="margin:0;text-align:center;font-size:14.5px;color:var(--ae-ink-soft);padding:30px 0"><span data-en="">Nothing matched that search.</span><span data-zh="">找不到相符的商戶。</span></p>
+</sc-if>
+
+</div>
+</section>
+</sc-if>
+
+<sc-if value="{{ isCountdown }}" hint-placeholder-val="{{ false }}">
+<section style="position:relative;padding:clamp(44px,7vw,88px) clamp(18px,4vw,36px) clamp(48px,7vw,92px);overflow:hidden">
+<div style="position:absolute;top:-150px;left:50%;transform:translateX(-50%);width:820px;height:420px;border-radius:50%;background:radial-gradient(ellipse,rgba(251,199,90,.22),rgba(251,199,90,0) 68%);pointer-events:none"></div>
+<div style="position:relative;max-width:1000px;margin:0 auto;display:flex;flex-direction:column;gap:clamp(24px,4vw,40px)">
+<div style="display:flex;flex-direction:column;align-items:center;gap:12px;text-align:center">
+<span style="color:var(--ae-gold);font-size:18px">✦</span>
+<h2 style="margin:0;font-family:'Marcellus',serif;font-size:clamp(34px,5vw,52px);font-weight:400;letter-spacing:0.05em"><span data-en>Countdown</span><span data-zh>重要日子倒數</span></h2>
+<p style="margin:0;font-size:15px;line-height:1.95;color:var(--ae-ink-soft);max-width:42ch"><span data-en>The days that matter, counting down in real time.</span><span data-zh>那些重要的日子，正實時倒數。</span></p>
+</div>
+<div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(270px,1fr));gap:clamp(14px,2vw,20px)">
+<sc-for list="{{ counters }}" as="c" hint-placeholder-count="3">
+<div style="{{ c.cardStyle }}">
+<span style="{{ c.kickerStyle }}">{{ c.kicker }}</span>
+<span style="font-family:'Marcellus',serif;font-size:clamp(20px,2.6vw,25px);letter-spacing:0.04em;line-height:1.35">{{ c.title }}</span>
+<span style="font-family:'Inter',sans-serif;font-size:12px;letter-spacing:0.14em;color:var(--ae-ink-soft)">{{ c.dateLabel }}</span>
+<div style="display:grid;grid-template-columns:repeat(4,1fr);gap:8px;margin-top:12px">
+<sc-for list="{{ c.units }}" as="u" hint-placeholder-count="4">
+<div style="display:flex;flex-direction:column;align-items:center;gap:3px;min-width:0">
+<span style="{{ u.numStyle }}">{{ u.value }}</span>
+<span style="font-family:'Inter',sans-serif;font-size:10px;letter-spacing:0.16em;text-transform:uppercase;color:var(--ae-ink-soft)">{{ u.label }}</span>
+</div>
+</sc-for>
+</div>
+<span style="font-size:13px;line-height:1.8;color:var(--ae-ink-soft);margin-top:6px">{{ c.note }}</span>
+</div>
+</sc-for>
+</div>
+</div>
+</section>
+</sc-if>
+
+<sc-if value="{{ isCalendar }}" hint-placeholder-val="{{ false }}">
+<section style="padding:clamp(44px,7vw,88px) clamp(18px,4vw,36px) clamp(48px,7vw,92px)">
+<div style="max-width:1000px;margin:0 auto;display:flex;flex-direction:column;gap:clamp(20px,3vw,30px)">
+<div style="display:flex;flex-direction:column;align-items:center;gap:12px;text-align:center">
+<span style="color:var(--ae-gold);font-size:18px">✦</span>
+<h2 style="margin:0;font-family:'Marcellus',serif;font-size:clamp(34px,5vw,52px);font-weight:400;letter-spacing:0.05em"><span data-en>Calendar</span><span data-zh>校曆</span></h2>
+<p style="margin:0;font-size:14.5px;line-height:1.9;color:var(--ae-ink-soft)"><span data-en>Queen Elizabeth School, 2026/27 school year.</span><span data-zh>伊利沙伯中學 2026/27 學年校曆表。</span></p>
+</div>
+
+<div style="display:flex;flex-wrap:wrap;gap:7px;justify-content:center">
+<sc-for list="{{ calChips }}" as="chip" hint-placeholder-count="7">
+<button type="button" onClick="{{ chip.onClick }}" style="{{ chip.style }}">{{ chip.label }}</button>
+</sc-for>
+</div>
+
+<div style="display:flex;align-items:center;justify-content:center;gap:16px">
+<button type="button" onClick="{{ prevMonth }}" style="width:34px;height:34px;border:1px solid var(--ae-line);border-radius:50%;background:var(--ae-panel);color:var(--ae-ink-soft);font-size:15px;cursor:pointer;line-height:1">‹</button>
+<span style="font-family:'Marcellus',serif;font-size:clamp(19px,2.4vw,24px);letter-spacing:0.05em;min-width:180px;text-align:center">{{ monthLabel }}</span>
+<button type="button" onClick="{{ nextMonth }}" style="width:34px;height:34px;border:1px solid var(--ae-line);border-radius:50%;background:var(--ae-panel);color:var(--ae-ink-soft);font-size:15px;cursor:pointer;line-height:1">›</button>
+</div>
+
+<div style="background:var(--ae-panel);border-radius:16px;padding:clamp(10px,1.8vw,18px);box-shadow:0 1px 0 var(--ae-line),0 10px 26px rgba(122,86,190,.07)">
+<div style="display:grid;grid-template-columns:repeat(7,minmax(0,1fr));gap:4px;margin-bottom:6px">
+<sc-for list="{{ dayNames }}" as="d" hint-placeholder-count="7">
+<span style="text-align:center;font-family:'Inter',sans-serif;font-size:10.5px;letter-spacing:0.14em;text-transform:uppercase;color:var(--ae-ink-soft);padding:4px 0">{{ d }}</span>
+</sc-for>
+</div>
+<div style="display:grid;grid-template-columns:repeat(7,minmax(0,1fr));gap:4px">
+<sc-for list="{{ days }}" as="day" hint-placeholder-count="35">
+<div style="{{ day.cellStyle }}">
+<span style="{{ day.numStyle }}">{{ day.num }}</span>
+<sc-for list="{{ day.events }}" as="ev" hint-placeholder-count="0">
+<span style="{{ ev.style }}">{{ ev.label }}</span>
+</sc-for>
+</div>
+</sc-for>
+</div>
+</div>
+
+<div style="display:flex;flex-direction:column;gap:12px">
+<h3 style="margin:0;font-family:'Marcellus',serif;font-size:clamp(18px,2.4vw,22px);font-weight:400;letter-spacing:0.05em">{{ listHeading }}</h3>
+<sc-for list="{{ monthEvents }}" as="e" hint-placeholder-count="4">
+<div style="display:flex;align-items:flex-start;gap:14px;padding:13px 17px;background:var(--ae-panel);border-radius:12px;box-shadow:0 1px 0 var(--ae-line)">
+<span style="{{ e.dotStyle }}"></span>
+<span style="display:flex;flex-direction:column;gap:3px;flex:1;min-width:0">
+<span style="font-size:15.5px;letter-spacing:0.03em;line-height:1.45">{{ e.title }}</span>
+<span style="font-family:'Inter',sans-serif;font-size:11px;letter-spacing:0.12em;text-transform:uppercase;color:var(--ae-ink-soft)">{{ e.catLabel }}</span>
+</span>
+<span style="font-family:'Inter',sans-serif;font-size:12.5px;letter-spacing:0.04em;color:var(--ae-ink-soft);white-space:nowrap">{{ e.dateLabel }}</span>
+</div>
+</sc-for>
+<sc-if value="{{ noMonthEvents }}" hint-placeholder-val="{{ false }}">
+<p style="margin:0;text-align:center;font-size:14px;color:var(--ae-ink-soft);padding:16px 0"><span data-en>Nothing scheduled this month.</span><span data-zh>本月沒有預定項目。</span></p>
+</sc-if>
+</div>
+</div>
+</section>
+</sc-if>
+<footer style="background:linear-gradient(180deg,#e2d2fa,#d6c1f7);padding:clamp(28px,4vw,44px) clamp(18px,4vw,36px)">
+<div style="max-width:1120px;margin:0 auto;display:flex;flex-wrap:wrap;gap:20px;align-items:center;justify-content:space-between">
+<span style="font-family:'Caveat Brush',cursive;font-size:26px;color:var(--ae-gold)">Aeterna</span>
+<div style="display:flex;flex-direction:column;gap:5px;align-items:flex-end;text-align:right">
+<span style="font-family:'Inter',sans-serif;font-size:12px;letter-spacing:0.12em;color:var(--ae-ink-soft)"><span data-en>Proposed Cabinet No. 3 · Ode to Aeterna, Rejoice for Memoria.</span><span data-zh>三號候選內閣 · Ode to Aeterna, Rejoice for Memoria.</span></span>
+<span style="font-family:'Inter',sans-serif;font-size:11.5px;letter-spacing:0.05em;color:var(--ae-ink-soft)"><span data-en>Released 15 Sep 2026 · Last updated {{ lastUpdated }}</span><span data-zh>發佈日期：2026年9月15日 · 最後更新：{{ lastUpdated }}</span></span>
+<span style="font-family:'Inter',sans-serif;font-size:11.5px;letter-spacing:0.05em;color:var(--ae-ink-soft)"><span data-en>© 2026 Aeterna. All rights reserved.</span><span data-zh>© 2026 Aeterna 保留一切權利。</span></span>
+</div>
+</div>
+</footer>
+
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;lang&quot;:{&quot;editor&quot;:&quot;enum&quot;,&quot;options&quot;:[&quot;zh&quot;,&quot;en&quot;],&quot;default&quot;:&quot;zh&quot;,&quot;tsType&quot;:&quot;'zh' | 'en'&quot;,&quot;section&quot;:&quot;Content&quot;},&quot;pushAppId&quot;:{&quot;editor&quot;:&quot;text&quot;,&quot;default&quot;:&quot;4097baac-3d33-45c1-bf07-42b12d29ad2f&quot;,&quot;tsType&quot;:&quot;string&quot;,&quot;section&quot;:&quot;Notifications&quot;},&quot;agmDate&quot;:{&quot;editor&quot;:&quot;text&quot;,&quot;default&quot;:&quot;2026-09-29&quot;,&quot;tsType&quot;:&quot;string&quot;,&quot;section&quot;:&quot;Key dates&quot;},&quot;electionDate&quot;:{&quot;editor&quot;:&quot;text&quot;,&quot;default&quot;:&quot;2026-10-06&quot;,&quot;tsType&quot;:&quot;string&quot;,&quot;section&quot;:&quot;Key dates&quot;},&quot;dseDate&quot;:{&quot;editor&quot;:&quot;text&quot;,&quot;default&quot;:&quot;2027-04-08&quot;,&quot;tsType&quot;:&quot;string&quot;,&quot;section&quot;:&quot;Key dates&quot;},&quot;dse2028Date&quot;:{&quot;editor&quot;:&quot;text&quot;,&quot;default&quot;:&quot;2028-04-07&quot;,&quot;tsType&quot;:&quot;string&quot;,&quot;section&quot;:&quot;Key dates&quot;},&quot;dse2029Date&quot;:{&quot;editor&quot;:&quot;text&quot;,&quot;default&quot;:&quot;2029-04-06&quot;,&quot;tsType&quot;:&quot;string&quot;,&quot;section&quot;:&quot;Key dates&quot;}}">
+class Component extends DCLogic {
+  state = { lang: null, fontIdx: 0, fading: false, page: 'home',
+    pushOpen: false, pushPerm: 'default', pushBusy: false, pushErrorMsg: '', pushSdk: 'idle' };
+
+  // ---- Push notifications (OneSignal) --------------------------------
+  // Paste your OneSignal App ID in Tweaks, or replace the '' below.
+  get pushAppId() { return (this.props.pushAppId ?? '4097baac-3d33-45c1-bf07-42b12d29ad2f').trim(); }
+
+  pushEnv() {
+    if (typeof window === 'undefined') return 'unsupported';
+    const ua = navigator.userAgent || '';
+    // navigator.standalone exists only on iOS/iPadOS Safari — it keeps
+    // touch-capable desktops from being mistaken for iPads.
+    const iOS = /iPad|iPhone|iPod/.test(ua) ||
+      (navigator.platform === 'MacIntel' && navigator.maxTouchPoints > 1 &&
+       typeof window.navigator.standalone !== 'undefined');
+    const installed = window.navigator.standalone === true ||
+      (window.matchMedia && window.matchMedia('(display-mode: standalone)').matches);
+    const has = 'Notification' in window && 'serviceWorker' in navigator && 'PushManager' in window;
+    if (iOS && !installed) return 'needs-install';
+    if (!has) return 'unsupported';
+    return 'ok';
+  }
+
+  loadOneSignal() {
+    if (this._osPromise) return this._osPromise;
+    const appId = this.pushAppId;
+    const base = location.pathname.replace(/[^/]*$/, '');
+    this._osPromise = new Promise((resolve, reject) => {
+      window.OneSignalDeferred = window.OneSignalDeferred || [];
+      const s = document.createElement('script');
+      s.src = 'https://cdn.onesignal.com/sdks/web/v16/OneSignalSDK.page.js';
+      s.defer = true;
+      s.onerror = () => reject(new Error('network'));
+      document.head.appendChild(s);
+      const timer = setTimeout(() => reject(new Error('timeout')), 12000);
+      window.OneSignalDeferred.push(async (OneSignal) => {
+        try {
+          await OneSignal.init({
+            appId,
+            serviceWorkerPath: base.replace(/^\//, '') + 'OneSignalSDKWorker.js',
+            serviceWorkerParam: { scope: base },
+            autoResubscribe: true,
+            promptOptions: { slidedown: { prompts: [] } },
+          });
+          OneSignal.Notifications.addEventListener('permissionChange', () => this.syncPerm());
+          // The subscription id arrives asynchronously — reading the property
+          // can return null long after opt-in, so listen for the change event.
+          OneSignal.User.PushSubscription.addEventListener('change', (ev) => {
+            const cur = (ev && ev.current) || {};
+            console.log('[Aeterna push] subscription change', cur);
+            if (cur.id) this.setState({ pushSubId: cur.id, pushErrorMsg: '', pushDetail: '' });
+          });
+          clearTimeout(timer);
+          resolve(OneSignal);
+        } catch (e) { clearTimeout(timer); reject(e); }
+      });
+    });
+    return this._osPromise;
+  }
+
+  syncPerm() {
+    if (typeof Notification === 'undefined') return;
+    this.setState({ pushPerm: Notification.permission });
+  }
+
+  openPush = () => {
+    this.setState({ pushOpen: true, pushErrorMsg: '' });
+    this.syncPerm();
+    if (this.pushAppId && this.pushEnv() === 'ok' && this.state.pushSdk === 'idle') {
+      this.setState({ pushSdk: 'loading' });
+      this.loadOneSignal()
+        .then(() => {
+          this.setState({ pushSdk: 'ready' });
+          // Permission may already be granted from an earlier visit while no
+          // subscription exists (the SDK never ran). Register this device now.
+          if (typeof Notification !== 'undefined' && Notification.permission === 'granted') {
+            this.registerDevice();
+          }
+        })
+        .catch((e) => {
+          console.error('[Aeterna push] SDK load/init failed', e);
+          const zh = this.lang === 'zh';
+          this.setState({
+            pushSdk: 'failed',
+            pushErrorMsg: zh ? '無法載入通知服務。' : "Couldn't load the notification service.",
+            pushDetail: 'init: ' + String((e && e.message) || e),
+          });
+        });
+    } else if (this.pushAppId && this.pushEnv() === 'ok' &&
+               typeof Notification !== 'undefined' && Notification.permission === 'granted' &&
+               !this.state.pushSubId) {
+      this.registerDevice();
+    }
+  };
+
+  async registerDevice() {
+    const zh = this.lang === 'zh';
+    try {
+      const OneSignal = await this.loadOneSignal();
+      try { await OneSignal.User.PushSubscription.optIn(); } catch (e) {}
+      let id = null, optedIn = null;
+      for (let i = 0; i < 16 && !id; i++) {
+        try {
+          id = OneSignal.User.PushSubscription.id;
+          optedIn = OneSignal.User.PushSubscription.optedIn;
+        } catch (e) {}
+        if (!id) await new Promise(r => setTimeout(r, 500));
+      }
+      let osId = null, token = null, swInfo = 'sw?';
+      try { osId = OneSignal.User.onesignalId; } catch (e) {}
+      try { token = OneSignal.User.PushSubscription.token; } catch (e) {}
+      try {
+        const regs = await navigator.serviceWorker.getRegistrations();
+        swInfo = regs.length
+          ? regs.map(r => (r.scope || '').replace(location.origin, '') +
+              (r.active ? ':active' : r.installing ? ':installing' : ':none')).join(',')
+          : 'sw:none';
+      } catch (e) { swInfo = 'sw:err'; }
+      // Nothing registered: try registering the worker directly so the real
+      // browser error surfaces instead of being swallowed by the SDK.
+      if (swInfo === 'sw:none') {
+        try {
+          const base = location.pathname.replace(/[^/]*$/, '');
+          const reg = await navigator.serviceWorker.register(base + 'OneSignalSDKWorker.js', { scope: base });
+          swInfo = 'swSelf:' + (reg.active ? 'active' : reg.installing ? 'installing' : 'idle');
+        } catch (e) {
+          swInfo = 'swFail:' + String((e && e.message) || e).slice(0, 60);
+          // Split the cause: an import-free worker at the same path either
+          // registers (so the CDN importScripts is what fails) or does not
+          // (so service workers are unavailable here at all).
+          try {
+            const base2 = location.pathname.replace(/[^/]*$/, '');
+            const r2 = await navigator.serviceWorker.register(base2 + 'sw-test.js', { scope: base2 });
+            swInfo += ' | plain:ok' + (r2.active ? ':active' : '');
+          } catch (e2) {
+            swInfo += ' | plain:' + String((e2 && e2.message) || e2).slice(0, 40);
+          }
+          try {
+            const rr = await fetch(location.pathname.replace(/[^/]*$/, '') + 'OneSignalSDKWorker.js', { cache: 'reload' });
+            swInfo += ' | file:' + rr.status + ' ' + ((rr.headers.get('content-type') || '?').split(';')[0]);
+          } catch (e3) {
+            swInfo += ' | file:fetchfail';
+          }
+        }
+      }
+      const diag = 'os=' + (osId ? osId.slice(0, 8) : '—') +
+        ' tok=' + (token ? 'yes' : 'no') + ' ' + swInfo;
+      console.log('[Aeterna push] diag', diag, { osId, token, id });
+      console.log('[Aeterna push] registerDevice id:', id, 'optedIn:', optedIn, 'onesignalId:', osId);
+      // optedIn true with a OneSignal user id means this device is registered,
+      // even when the subscription id has not surfaced on the client yet.
+      const ok = !!id || (optedIn === true && !!osId);
+      this.setState({
+        pushSubId: id || (osId ? 'user ' + osId : ''),
+        pushErrorMsg: ok ? '' : (zh
+          ? '瀏覽器已允許通知，但未能在通知服務登記此裝置。'
+          : 'The browser allowed notifications, but this device was not registered with the notification service.'),
+        pushDetail: ok ? '' : 'optedIn=' + optedIn + ' · ' + diag,
+      });
+      return id;
+    } catch (e) {
+      console.error('[Aeterna push] registerDevice failed', e);
+      this.setState({
+        pushErrorMsg: zh ? '無法連接通知服務。' : "Couldn't reach the notification service.",
+        pushDetail: String((e && e.message) || e),
+      });
+      return null;
+    }
+  }
+
+  closePush = () => this.setState({ pushOpen: false, pushBusy: false });
+
+  enablePush = async () => {
+    const zh = this.lang === 'zh';
+    if (!this.pushAppId) {
+      this.setState({ pushErrorMsg: zh ? '通知服務尚未設定完成。' : 'The notification service is not set up yet.' });
+      return;
+    }
+    this.setState({ pushBusy: true, pushErrorMsg: '', pushDetail: '' });
+    // Pre-flight: the service worker must be reachable next to the page,
+    // and the page must be on https. Both fail silently inside the SDK.
+    const base = location.pathname.replace(/[^/]*$/, '');
+    if (location.protocol !== 'https:' && location.hostname !== 'localhost') {
+      this.setState({ pushBusy: false,
+        pushErrorMsg: zh ? '本頁並非以 https 開啟，瀏覽器不允許通知。' : 'This page is not served over https, so the browser blocks notifications.',
+        pushDetail: location.protocol + '//' + location.host });
+      return;
+    }
+    try {
+      const r = await fetch(base + 'OneSignalSDKWorker.js', { cache: 'no-store' });
+      const body = r.ok ? await r.text() : '';
+      if (!r.ok || !/importScripts/.test(body)) {
+        this.setState({ pushBusy: false,
+          pushErrorMsg: zh ? '伺服器缺少通知所需的檔案 OneSignalSDKWorker.js，請將它上載至 index.html 所在的同一資料夾。'
+                           : 'The file OneSignalSDKWorker.js is missing from the server. Upload it into the same folder as index.html.',
+          pushDetail: base + 'OneSignalSDKWorker.js → ' + (r.ok ? 'wrong contents' : 'HTTP ' + r.status) });
+        return;
+      }
+    } catch (e) {
+      this.setState({ pushBusy: false,
+        pushErrorMsg: zh ? '無法讀取通知所需的檔案。' : "Couldn't read the notification worker file.",
+        pushDetail: String(e && e.message || e) });
+      return;
+    }
+    try {
+      const OneSignal = await this.loadOneSignal();
+      this.setState({ pushSdk: 'ready' });
+      await OneSignal.Notifications.requestPermission();
+      if (Notification.permission === 'granted') {
+        try { await OneSignal.User.PushSubscription.optIn(); } catch (e) {}
+      }
+      this.syncPerm();
+      // Confirm OneSignal actually created a subscription — permission
+      // alone does not mean the dashboard can see this device.
+      let id = null, optedIn = null;
+      for (let i = 0; i < 12 && !id; i++) {
+        try {
+          id = OneSignal.User.PushSubscription.id;
+          optedIn = OneSignal.User.PushSubscription.optedIn;
+        } catch (e) {}
+        if (!id) await new Promise(r => setTimeout(r, 500));
+      }
+      console.log('[Aeterna push] subscription id:', id, 'optedIn:', optedIn);
+      this.setState({
+        pushBusy: false,
+        pushSubId: id || '',
+        pushErrorMsg: id ? '' : (zh
+          ? '瀏覽器已允許通知，但未能在通知服務登記此裝置。'
+          : 'The browser allowed notifications, but this device was not registered with the notification service.'),
+        pushDetail: id ? '' : 'permission=' + Notification.permission + ' · no subscription id',
+      });
+    } catch (e) {
+      const msg = String((e && e.message) || e);
+      console.error('[Aeterna push]', e);
+      this.setState({
+        pushBusy: false,
+        pushErrorMsg: zh ? '無法連接通知服務，請稍後再試。' : "Couldn't reach the notification service — please try again later.",
+        pushDetail: msg + ' · ' + location.origin + location.pathname.replace(/[^/]*$/, ''),
+      });
+    }
+  };
+
+  pushVals(lang) {
+    const zh = lang === 'zh';
+    const env = this._env || (this._env = this.pushEnv());
+    const perm = this.state.pushPerm;
+    const on = perm === 'granted';
+    const denied = perm === 'denied';
+    const busy = this.state.pushBusy;
+    const cfg = !!this.pushAppId;
+    return {
+      pushEnabled: true,
+      pushUnconfigured: !cfg,
+      pushOpen: this.state.pushOpen,
+      openPush: this.openPush,
+      closePush: this.closePush,
+      enablePush: this.enablePush,
+      pushIsOn: cfg && on,
+      pushDenied: cfg && env === 'ok' && denied,
+      pushNeedsInstall: cfg && env === 'needs-install',
+      pushUnsupported: cfg && env === 'unsupported',
+      pushCanEnable: cfg && env === 'ok' && !on && !denied,
+      pushError: !!this.state.pushErrorMsg,
+      pushErrorMsg: this.state.pushErrorMsg,
+      pushSubId: this.state.pushSubId || (zh ? '正在登記…' : 'registering…'),
+      pushShowSubId: true,
+      pushHasDetail: !!this.state.pushDetail,
+      pushDetail: this.state.pushDetail || '',
+      pushBtnLabel: busy
+        ? (zh ? '正在開啟…' : 'Turning on…')
+        : (zh ? '開啟通知' : 'Turn on notifications'),
+      bellTitle: !cfg
+        ? (zh ? '通知（即將推出）' : 'Notifications (coming soon)')
+        : on ? (zh ? '通知已開啟' : 'Notifications on') : (zh ? '開啟通知' : 'Turn on notifications'),
+      bellStyle: {
+        position: 'relative',
+        display: 'flex',
+        alignItems: 'center',
+        justifyContent: 'center',
+        width: '33px',
+        height: '33px',
+        border: on && cfg ? '1px solid #e8930f' : '1px solid #cdb6f2',
+        borderRadius: '50%',
+        background: on && cfg ? 'linear-gradient(150deg,#fbc75a,#eb9a12)' : '#faf6ff',
+        color: on && cfg ? '#fff' : (cfg ? '#5f5088' : '#9a8cba'),
+        cursor: 'pointer',
+        padding: 0,
+        transition: 'all .2s ease',
+      },
+      bellDotStyle: {
+        display: on || !cfg ? 'none' : 'block',
+        position: 'absolute',
+        top: '5px',
+        right: '5px',
+        width: '6px',
+        height: '6px',
+        borderRadius: '50%',
+        background: '#e8930f',
+        boxShadow: '0 0 0 2px #faf6ff',
+      },
+      pushCardSub: !cfg
+        ? (zh ? '即將推出' : 'Coming soon')
+        : on
+        ? (zh ? '已開啟——你會收到 Aeterna 的重要提示' : "On — you'll get Aeterna's important alerts")
+        : (zh ? '開啟後，重要消息會直接送到你的手機' : 'Turn on to get important news straight to your phone'),
+    };
+  }
+  // --------------------------------------------------------------------
+
+  navBtn(active) {
+    return {
+      border: 0,
+      background: 'transparent',
+      cursor: 'pointer',
+      padding: '4px 2px',
+      fontFamily: "'Noto Serif TC', serif",
+      fontSize: '14px',
+      letterSpacing: '0.03em',
+      color: active ? '#e8930f' : '#5f5088',
+      borderBottom: active ? '1.5px solid #e8930f' : '1.5px solid transparent',
+      transition: 'color .2s ease, border-color .2s ease',
+    };
+  }
+  modeBtn(active) {
+    return {
+      border: active ? '1px solid #e8930f' : '1px solid #cdb6f2',
+      background: active ? 'linear-gradient(150deg,#fbc75a,#eb9a12)' : '#faf6ff',
+      color: active ? '#fff' : '#5f5088',
+      cursor: 'pointer',
+      padding: '6px 14px',
+      borderRadius: '999px',
+      fontFamily: "'Noto Serif TC', serif",
+      fontSize: '12.5px',
+      letterSpacing: '0.04em',
+      whiteSpace: 'nowrap',
+      transition: 'all .2s ease',
+    };
+  }
+  go(page) {
+    return () => { this.setState({ page }); window.scrollTo({ top: 0 }); };
+  }
+  fonts = [
+    "'Caveat Brush', cursive",
+    "'Cormorant Garamond', serif",
+    "'Playfair Display', serif",
+    "'Italiana', serif",
+    "'Marcellus', serif",
+  ];
+  chipStyle(active) {
+    return {
+      border: active ? '1px solid #e8930f' : '1px solid #cdb6f2',
+      background: active ? 'linear-gradient(150deg,#fbc75a,#eb9a12)' : '#fff',
+      color: active ? '#fff' : '#5f5088',
+      cursor: 'pointer',
+      padding: '6px 14px',
+      borderRadius: '999px',
+      fontFamily: "'Noto Serif TC', serif",
+      fontSize: '12.5px',
+      letterSpacing: '0.04em',
+      transition: 'all .2s ease',
+    };
+  }
+  componentDidMount() {
+    this.syncPerm();
+    this._escPush = (e) => { if (e.key === 'Escape' && this.state.pushOpen) this.closePush(); };
+    window.addEventListener('keydown', this._escPush);
+    const pull = () => {
+      const w = window.AE_WELFARE, c = window.AE_CALENDAR;
+      if (w && c) { this.setState({ cats: w.CATS, shops: w.SHOPS, cal: c }); return true; }
+      return false;
+    };
+    if (!pull()) {
+      let tries = 0;
+      const t = setInterval(() => { if (pull() || ++tries > 60) clearInterval(t); }, 100);
+    }
+    this.clock = setInterval(() => this.setState({ now: Date.now() }), 1000);
+    this.timer = setInterval(() => {
+      this.setState({ fading: true });
+      setTimeout(() => this.setState(s => ({
+        fontIdx: (s.fontIdx + 1) % this.fonts.length, fading: false,
+      })), 360);
+    }, 2800);
+  }
+  componentWillUnmount() {
+    clearInterval(this.timer); clearInterval(this.clock);
+    if (this._escPush) window.removeEventListener('keydown', this._escPush);
+  }
+  get lang() { return this.state.lang ?? this.props.lang ?? 'zh'; }
+  btn(active) {
+    return {
+      border: 0,
+      cursor: 'pointer',
+      padding: '6px 13px',
+      fontFamily: 'Inter, sans-serif',
+      fontSize: '12px',
+      letterSpacing: '0.04em',
+      background: active ? 'linear-gradient(160deg,#fbc75a,#eb9a12)' : 'transparent',
+      color: active ? '#fff' : '#5f5088',
+    };
+  }
+  events() {
+    return [
+      { id: 'agm', zh: '周年會員大會', en: 'Annual General Meeting', date: this.props.agmDate ?? '2026-09-29', color: '#b490ef', noteZh: '會員大會將於當日舉行。', noteEn: 'The Annual General Meeting takes place on this day.' },
+      { id: 'election', zh: '投票日', en: 'Election Day', date: this.props.electionDate ?? '2026-10-06', color: '#e8930f', noteZh: '請帶學生證前往投票站投票。', noteEn: 'Bring your student card to the polling station.' },
+      { id: 'dse27', zh: '2027 中學文憑試', en: 'HKDSE 2027', date: this.props.dseDate ?? '2027-04-08', color: '#5f3aa8', noteZh: '中文科開考日（校曆表）。', noteEn: 'Chinese Language paper (per the school calendar).' },
+      { id: 'dse28', zh: '2028 中學文憑試', en: 'HKDSE 2028', date: this.props.dse2028Date ?? '2028-04-07', color: '#8f63cf', noteZh: '首科開考日（暫定，待考試局公佈）。', noteEn: 'First paper (provisional, pending the official timetable).' },
+      { id: 'dse29', zh: '2029 中學文憑試', en: 'HKDSE 2029', date: this.props.dse2029Date ?? '2029-04-06', color: '#a279dd', noteZh: '首科開考日（暫定，待考試局公佈）。', noteEn: 'First paper (provisional, pending the official timetable).' },
+    ];
+  }
+  countdownVals(lang) {
+    const now = this.state.now || Date.now();
+    const fmt = (d, l) => new Date(d + 'T00:00:00').toLocaleDateString(l === 'zh' ? 'zh-HK' : 'en-GB', { day: 'numeric', month: 'long', year: 'numeric' });
+    const labels = lang === 'zh' ? ['日', '時', '分', '秒'] : ['Days', 'Hrs', 'Min', 'Sec'];
+    return {
+      counters: this.events().map((e, i) => {
+        const diff = new Date(e.date + 'T00:00:00').getTime() - now;
+        const past = diff <= 0;
+        const t = Math.max(0, diff);
+        const v = [Math.floor(t / 864e5), Math.floor(t / 36e5) % 24, Math.floor(t / 6e4) % 60, Math.floor(t / 1e3) % 60];
+        return {
+          key: e.id,
+          kicker: past ? (lang === 'zh' ? '已完成' : 'Passed') : String(i + 1).padStart(2, '0'),
+          kickerStyle: { fontFamily: "'Inter',sans-serif", fontSize: '10.5px', letterSpacing: '0.16em', textTransform: 'uppercase', color: past ? '#8c7fae' : e.color },
+          title: lang === 'zh' ? e.zh : e.en,
+          dateLabel: fmt(e.date, lang),
+          note: lang === 'zh' ? e.noteZh : e.noteEn,
+          cardStyle: {
+            display: 'flex', flexDirection: 'column', gap: '5px', padding: '24px 24px 22px',
+            background: 'var(--ae-panel)', borderRadius: '16px', opacity: past ? 0.6 : 1,
+            boxShadow: `0 0 0 1.5px ${past ? 'transparent' : e.color + '55'}, 0 1px 0 var(--ae-line), 0 10px 26px rgba(122,86,190,.07)`,
+          },
+          units: v.map((n, j) => ({
+            key: e.id + j,
+            value: String(n).padStart(2, '0'),
+            label: labels[j],
+            numStyle: { fontFamily: "'Marcellus',serif", fontSize: 'clamp(26px,3.4vw,34px)', lineHeight: 1, color: past ? '#8c7fae' : e.color, fontVariantNumeric: 'tabular-nums' },
+          })),
+        };
+      }),
+    };
+  }
+  calendarVals(lang) {
+    const data = this.state.cal;
+    const cats = (data && data.CATS) || [];
+    const all = (data && data.EVENTS) || [];
+    const filter = this.state.calCat || 'all';
+    const evs = all.filter(e => filter === 'all' || e.c === filter);
+    const colorOf = id => (cats.find(c => c.id === id) || {}).color || '#b490ef';
+    const labelOf = id => { const c = cats.find(x => x.id === id); return c ? (lang === 'zh' ? c.zh : c.en) : ''; };
+    const loc = lang === 'zh' ? 'zh-HK' : 'en-GB';
+
+    const base = new Date();
+    let anchor = new Date(base.getFullYear(), base.getMonth(), 1);
+    if (all.length) {
+      const first = new Date(all[0].s + 'T00:00:00');
+      const last = new Date(all[all.length - 1].e + 'T00:00:00');
+      if (anchor < new Date(first.getFullYear(), first.getMonth(), 1)) anchor = new Date(first.getFullYear(), first.getMonth(), 1);
+      if (anchor > new Date(last.getFullYear(), last.getMonth(), 1)) anchor = new Date(last.getFullYear(), last.getMonth(), 1);
+    }
+    const cur = new Date(anchor.getFullYear(), anchor.getMonth() + (this.state.monthOffset || 0), 1);
+    const y = cur.getFullYear(), m = cur.getMonth();
+
+    const today = new Date(); today.setHours(0, 0, 0, 0);
+    const first = new Date(y, m, 1).getDay();
+    const total = new Date(y, m + 1, 0).getDate();
+    const days = [];
+    for (let i = 0; i < first; i++) days.push({ key: 'pad' + i, num: '', events: [], cellStyle: { minHeight: '64px' }, numStyle: { display: 'none' } });
+    for (let d = 1; d <= total; d++) {
+      const iso = `${y}-${String(m + 1).padStart(2, '0')}-${String(d).padStart(2, '0')}`;
+      const hits = evs.filter(e => iso >= e.s && iso <= e.e);
+      const isToday = new Date(y, m, d).getTime() === today.getTime();
+      const lead = hits[0];
+      days.push({
+        key: iso,
+        num: String(d),
+        events: hits.slice(0, 2).map((e, i) => ({
+          key: e.id + i,
+          label: lang === 'zh' ? e.zh : e.en,
+          style: {
+            fontSize: '9.5px', lineHeight: 1.3, color: colorOf(e.c),
+            overflow: 'hidden', display: '-webkit-box', WebkitLineClamp: 2, WebkitBoxOrient: 'vertical', wordBreak: 'break-word',
+          },
+        })),
+        cellStyle: {
+          display: 'flex', flexDirection: 'column', gap: '2px', minHeight: '64px', padding: '6px 6px 7px',
+          borderRadius: '9px', overflow: 'hidden',
+          background: lead ? colorOf(lead.c) + '1c' : 'transparent',
+          boxShadow: isToday
+            ? 'inset 0 0 0 1.5px var(--ae-gold)'
+            : lead ? `inset 0 0 0 1px ${colorOf(lead.c)}55` : 'inset 0 0 0 1px rgba(205,182,242,.32)',
+        },
+        numStyle: {
+          fontFamily: "'Inter',sans-serif", fontSize: '12px', fontWeight: isToday ? 600 : 400,
+          color: isToday ? '#e8930f' : lead ? colorOf(lead.c) : 'var(--ae-ink-soft)',
+        },
+      });
+    }
+
+    const monthStart = `${y}-${String(m + 1).padStart(2, '0')}-01`;
+    const monthEnd = `${y}-${String(m + 1).padStart(2, '0')}-${String(total).padStart(2, '0')}`;
+    const wholeYear = filter !== 'all';
+    const fmt = iso => new Date(iso + 'T00:00:00').toLocaleDateString(loc, wholeYear ? { day: 'numeric', month: 'short', year: 'numeric' } : { day: 'numeric', month: 'short' });
+    const monthEvents = evs
+      .filter(e => wholeYear || (e.s <= monthEnd && e.e >= monthStart))
+      .map(e => ({
+        key: e.id,
+        title: lang === 'zh' ? e.zh : e.en,
+        catLabel: labelOf(e.c),
+        dateLabel: e.s === e.e ? fmt(e.s) : fmt(e.s) + ' – ' + fmt(e.e),
+        dotStyle: {
+          flex: 'none', marginTop: '6px', width: '9px', height: '9px', borderRadius: '50%',
+          background: colorOf(e.c), opacity: new Date(e.e + 'T00:00:00') < today ? 0.4 : 1,
+        },
+      }));
+
+    const chip = (id, label) => ({
+      label,
+      style: this.chipStyle(filter === id),
+      onClick: () => this.setState({ calCat: id }),
+    });
+    return {
+      monthLabel: cur.toLocaleDateString(loc, { month: 'long', year: 'numeric' }),
+      dayNames: lang === 'zh' ? ['日', '一', '二', '三', '四', '五', '六'] : ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'],
+      days,
+      monthEvents,
+      noMonthEvents: !monthEvents.length,
+      listHeading: wholeYear
+        ? (lang === 'zh' ? labelOf(filter) + ' · 全學年' : labelOf(filter) + ' · whole year')
+        : (lang === 'zh' ? '本月項目' : 'This month'),
+      calChips: [chip('all', lang === 'zh' ? '全部' : 'All')].concat(cats.map(c => chip(c.id, lang === 'zh' ? c.zh : c.en))),
+      prevMonth: () => this.setState(st => ({ monthOffset: (st.monthOffset || 0) - 1 })),
+      nextMonth: () => this.setState(st => ({ monthOffset: (st.monthOffset || 0) + 1 })),
+    };
+  }
+  welfareVals(lang) {
+    const cats = this.state.cats || [];
+    const shops = this.state.shops || [];
+    const q = (this.state.query || '').trim().toLowerCase();
+    const cat = this.state.cat || 'all';
+    const src = this.state.src || 'all';
+    const match = s =>
+      (src === 'all' || s.src === src) &&
+      (cat === 'all' || s.c === cat) &&
+      (!q || s.n.toLowerCase().includes(q) || s.i.toLowerCase().includes(q) || s.w.toLowerCase().includes(q));
+    const shown = shops.filter(match);
+    const groups = cats
+      .filter(c => cat === 'all' || c.id === cat)
+      .map(c => {
+        const list = shown.filter(s => s.c === c.id);
+        return {
+          title: lang === 'zh' ? c.zh : c.en,
+          count: String(list.length),
+          shops: list.map((s, i) => ({
+            name: s.n || '—',
+            ...(() => {
+              const v = (s.i || '').trim();
+              const handle = /^[\w.]+$/.test(v);
+              const url = /^(https?:\/\/|www\.)/i.test(v);
+              if (handle) return { hasLink: true, ig: '@' + v, href: 'https://instagram.com/' + v, note: '', noteStyle: { display: 'none' } };
+              if (url) return { hasLink: true, ig: v.replace(/^https?:\/\//i, ''), href: /^www\./i.test(v) ? 'https://' + v : v, note: '', noteStyle: { display: 'none' } };
+              return {
+                hasLink: false, ig: '', href: '#',
+                note: v,
+                noteStyle: v
+                  ? { fontFamily: "'Inter',sans-serif", fontSize: '12.5px', letterSpacing: '0.02em', color: '#8c7fae', wordBreak: 'break-word' }
+                  : { display: 'none' },
+              };
+            })(),
+            welfare: s.w,
+            badge: (s.src || 'aeterna') === 'hkssa'
+              ? (lang === 'zh' ? 'HKSSA 學生福利' : "HKSSA student's welfare")
+              : (lang === 'zh' ? 'Aeterna 學生福利' : "Aeterna student's welfare"),
+            badgeStyle: {
+              alignSelf: 'flex-start',
+              padding: '2.5px 9px',
+              borderRadius: '999px',
+              fontFamily: "'Inter',sans-serif",
+              fontSize: '9.5px',
+              letterSpacing: '0.1em',
+              textTransform: 'uppercase',
+              background: (s.src || 'aeterna') === 'hkssa' ? 'rgba(115,70,189,.12)' : 'rgba(232,147,15,.14)',
+              color: (s.src || 'aeterna') === 'hkssa' ? '#5d34a0' : '#a86505',
+            },
+            tel: s.t ? (lang === 'zh' ? '電話 ' + s.t : 'Tel ' + s.t) : '',
+            telStyle: s.t
+              ? { fontFamily: "'Inter',sans-serif", fontSize: '12px', letterSpacing: '0.04em', color: '#8c7fae' }
+              : { display: 'none' },
+
+          })),
+        };
+      })
+      .filter(g => g.shops.length);
+    const chip = (id, label) => ({
+      label,
+      style: this.chipStyle(cat === id),
+      onClick: () => this.setState({ cat: id }),
+    });
+    return {
+      shopCount: String(shops.length),
+      query: this.state.query || '',
+      searchPlaceholder: lang === 'zh' ? '搜尋商戶或優惠……' : 'Search shops or offers…',
+      onQuery: e => this.setState({ query: e.target.value }),
+      srcChips: [
+        ['all', lang === 'zh' ? '全部來源' : 'All sources'],
+        ['aeterna', lang === 'zh' ? 'Aeterna 學生福利' : "Aeterna student's welfare"],
+        ['hkssa', lang === 'zh' ? 'HKSSA 學生福利' : "HKSSA student's welfare"],
+      ].map(([id, label]) => ({
+        label,
+        style: this.chipStyle(src === id),
+        onClick: () => this.setState({ src: id }),
+      })),
+      catChips: [chip('all', lang === 'zh' ? '全部' : 'All')].concat(
+        cats.map(c => chip(c.id, lang === 'zh' ? c.zh : c.en))
+      ),
+      groups,
+      cnNotice: lang === 'en' && shops.length > 0,
+      noResults: shops.length > 0 && groups.length === 0,
+    };
+  }
+  renderVals() {
+    const lang = this.lang;
+    const page = this.state.page;
+    return {
+      lang,
+      isHome: page === 'home',
+      isAbout: page === 'about',
+      isManifesto: page === 'manifesto',
+      isActivities: page === 'activities',
+      isContact: page === 'contact',
+      updatedEn: '16 Sep 2026',
+      updatedZh: '2026年9月16日',
+      lastUpdated: new Date('2026-09-16T00:00:00').toLocaleDateString(lang === 'zh' ? 'zh-HK' : 'en-GB', { day: 'numeric', month: 'short', year: 'numeric' }),
+      lastUpdated: new Date('2026-09-16T00:00:00').toLocaleDateString(lang === 'zh' ? 'zh-HK' : 'en-GB', { day: 'numeric', month: 'short', year: 'numeric' }),
+      memWrapStyle: { display: 'flex', flexDirection: 'column', gap: 'clamp(20px,3vw,34px)', '--mh': this.state.openH || 'auto' },
+      memWrapClass: [
+        this.state.photoMode === 'one' ? 'ph-edit1' : this.state.photoMode === 'two' ? 'ph-edit2' : '',
+        this.state.openMem ? 'open-' + this.state.openMem : '',
+      ].filter(Boolean).join(' '),
+      closeMem: () => this.setState({ openMem: null }),
+      ...Object.fromEntries(Array.from({ length: 15 }, (_, i) => [
+        'mem' + (i + 1),
+        e => {
+          if (this.state.openMem === i + 1) return;
+          const el = e.currentTarget.closest('.mem');
+          this.setState({ openMem: i + 1, openH: el ? el.offsetHeight + 'px' : null });
+        },
+      ])),
+      isWelfare: page === 'welfare',
+      goWelfare: this.go('welfare'),
+      welfareNav: this.navBtn(page === 'welfare'),
+      isCountdown: page === 'countdown',
+      isCalendar: page === 'calendar',
+      goCountdown: this.go('countdown'),
+      goCalendar: this.go('calendar'),
+      countdownNav: this.navBtn(page === 'countdown'),
+      calendarNav: this.navBtn(page === 'calendar'),
+      ...this.welfareVals(lang),
+      ...this.countdownVals(lang),
+      ...this.calendarVals(lang),
+      photoMode: this.state.photoMode === 'one' ? 'ph-edit1' : this.state.photoMode === 'two' ? 'ph-edit2' : '',
+      setModeHover: () => this.setState({ photoMode: null }),
+      setMode1: () => this.setState({ photoMode: 'one' }),
+      setMode2: () => this.setState({ photoMode: 'two' }),
+      modeHoverBtn: this.modeBtn(!this.state.photoMode),
+      mode1Btn: this.modeBtn(this.state.photoMode === 'one'),
+      mode2Btn: this.modeBtn(this.state.photoMode === 'two'),
+      goContact: this.go('contact'),
+      contactNav: this.navBtn(page === 'contact'),
+      goHome: this.go('home'),
+      goAbout: this.go('about'),
+      goManifesto: this.go('manifesto'),
+      goActivities: this.go('activities'),
+      homeNav: this.navBtn(page === 'home'),
+      aboutNav: this.navBtn(page === 'about'),
+      manifestoNav: this.navBtn(page === 'manifesto'),
+      activitiesNav: this.navBtn(page === 'activities'),
+      heroFont: {
+        display: 'inline-block',
+        fontFamily: this.fonts[this.state.fontIdx],
+        fontStyle: this.state.fontIdx === 1 || this.state.fontIdx === 2 ? 'italic' : 'normal',
+        backgroundImage: 'linear-gradient(168deg,#fbc75a 6%,#f0a01c 46%,#dd7f0a 92%)',
+        WebkitBackgroundClip: 'text',
+        backgroundClip: 'text',
+        color: 'transparent',
+        opacity: this.state.fading ? 0 : 1,
+        transform: this.state.fading ? 'translateY(6px)' : 'translateY(0)',
+        transition: 'opacity .36s ease, transform .36s ease',
+      },
+      zhBtnStyle: this.btn(lang === 'zh'),
+      enBtnStyle: this.btn(lang === 'en'),
+      setZh: () => this.setState({ lang: 'zh' }),
+      setEn: () => this.setState({ lang: 'en' }),
+      ...this.pushVals(lang),
+    };
+  }
+}
+</script>
+</body>
+</html>
