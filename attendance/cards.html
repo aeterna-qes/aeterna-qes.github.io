@@ -1,0 +1,267 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Member cards</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible:wght@400;700&family=Barlow+Condensed:wght@600;700&display=swap">
+<!--
+  Printable QR cards for the Student Union attendance scanner.
+  Open it from the link in the sheet (Attendance > Show app links).
+-->
+<style>
+  :root {
+    --desk: #e6ede9;
+    --paper: #ffffff;
+    --ink: #13241b;
+    --muted: #56675e;
+    --rule: #d6dfda;
+    --accent: #183b2d;
+    --ui: "Atkinson Hyperlegible", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+          "PingFang HK", "Noto Sans TC", "Microsoft JhengHei", sans-serif;
+    --num: "Barlow Condensed", "Atkinson Hyperlegible", -apple-system, "Segoe UI", sans-serif;
+  }
+  * { box-sizing: border-box; }
+  html, body { margin: 0; }
+  body { background: var(--desk); color: var(--ink); font-family: var(--ui); font-size: 16px; line-height: 1.45; }
+  [hidden] { display: none !important; }
+
+  .controls { max-width: 900px; margin: 0 auto; padding: 24px 16px 8px; }
+  h1 { font: 700 2.2rem/1 var(--num); margin: 0 0 10px; }
+  .controls p { margin: 0 0 10px; color: var(--muted); max-width: 46em; }
+  .row { display: flex; flex-wrap: wrap; gap: 8px; margin: 16px 0; }
+  button {
+    font: 700 1rem var(--ui);
+    padding: 10px 16px;
+    border: 0;
+    border-radius: 6px;
+    background: transparent;
+    color: var(--ink);
+    box-shadow: inset 0 0 0 2px var(--rule);
+    cursor: pointer;
+  }
+  button.primary { background: var(--accent); color: #fff; box-shadow: none; }
+  button:focus-visible, input:focus-visible { outline: 3px solid #b45309; outline-offset: 2px; }
+  .names { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(auto-fill, minmax(180px, 1fr)); gap: 6px 16px; }
+  .names label { display: flex; gap: 8px; align-items: center; padding: 4px 0; cursor: pointer; }
+  .names input { width: 18px; height: 18px; accent-color: var(--accent); }
+  .msg { padding: 40px 16px; text-align: center; color: var(--muted); }
+  .msg.err { color: #b42318; }
+
+  /* Paper */
+  .pages { padding: 16px 0 40px; }
+  .page {
+    width: 210mm;
+    height: 297mm;
+    margin: 0 auto 16px;
+    padding: 12mm 10mm;
+    background: var(--paper);
+    box-shadow: 0 10px 30px -18px rgba(19, 36, 27, .5);
+    display: grid;
+    grid-template-columns: repeat(2, 85.6mm);
+    grid-template-rows: repeat(5, 54mm);
+    justify-content: center;
+    align-content: start;
+  }
+
+  /* One card: 85.6 x 54 mm, the size of an ID card */
+  .card {
+    position: relative;
+    width: 85.6mm;
+    height: 54mm;
+    border: 0.25mm dashed #b8c4bd;
+    padding: 5mm 4mm 4.5mm 7.5mm;
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) 31mm;
+    column-gap: 3mm;
+    overflow: hidden;
+  }
+  .card::before {
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 0;
+    bottom: 0;
+    width: 2.5mm;
+    background: var(--accent);
+    -webkit-print-color-adjust: exact;
+    print-color-adjust: exact;
+  }
+  .card .left { display: flex; flex-direction: column; min-width: 0; }
+  .card .org { font-size: 8.5pt; color: var(--muted); }
+  .card .name { margin-top: 3.5mm; font: 700 23pt/1 var(--num); overflow-wrap: anywhere; }
+  .card .meta { margin-top: 1.5mm; font-size: 9pt; color: var(--muted); }
+  .card .use { margin-top: auto; font-size: 7.5pt; line-height: 1.3; color: var(--ink); }
+  .card .use b { display: block; font-size: 8.5pt; }
+  .card .qr { align-self: center; width: 31mm; height: 31mm; }
+  .card .qr svg { display: block; width: 100%; height: 100%; }
+
+  @page { size: A4; margin: 0; }
+  @media print {
+    body { background: #fff; }
+    .controls, .msg { display: none !important; }
+    .pages { padding: 0; }
+    .page { margin: 0; box-shadow: none; break-after: page; }
+    .page:last-child { break-after: auto; }
+  }
+  @media screen and (max-width: 840px) {
+    .pages { overflow-x: auto; padding-left: 16px; padding-right: 16px; }
+  }
+</style>
+</head>
+<body>
+<div class="controls" id="controls">
+  <h1>Member cards</h1>
+  <p>Print on A4 at actual size (100%, no "fit to page"). There are ten cards per page; cut along the dashed lines.
+    A matte laminating pouch keeps them readable; shiny ones can reflect light into the camera.</p>
+  <p>To replace a lost card, clear that person's Card code in the Members tab, reload this page and print just their card.
+    Their old card stops working.</p>
+  <div class="row">
+    <button type="button" id="all">Select everyone</button>
+    <button type="button" id="none">Select no one</button>
+    <button type="button" class="primary" id="print">Print</button>
+  </div>
+  <ul class="names" id="names"></ul>
+</div>
+<p class="msg" id="msg">Loading the member list…</p>
+<div class="pages" id="pages"></div>
+
+<script>
+(function () {
+  'use strict';
+  var STORE = 'su-attendance';
+  var QR_SOURCES = [
+    'https://cdn.jsdelivr.net/npm/qrcode-generator@1.4.4/qrcode.js',
+    'https://unpkg.com/qrcode-generator@1.4.4/qrcode.js'
+  ];
+  var data = null;
+  var picked = {};
+
+  function $(id) { return document.getElementById(id); }
+  function esc(s) {
+    return String(s === null || s === undefined ? '' : s).replace(/[&<>"']/g, function (c) {
+      return { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c];
+    });
+  }
+
+  function readLink() {
+    var p = new URLSearchParams(location.hash.replace(/^#/, ''));
+    var app = p.get('app');
+    var key = p.get('key');
+    if (app && key) {
+      try { localStorage.setItem(STORE + '-link', JSON.stringify({ app: app, key: key })); } catch (e) {}
+      return { app: app, key: key };
+    }
+    try {
+      var saved = JSON.parse(localStorage.getItem(STORE + '-link'));
+      if (saved && saved.app && saved.key) return saved;
+    } catch (e) {}
+    return null;
+  }
+
+  function fail(text) {
+    $('msg').hidden = false;
+    $('msg').className = 'msg err';
+    $('msg').textContent = text;
+  }
+
+  function loadQR(i, done) {
+    if (window.qrcode) return done();
+    if (i >= QR_SOURCES.length) return fail("The QR code maker didn't load. Check the internet connection and reload.");
+    var s = document.createElement('script');
+    s.src = QR_SOURCES[i];
+    s.onload = done;
+    s.onerror = function () { loadQR(i + 1, done); };
+    document.head.appendChild(s);
+  }
+
+  function qrSvg(text) {
+    var q = qrcode(0, 'Q');
+    q.addData(text);
+    q.make();
+    return q.createSvgTag({ cellSize: 1, margin: 4, scalable: true, title: 'Card code' });
+  }
+
+  function cardHtml(c) {
+    var meta = [c.cls, c.sub].filter(Boolean).join(', ');
+    return '<div class="card"><div class="left">' +
+      '<div class="org">' + esc(data.union) + '</div>' +
+      '<div class="name">' + esc(c.name) + '</div>' +
+      (meta ? '<div class="meta">' + esc(meta) + '</div>' : '') +
+      '<div class="use"><b>Counter duty card</b>Hold it up to the iPad at the counter to check in.</div>' +
+      '</div><div class="qr">' + qrSvg(c.code) + '</div></div>';
+  }
+
+  function renderPages() {
+    var chosen = data.cards.filter(function (c) { return picked[c.code]; });
+    var html = '';
+    for (var i = 0; i < chosen.length; i += 10) {
+      html += '<section class="page">' + chosen.slice(i, i + 10).map(cardHtml).join('') + '</section>';
+    }
+    $('pages').innerHTML = html;
+    $('print').textContent = chosen.length ? 'Print ' + chosen.length + (chosen.length === 1 ? ' card' : ' cards') : 'Print';
+    $('print').disabled = !chosen.length;
+    $('msg').hidden = !!chosen.length;
+    $('msg').className = 'msg';
+    $('msg').textContent = 'Pick at least one person to print a card for.';
+  }
+
+  function renderNames() {
+    $('names').innerHTML = data.cards.map(function (c) {
+      return '<li><label><input type="checkbox" data-code="' + esc(c.code) + '"' + (picked[c.code] ? ' checked' : '') +
+        '> ' + esc(c.name) + (c.cls ? ' <span style="color:var(--muted)">' + esc(c.cls) + '</span>' : '') + '</label></li>';
+    }).join('');
+  }
+
+  function setAll(on) {
+    data.cards.forEach(function (c) { picked[c.code] = on; });
+    renderNames();
+    renderPages();
+  }
+
+  var link = readLink();
+  if (!link) {
+    $('controls').hidden = true;
+    fail('Open this page from the link in the attendance sheet: Attendance > Show app links.');
+    return;
+  }
+
+  fetch(link.app + '?action=cards&key=' + encodeURIComponent(link.key), { redirect: 'follow', cache: 'no-store' })
+    .then(function (r) {
+      if ((r.headers.get('content-type') || '').indexOf('json') < 0) throw new Error('setup');
+      return r.json();
+    })
+    .then(function (res) {
+      if (res.error) throw new Error(res.message || res.error);
+      data = res;
+      if (!data.cards.length) {
+        $('controls').hidden = true;
+        return fail('Nobody in the Members tab has a card code yet. In the sheet, choose Attendance > Give card codes to new members.');
+      }
+      data.cards.forEach(function (c) { picked[c.code] = true; });
+      loadQR(0, function () {
+        renderNames();
+        renderPages();
+      });
+    })
+    .catch(function (err) {
+      fail(err && err.message === 'setup'
+        ? "Can't reach the sheet. Check that the web app is deployed with access: Anyone."
+        : (err && err.message) || "Can't reach the sheet. Check the internet connection and reload.");
+    });
+
+  $('names').addEventListener('change', function (e) {
+    var code = e.target.getAttribute('data-code');
+    if (!code) return;
+    picked[code] = e.target.checked;
+    renderPages();
+  });
+  $('all').addEventListener('click', function () { setAll(true); });
+  $('none').addEventListener('click', function () { setAll(false); });
+  $('print').addEventListener('click', function () { window.print(); });
+})();
+</script>
+</body>
+</html>
