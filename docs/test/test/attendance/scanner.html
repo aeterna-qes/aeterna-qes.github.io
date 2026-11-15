@@ -1,0 +1,951 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="theme-color" content="#173a2c">
+<title>Counter scanner</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible:wght@400;700&family=Barlow+Condensed:wght@600;700&display=swap">
+<!--
+  Counter scanner for the Student Union attendance sheet.
+  Open it from the link in the sheet (Attendance > Show app links); the link
+  carries the web app address and the scanner key after the # sign.
+  Colours and fonts are in :root below.
+-->
+<style>
+  :root {
+    --board: #173a2c;
+    --board-2: #1f4637;
+    --board-3: #0f271e;
+    --chalk: #f1f5ef;
+    --chalk-dim: #a8bfb2;
+    --line: rgba(241, 245, 239, .15);
+    --ok: #7fdca4;
+    --late: #f4b860;
+    --extra: #9cc7ff;
+    --test: #c8b8ff;
+    --plain: #dfe8e2;
+    --bad: #ff9a8f;
+    --on-tone: #10261c;
+    --ui: "Atkinson Hyperlegible", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+          "PingFang HK", "Noto Sans TC", "Microsoft JhengHei", sans-serif;
+    --num: "Barlow Condensed", "Atkinson Hyperlegible", -apple-system, "Segoe UI", sans-serif;
+  }
+
+  * { box-sizing: border-box; }
+  html, body { margin: 0; }
+  body {
+    background: var(--board);
+    color: var(--chalk);
+    font-family: var(--ui);
+    font-size: 17px;
+    line-height: 1.45;
+    -webkit-text-size-adjust: 100%;
+    -webkit-user-select: none;
+    user-select: none;
+  }
+  [hidden] { display: none !important; }
+  button { font: inherit; color: inherit; }
+  button:focus-visible, select:focus-visible { outline: 3px solid var(--late); outline-offset: 2px; }
+
+  /* Start and setup screens */
+  .screen {
+    min-height: 100vh;
+    min-height: 100dvh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 14px;
+    padding: 32px 16px;
+    text-align: center;
+  }
+  .screen h1 { font: 700 clamp(2.4rem, 8vw, 4rem)/1 var(--num); margin: 0; }
+  .screen p { margin: 0; max-width: 34em; color: var(--chalk-dim); }
+  .screen .union { color: var(--chalk-dim); }
+  .big {
+    margin: 10px 0 4px;
+    padding: 18px 40px;
+    border: 0;
+    border-radius: 10px;
+    background: var(--ok);
+    color: var(--on-tone);
+    font: 700 1.35rem/1 var(--ui);
+    cursor: pointer;
+  }
+  .err { color: var(--bad) !important; }
+
+  /* The scanner */
+  .kiosk {
+    min-height: 100vh;
+    min-height: 100dvh;
+    display: flex;
+    flex-direction: column;
+    padding: max(14px, env(safe-area-inset-top)) 16px max(10px, env(safe-area-inset-bottom));
+    max-width: 1400px;
+    margin: 0 auto;
+  }
+  .bar { display: flex; justify-content: space-between; align-items: baseline; gap: 16px; }
+  .bar .union { color: var(--chalk-dim); font-size: .95rem; }
+  .clock { font: 700 1.7rem/1 var(--num); font-variant-numeric: tabular-nums; }
+  .banner {
+    margin: 12px 0 0;
+    padding: 10px 14px;
+    border-radius: 6px;
+    color: var(--test);
+    background: rgba(200, 184, 255, .12);
+    border: 1px solid rgba(200, 184, 255, .32);
+  }
+  .grid { flex: 1; display: grid; gap: 22px; margin-top: 14px; align-content: start; }
+
+  .cam {
+    position: relative;
+    aspect-ratio: 4 / 3;
+    border-radius: 14px;
+    overflow: hidden;
+    background: var(--board-3);
+  }
+  .cam video { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
+  .cam video.mirror { transform: scaleX(-1); }
+  .guide {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 46%;
+    aspect-ratio: 1;
+    transform: translate(-50%, -50%);
+    --c: rgba(241, 245, 239, .9);
+    background:
+      linear-gradient(var(--c), var(--c)) top left / 40px 5px,
+      linear-gradient(var(--c), var(--c)) top left / 5px 40px,
+      linear-gradient(var(--c), var(--c)) top right / 40px 5px,
+      linear-gradient(var(--c), var(--c)) top right / 5px 40px,
+      linear-gradient(var(--c), var(--c)) bottom left / 40px 5px,
+      linear-gradient(var(--c), var(--c)) bottom left / 5px 40px,
+      linear-gradient(var(--c), var(--c)) bottom right / 40px 5px,
+      linear-gradient(var(--c), var(--c)) bottom right / 5px 40px;
+    background-repeat: no-repeat;
+    border-radius: 6px;
+  }
+  .camnote {
+    position: absolute;
+    inset: auto 0 0 0;
+    padding: 12px 16px;
+    text-align: center;
+    background: rgba(15, 39, 30, .72);
+  }
+  .hint { margin: 12px 0 0; text-align: center; font-size: 1.3rem; font-weight: 700; }
+
+  .result {
+    --tone: var(--plain);
+    position: absolute;
+    inset: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 6px;
+    padding: 24px;
+    text-align: center;
+    background: var(--tone);
+    color: var(--on-tone);
+  }
+  .result.pop { animation: pop .22s cubic-bezier(.2, .8, .2, 1) both; }
+  @keyframes pop { from { opacity: 0; transform: scale(.96); } to { opacity: 1; transform: none; } }
+  .r-what { margin: 0; font: 700 clamp(1.4rem, 3.4vw, 2rem)/1.1 var(--num); letter-spacing: .01em; }
+  .r-name { margin: 0; font: 700 clamp(3.2rem, 10vw, 6rem)/1 var(--num); overflow-wrap: anywhere; }
+  .r-detail { margin: 6px 0 0; font-size: clamp(1.05rem, 2.4vw, 1.35rem); max-width: 28em; }
+
+  .slot { font: 700 clamp(2.4rem, 8vw, 3.6rem)/.95 var(--num); margin: 0; font-variant-numeric: tabular-nums; }
+  .span { color: var(--chalk-dim); margin: 6px 0 16px; }
+  .dutyhead {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    gap: 12px;
+    padding-bottom: 8px;
+    border-bottom: 1px solid var(--line);
+  }
+  h2 { font: 700 1.5rem/1.1 var(--num); margin: 0; }
+  h3 { font: 700 1.15rem/1.1 var(--num); margin: 22px 0 0; padding-bottom: 6px; border-bottom: 1px solid var(--line); color: var(--chalk-dim); }
+  .count { color: var(--chalk-dim); font-variant-numeric: tabular-nums; }
+  .people { list-style: none; margin: 0; padding: 0; }
+  .person {
+    --c: var(--ok);
+    display: grid;
+    grid-template-columns: 26px minmax(0, 1fr) auto;
+    gap: 12px;
+    align-items: center;
+    padding: 11px 6px;
+    border-bottom: 1px solid var(--line);
+    border-radius: 4px;
+  }
+  .person.plain { grid-template-columns: minmax(0, 1fr); }
+  .tick { width: 24px; height: 24px; border-radius: 50%; border: 2px solid var(--chalk-dim); position: relative; }
+  .person.unknown .tick { border-style: dashed; border-color: var(--late); }
+  .person.in .tick { background: var(--c); border-color: var(--c); }
+  .person.in .tick::after {
+    content: "";
+    position: absolute;
+    left: 7px;
+    top: 3px;
+    width: 6px;
+    height: 11px;
+    border: solid var(--board);
+    border-width: 0 3px 3px 0;
+    transform: rotate(45deg);
+  }
+  .who { min-width: 0; }
+  .who b { display: block; font-size: 1.1rem; overflow-wrap: anywhere; }
+  .who small { color: var(--chalk-dim); font-size: .85rem; }
+  .when { text-align: right; }
+  .when b { display: block; font: 700 1.45rem/1 var(--num); font-variant-numeric: tabular-nums; }
+  .when small { color: var(--chalk-dim); font-size: .82rem; }
+  .person .late, .late { color: var(--late); }
+  .person.arrived { animation: arrive 1.6s ease-out; }
+  @keyframes arrive { 0% { background: rgba(127, 220, 164, .28); } 100% { background: transparent; } }
+  .empty { padding: 14px 0; color: var(--chalk-dim); }
+
+  .ghost {
+    margin-top: 18px;
+    padding: 12px 18px;
+    border: 0;
+    border-radius: 8px;
+    background: transparent;
+    box-shadow: inset 0 0 0 2px var(--chalk-dim);
+    font-weight: 700;
+    cursor: pointer;
+  }
+  .idle { padding: 24px 0; }
+  .idle .bigtext { font: 700 clamp(2.4rem, 8vw, 4rem)/1 var(--num); margin: 0 0 12px; }
+  .idle p { margin: 0; color: var(--chalk-dim); font-size: 1.2rem; max-width: 30ch; }
+
+  .foot { display: flex; justify-content: space-between; align-items: center; gap: 16px; margin-top: 14px; color: var(--chalk-dim); font-size: .85rem; }
+  .link { padding: 6px 0; border: 0; background: none; color: var(--chalk-dim); text-decoration: underline; cursor: pointer; }
+  .conn::before {
+    content: "";
+    display: inline-block;
+    width: 8px;
+    height: 8px;
+    margin-right: 6px;
+    border-radius: 50%;
+    background: var(--chalk-dim);
+  }
+  .conn.live::before { background: var(--ok); }
+  .conn.busy::before { background: var(--late); }
+  .conn.down::before { background: var(--bad); }
+
+  /* Forgot your card? */
+  .sheet {
+    position: fixed;
+    inset: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 16px;
+    background: rgba(8, 20, 15, .72);
+  }
+  .panel {
+    width: min(640px, 100%);
+    max-height: calc(100dvh - 32px);
+    overflow: auto;
+    padding: 24px;
+    border-radius: 14px;
+    background: var(--board-2);
+    box-shadow: 0 24px 60px -20px rgba(0, 0, 0, .7);
+  }
+  .panel h2 { font-size: 2rem; }
+  .panel p { color: var(--chalk-dim); margin: 8px 0 18px; }
+  .names { display: grid; grid-template-columns: repeat(auto-fill, minmax(170px, 1fr)); gap: 10px; }
+  .names button {
+    padding: 18px 14px;
+    border: 0;
+    border-radius: 10px;
+    background: var(--chalk);
+    color: var(--on-tone);
+    font: 700 1.3rem/1.1 var(--ui);
+    cursor: pointer;
+  }
+  .pick { display: flex; gap: 8px; margin-top: 18px; }
+  .pick select {
+    flex: 1;
+    min-width: 0;
+    padding: 12px;
+    border: 0;
+    border-radius: 8px;
+    background: var(--board);
+    color: var(--chalk);
+    font: 1rem var(--ui);
+    box-shadow: inset 0 0 0 1px var(--line);
+  }
+  .pick button {
+    padding: 12px 16px;
+    border: 0;
+    border-radius: 8px;
+    background: var(--chalk);
+    color: var(--on-tone);
+    font-weight: 700;
+    cursor: pointer;
+  }
+
+  @media (orientation: landscape) and (min-width: 760px) {
+    .kiosk { padding-left: 28px; padding-right: 28px; }
+    .grid { grid-template-columns: minmax(0, 1.25fr) minmax(0, 1fr); gap: 40px; align-items: start; }
+    .cam { aspect-ratio: auto; height: min(72vh, 620px); }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .result.pop, .person.arrived { animation: none; }
+  }
+</style>
+</head>
+<body>
+
+<div class="screen" id="setup" hidden>
+  <h1>Open the scanner from the sheet</h1>
+  <p id="setupMsg">In the attendance sheet, choose Attendance &gt; Show app links, then open the scanner link on this iPad.</p>
+</div>
+
+<div class="screen" id="start" hidden>
+  <p class="union" id="startUnion"></p>
+  <h1>Counter scanner</h1>
+  <button class="big" id="startBtn" type="button">Start scanner</button>
+  <p>The camera turns on. Leave this page open at the counter.</p>
+  <p class="err" id="camError" hidden></p>
+</div>
+
+<div class="kiosk" id="kiosk" hidden>
+  <header class="bar">
+    <span class="union" id="union"></span>
+    <span class="clock" id="clock" aria-label="Time now"></span>
+  </header>
+  <p class="banner" id="banner" hidden></p>
+
+  <main class="grid">
+    <section aria-label="Camera">
+      <div class="cam">
+        <video id="video" playsinline muted autoplay></video>
+        <div class="guide" aria-hidden="true"></div>
+        <p class="camnote" id="camNote" hidden></p>
+        <div class="result" id="result" role="status" aria-live="assertive" hidden>
+          <p class="r-what" id="rWhat"></p>
+          <p class="r-name" id="rName"></p>
+          <p class="r-detail" id="rDetail"></p>
+        </div>
+      </div>
+      <p class="hint">Hold your card up to the camera</p>
+    </section>
+
+    <section aria-label="Who is on duty">
+      <div id="live" hidden>
+        <h1 class="slot" id="slotTitle"></h1>
+        <p class="span" id="slotSpan"></p>
+        <div class="dutyhead"><h2>On duty</h2><span class="count" id="count"></span></div>
+        <ul class="people" id="onDuty"></ul>
+        <div id="extrasWrap" hidden><h3>Also helping</h3><ul class="people" id="extras"></ul></div>
+        <div id="excusedWrap" hidden><h3>Excused</h3><ul class="people" id="excused"></ul></div>
+        <button class="ghost" id="forgotBtn" type="button">Forgot your card?</button>
+      </div>
+      <div class="idle" id="idle" hidden>
+        <p class="bigtext" id="idleTitle">No duty right now</p>
+        <p id="idleNext"></p>
+      </div>
+    </section>
+  </main>
+
+  <footer class="foot">
+    <button class="link" id="flip" type="button">Switch camera</button>
+    <span class="conn" id="conn" role="status">Connecting…</span>
+  </footer>
+</div>
+
+<div class="sheet" id="forgot" role="dialog" aria-modal="true" aria-labelledby="forgotTitle" hidden>
+  <div class="panel">
+    <h2 id="forgotTitle">Forgot your card?</h2>
+    <p>Tap your name. It's recorded as a check-in without a card.</p>
+    <div class="names" id="forgotNames"></div>
+    <div class="pick">
+      <select id="forgotOther" aria-label="Someone else"></select>
+      <button type="button" id="forgotOtherBtn">Check in</button>
+    </div>
+    <button class="ghost" id="forgotCancel" type="button">Cancel</button>
+  </div>
+</div>
+
+<script>
+(function () {
+  'use strict';
+
+  var STORE = 'su-attendance';
+  var QR_SOURCES = [
+    'https://cdn.jsdelivr.net/npm/jsqr@1.4.0/dist/jsQR.js',
+    'https://unpkg.com/jsqr@1.4.0/dist/jsQR.js'
+  ];
+  var TONES = { 'On time': 'ok', 'OK': 'ok', 'Late': 'late', 'Left early': 'late', 'Extra': 'extra', 'Test': 'test' };
+
+  var link = readLink();          // { app, key } from the # part of the address, or saved earlier
+  var S = null;                   // the latest list from the sheet
+  var offset = 0;                 // the sheet's clock minus this iPad's clock
+  var queue = load('queue', []);  // scans not sent yet
+  var sending = false;
+  var retryTimer = null;
+  var pollTimer = null;
+  var facing = load('camera', 'user');
+  var stream = null;
+  var video = $('video');
+  var canvas = document.createElement('canvas');
+  var ctx = canvas.getContext('2d', { willReadFrequently: true });
+  var lastCode = '';
+  var lastCodeAt = 0;
+  var shownId = null;
+  var hideTimer = null;
+  var audio = null;
+  var seenIn = null;
+  var fatal = false;
+
+  function $(id) { return document.getElementById(id); }
+
+  function esc(s) {
+    return String(s === null || s === undefined ? '' : s).replace(/[&<>"']/g, function (c) {
+      return { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c];
+    });
+  }
+
+  function load(name, fallback) {
+    try {
+      var v = JSON.parse(localStorage.getItem(STORE + '-' + name));
+      return v === null || v === undefined ? fallback : v;
+    } catch (e) {
+      return fallback;
+    }
+  }
+
+  function save(name, value) {
+    try { localStorage.setItem(STORE + '-' + name, JSON.stringify(value)); } catch (e) { /* private mode */ }
+  }
+
+  function readLink() {
+    var p = new URLSearchParams(location.hash.replace(/^#/, ''));
+    var app = p.get('app');
+    var key = p.get('key');
+    if (app && key) {
+      save('link', { app: app, key: key });
+      return { app: app, key: key };
+    }
+    var saved = load('link', null);
+    return saved && saved.app && saved.key ? saved : null;
+  }
+
+  function joinNames(list) {
+    if (!list || !list.length) return '';
+    if (list.length === 1) return list[0];
+    return list.slice(0, -1).join(', ') + ' and ' + list[list.length - 1];
+  }
+
+  function nextText(n) {
+    if (!n) return '';
+    var when = /^(Today|Tomorrow)$/.test(n.day) ? n.day.toLowerCase() : 'on ' + n.day;
+    var what = (n.slotName ? n.slotName + ', ' : '') + n.time.replace('–', ' to ') + ' ' + when;
+    return n.with && n.with.length ? what + ', with ' + joinNames(n.with) + '.' : what + '. Nobody is on the duty list.';
+  }
+
+  function normCode(text) {
+    return String(text || '').trim().toUpperCase().replace(/^SU\s*:/, '').replace(/[^A-Z0-9]/g, '');
+  }
+
+  function newId() {
+    if (window.crypto && crypto.randomUUID) return crypto.randomUUID();
+    return Date.now().toString(36) + Math.random().toString(36).slice(2, 10);
+  }
+
+  // ---- Talking to the sheet ----
+
+  function readJson(r) {
+    var type = r.headers.get('content-type') || '';
+    if (type.indexOf('json') < 0) throw new Error('setup');
+    return r.json();
+  }
+
+  function getState() {
+    return fetch(link.app + '?action=state&key=' + encodeURIComponent(link.key), { redirect: 'follow', cache: 'no-store' })
+      .then(readJson);
+  }
+
+  function post(body) {
+    var payload = Object.assign({ key: link.key }, body);
+    return fetch(link.app, {
+      method: 'POST',
+      redirect: 'follow',
+      headers: { 'Content-Type': 'text/plain;charset=utf-8' },
+      body: JSON.stringify(payload)
+    }).then(readJson);
+  }
+
+  function badKey(res) {
+    fatal = true;
+    stopCamera();
+    $('kiosk').hidden = true;
+    $('start').hidden = true;
+    $('setup').hidden = false;
+    $('setupMsg').textContent = res.message ||
+      "The scanner key doesn't match. Open the scanner again from the link in the sheet (Attendance > Show app links).";
+  }
+
+  function poll() {
+    clearTimeout(pollTimer);
+    if (fatal) return;
+    getState().then(function (st) {
+      if (st.error === 'key') return badKey(st);
+      if (st.error) throw new Error(st.message);
+      applyState(st);
+      setConn();
+    }).catch(function (err) {
+      setConn(err && err.message === 'setup' ? 'setup' : 'offline');
+    }).then(schedulePoll);
+  }
+
+  function schedulePoll() {
+    clearTimeout(pollTimer);
+    if (fatal) return;
+    var wait = S && S.idle ? 5 * 60000 : 60000;
+    if (S && S.nextChange) {
+      var until = S.nextChange - (Date.now() + offset) + 1500;
+      if (until > 0 && until < wait) wait = until;
+    }
+    pollTimer = setTimeout(poll, Math.max(2000, wait));
+  }
+
+  function applyState(st) {
+    S = st;
+    offset = st.now - Date.now();
+    tickClock();
+    render();
+    schedulePoll();
+  }
+
+  // ---- Scans: saved on the iPad first, then sent in order ----
+
+  function enqueue(item, name) {
+    item.id = newId();
+    item.at = Date.now() + offset;
+    queue.push(item);
+    save('queue', queue);
+    shownId = item.id;
+    show('plain', 'Checking…', name || 'Card read', '', true);
+    flush();
+  }
+
+  function flush() {
+    if (sending || !queue.length || fatal) return;
+    sending = true;
+    clearTimeout(retryTimer);
+    setConn();
+    var item = queue[0];
+    post(item).then(function (res) {
+      if (res.error === 'key') {
+        sending = false;
+        return badKey(res);
+      }
+      if (res.error) {
+        // The sheet answered but couldn't record it (busy, for example). Try again a few times.
+        item.tries = (item.tries || 0) + 1;
+        if (item.tries < 6) throw new Error(res.message);
+        queue.shift();
+        save('queue', queue);
+        if (item.id === shownId) show('bad', "Couldn't record that", '', res.message || 'Ask a leader to check the sheet.');
+        sound('bad');
+      } else {
+        queue.shift();
+        save('queue', queue);
+        if (res.state) applyState(res.state);
+        if (item.id === shownId) showOutcome(res);
+      }
+      sending = false;
+      setConn();
+      if (queue.length) flush();
+    }).catch(function (err) {
+      sending = false;
+      setConn(err && err.message === 'setup' ? 'setup' : 'offline');
+      if (item.id === shownId) {
+        show('plain', 'Saved on this iPad', $('rName').textContent, "It'll be sent to the sheet when the connection is back.");
+      }
+      retryTimer = setTimeout(flush, 8000);
+    });
+  }
+
+  function showOutcome(res) {
+    var name = res.name || '';
+    var noCard = res.how === 'No card' ? ' Recorded without a card.' : '';
+    switch (res.result) {
+      case 'in':
+        var tone = TONES[res.status] || 'ok';
+        var what = { 'Late': 'Late', 'Extra': 'Extra help', 'Test': 'Test check-in' }[res.status] || 'Checked in';
+        var detail = 'At ' + res.time + '.';
+        if (res.status === 'Late' && S && S.slot) detail += ' Duty started at ' + S.slot.start + '.';
+        if (res.status === 'Extra') detail += " You're not on the duty list for this time slot.";
+        if (res.status === 'Test') detail += " Test mode is on, so this doesn't count.";
+        show(tone, what, name, detail + noCard);
+        break;
+      case 'already':
+        show('plain', 'Already checked in', name, 'At ' + res.inTime + '.' +
+          (S && S.checkout ? ' Scan again when you leave to check out.' : ''));
+        break;
+      case 'out':
+        show(res.status === 'Left early' ? 'late' : 'ok', res.status === 'Left early' ? 'Left early' : 'Checked out',
+          name, 'On duty ' + res.inTime + ' to ' + res.time + '.');
+        break;
+      case 'done':
+        show('plain', 'Already checked out', name, 'On duty ' + res.inTime + ' to ' + res.outTime + '.');
+        break;
+      case 'noslot':
+        show('plain', 'No duty right now', name, res.next ? 'Next: ' + nextText(res.next) : '');
+        break;
+      default:
+        show('bad', "This card isn't recognised", '', 'Ask a leader to check the Members tab, or print a new card.');
+        sound('bad');
+    }
+  }
+
+  // ---- What people see and hear ----
+
+  function show(tone, what, name, detail, pending) {
+    var box = $('result');
+    box.style.setProperty('--tone', 'var(--' + tone + ')');
+    $('rWhat').textContent = what;
+    $('rName').textContent = name;
+    $('rName').hidden = !name;
+    $('rDetail').textContent = detail || '';
+    box.hidden = false;
+    box.classList.remove('pop');
+    void box.offsetWidth;
+    box.classList.add('pop');
+    clearTimeout(hideTimer);
+    hideTimer = setTimeout(function () { box.hidden = true; }, pending ? 15000 : 4500);
+  }
+
+  function sound(kind) {
+    if (!audio) return;
+    var notes = { ok: [[880, 0.08], [1320, 0.12]], read: [[990, 0.07]], bad: [[200, 0.35]] }[kind] || [];
+    var t = audio.currentTime + 0.01;
+    notes.forEach(function (n) {
+      var o = audio.createOscillator();
+      var g = audio.createGain();
+      o.type = kind === 'bad' ? 'square' : 'sine';
+      o.frequency.value = n[0];
+      g.gain.setValueAtTime(0.0001, t);
+      g.gain.exponentialRampToValueAtTime(kind === 'bad' ? 0.12 : 0.3, t + 0.01);
+      g.gain.exponentialRampToValueAtTime(0.0001, t + n[1]);
+      o.connect(g);
+      g.connect(audio.destination);
+      o.start(t);
+      o.stop(t + n[1] + 0.03);
+      t += n[1] + 0.05;
+    });
+  }
+
+  function setConn(problem) {
+    var el = $('conn');
+    var waiting = queue.length;
+    var plural = waiting === 1 ? ' scan' : ' scans';
+    if (problem === 'setup') {
+      el.className = 'conn down';
+      el.textContent = "Can't reach the sheet. Check that the web app is deployed with access: Anyone." +
+        (waiting ? ' ' + waiting + plural + ' saved on this iPad.' : '');
+    } else if (problem === 'offline') {
+      el.className = 'conn down';
+      el.textContent = 'Offline.' + (waiting ? ' ' + waiting + plural + ' saved on this iPad.' : '');
+    } else if (waiting) {
+      el.className = 'conn busy';
+      el.textContent = 'Sending ' + waiting + plural + '…';
+    } else {
+      el.className = 'conn live';
+      el.textContent = 'Connected to the sheet';
+    }
+  }
+
+  var timeFormat = null;
+  function tickClock() {
+    var tz = (S && S.tz) || 'Asia/Hong_Kong';
+    if (!timeFormat || timeFormat.tz !== tz) {
+      try {
+        timeFormat = new Intl.DateTimeFormat('en-GB', { timeZone: tz, hour: '2-digit', minute: '2-digit', hour12: false });
+        timeFormat.tz = tz;
+      } catch (e) {
+        timeFormat = null;
+      }
+    }
+    var d = new Date(Date.now() + offset);
+    $('clock').textContent = timeFormat ? timeFormat.format(d) : d.toTimeString().slice(0, 5);
+  }
+
+  function personRow(p, arrived) {
+    var isIn = !!p.inTime;
+    var tone = TONES[p.status] || 'ok';
+    var meta = [p.cls, p.sub].filter(Boolean).join(', ');
+    var right;
+    if (isIn) {
+      var notes = [];
+      if (p.status === 'Late') notes.push('<span class="late">late</span>');
+      if (p.noCard) notes.push('no card');
+      if (p.outTime) {
+        notes.push(p.outStatus === 'Left early'
+          ? '<span class="late">left ' + esc(p.outTime) + '</span>'
+          : 'out ' + esc(p.outTime));
+      }
+      right = '<b>' + esc(p.inTime) + '</b>' + (notes.length ? '<small>' + notes.join(', ') + '</small>' : '');
+    } else {
+      right = '<small>Not here yet</small>';
+    }
+    return '<li class="person ' + (isIn ? 'in' : 'wait') + (arrived ? ' arrived' : '') + '" style="--c:var(--' + tone + ')">' +
+      '<span class="tick" aria-hidden="true"></span>' +
+      '<span class="who"><b>' + esc(p.name) + '</b>' + (meta ? '<small>' + esc(meta) + '</small>' : '') + '</span>' +
+      '<span class="when">' + right + '</span></li>';
+  }
+
+  function render() {
+    if (!S) return;
+    $('union').textContent = S.union;
+    var banner = $('banner');
+    banner.hidden = !S.test;
+    banner.textContent = 'Test mode is on: a test slot runs all day and nothing counts yet. Untick Test mode in the Settings tab when you go live.';
+
+    $('live').hidden = !!S.idle;
+    $('idle').hidden = !S.idle;
+    if (S.idle) {
+      $('idleTitle').textContent = S.dayOff ? 'No duty today' : 'No duty right now';
+      var lines = [];
+      if (S.dayOff) lines.push(S.dayOff + '.');
+      if (S.next) lines.push('Next: ' + nextText(S.next));
+      $('idleNext').textContent = lines.join(' ');
+      seenIn = {};
+      return;
+    }
+
+    var sl = S.slot;
+    $('slotTitle').textContent = sl.test ? 'Test' : sl.name || sl.start + '–' + sl.end;
+    $('slotSpan').textContent = (sl.test ? 'All day, ' : sl.name ? sl.start + ' to ' + sl.end + ', ' : '') + S.dateLabel;
+
+    var firstRender = seenIn === null;
+    var nowIn = {};
+    function rows(list) {
+      return list.map(function (p) {
+        if (p.inTime) nowIn[p.id] = true;
+        return personRow(p, !firstRender && p.inTime && !seenIn[p.id]);
+      }).join('');
+    }
+    var here = S.onDuty.filter(function (p) { return p.inTime; }).length;
+    var total = S.onDuty.length + (S.unknown || []).length;
+    $('count').textContent = total ? here + ' of ' + total + ' here' : '';
+    $('onDuty').innerHTML = (rows(S.onDuty) + (S.unknown || []).map(function (name) {
+      return '<li class="person unknown"><span class="tick" aria-hidden="true"></span><span class="who"><b>' + esc(name) +
+        '</b><small class="late">Not in the Members tab, so they can\'t check in</small></span><span class="when"></span></li>';
+    }).join('')) || '<li class="empty">Nobody is on the duty list for this time slot. Anyone who scans is recorded as extra help.</li>';
+
+    $('extrasWrap').hidden = !S.extras.length;
+    $('extras').innerHTML = rows(S.extras);
+    $('excusedWrap').hidden = !S.excused.length;
+    $('excused').innerHTML = S.excused.map(function (x) {
+      return '<li class="person plain"><span class="who"><b>' + esc(x.name) + '</b>' +
+        (x.note ? '<small>' + esc(x.note) + '</small>' : '') + '</span></li>';
+    }).join('');
+    seenIn = nowIn;
+  }
+
+  // ---- Forgot your card? ----
+
+  function openForgot() {
+    if (!S || S.idle) return;
+    var waiting = S.onDuty.filter(function (p) { return !p.inTime; });
+    $('forgotNames').innerHTML = waiting.map(function (p) {
+      return '<button type="button" data-id="' + esc(p.id) + '">' + esc(p.name) + '</button>';
+    }).join('');
+    $('forgotNames').hidden = !waiting.length;
+    $('forgotOther').innerHTML = '<option value="">' + (waiting.length ? 'Someone else…' : 'Pick your name…') + '</option>' +
+      (S.members || []).map(function (m) {
+        return '<option value="' + esc(m.id) + '">' + esc(m.name + (m.cls ? ' (' + m.cls + ')' : '')) + '</option>';
+      }).join('');
+    $('forgot').hidden = false;
+  }
+
+  function closeForgot() { $('forgot').hidden = true; }
+
+  function forgotPick(id) {
+    if (!id) return;
+    var m = (S.members || []).filter(function (x) { return x.id === id; })[0];
+    closeForgot();
+    sound('read');
+    enqueue({ action: 'manual', member: id }, m ? m.name : '');
+  }
+
+  // ---- Camera and reading QR codes ----
+
+  function loadDecoder(i) {
+    if (window.jsQR) return;
+    if (i >= QR_SOURCES.length) {
+      $('camNote').hidden = false;
+      $('camNote').textContent = "The card reader didn't load. Check the internet connection, then reload this page.";
+      return;
+    }
+    var s = document.createElement('script');
+    s.src = QR_SOURCES[i];
+    s.onerror = function () { loadDecoder(i + 1); };
+    document.head.appendChild(s);
+  }
+
+  function startCamera() {
+    stopCamera();
+    if (!navigator.mediaDevices || !navigator.mediaDevices.getUserMedia) {
+      return Promise.reject(new Error('nocamera'));
+    }
+    return navigator.mediaDevices.getUserMedia({
+      audio: false,
+      video: { facingMode: facing, width: { ideal: 1280 }, height: { ideal: 720 } }
+    }).then(function (s) {
+      stream = s;
+      video.srcObject = s;
+      video.classList.toggle('mirror', facing === 'user');
+      return video.play();
+    }).then(function () {
+      $('camNote').hidden = true;
+      scanLoop();
+    });
+  }
+
+  function stopCamera() {
+    if (stream) stream.getTracks().forEach(function (t) { t.stop(); });
+    stream = null;
+  }
+
+  function cameraMessage(err) {
+    var name = err && err.name;
+    if (name === 'NotAllowedError' || name === 'SecurityError') {
+      return 'The camera is blocked. In Safari, tap aA in the address bar, then Website Settings, and set Camera to Allow. Then reload this page.';
+    }
+    if (name === 'NotFoundError' || name === 'OverconstrainedError') return 'No camera was found on this device.';
+    if (err && err.message === 'nocamera') return "This browser can't use the camera. Open the link in Safari.";
+    return "The camera didn't start (" + (name || (err && err.message) || 'unknown error') + '). Reload this page to try again.';
+  }
+
+  function scanLoop() {
+    if (!stream) return;
+    var started = Date.now();
+    try {
+      if (window.jsQR && video.readyState >= 2 && video.videoWidth && $('forgot').hidden) {
+        var w = video.videoWidth;
+        var h = video.videoHeight;
+        var scale = Math.min(1, 720 / Math.max(w, h));
+        canvas.width = Math.round(w * scale);
+        canvas.height = Math.round(h * scale);
+        ctx.drawImage(video, 0, 0, canvas.width, canvas.height);
+        var img = ctx.getImageData(0, 0, canvas.width, canvas.height);
+        var found = jsQR(img.data, img.width, img.height, { inversionAttempts: 'dontInvert' });
+        if (found && found.data) onRead(found.data);
+      }
+    } catch (e) { /* skip this frame */ }
+    setTimeout(scanLoop, Math.max(30, 110 - (Date.now() - started)));
+  }
+
+  function onRead(text) {
+    var now = Date.now();
+    var code = normCode(text);
+    if (code === lastCode && now - lastCodeAt < 6000) return;   // the same card is still in front of the camera
+    lastCode = code;
+    lastCodeAt = now;
+    if (!/^\s*SU\s*:/i.test(text) || !code) {
+      shownId = null;
+      show('bad', 'Not a member card', '', 'Hold up the card the union gave you.');
+      sound('bad');
+      return;
+    }
+    var name = S && S.cards ? S.cards[code] : '';
+    sound(name ? 'ok' : 'read');
+    enqueue({ action: 'scan', code: code }, name);
+  }
+
+  // ---- Starting up ----
+
+  function keepAwake() {
+    try {
+      if (navigator.wakeLock && document.visibilityState === 'visible') {
+        navigator.wakeLock.request('screen').catch(function () {});
+      }
+    } catch (e) { /* not supported */ }
+  }
+
+  function begin() {
+    $('camError').hidden = true;
+    try {
+      var Ctx = window.AudioContext || window.webkitAudioContext;
+      if (Ctx && !audio) audio = new Ctx();
+      if (audio && audio.state === 'suspended') audio.resume();
+    } catch (e) { audio = null; }
+    startCamera().then(function () {
+      $('start').hidden = true;
+      $('kiosk').hidden = false;
+      keepAwake();
+      render();
+    }).catch(function (err) {
+      $('camError').hidden = false;
+      $('camError').textContent = cameraMessage(err);
+    });
+  }
+
+  if (!link) {
+    $('setup').hidden = false;
+    return;
+  }
+
+  $('start').hidden = false;
+  $('startBtn').addEventListener('click', begin);
+  $('flip').addEventListener('click', function () {
+    facing = facing === 'user' ? 'environment' : 'user';
+    save('camera', facing);
+    startCamera().catch(function (err) {
+      $('camNote').hidden = false;
+      $('camNote').textContent = cameraMessage(err);
+    });
+  });
+  $('forgotBtn').addEventListener('click', openForgot);
+  $('forgotCancel').addEventListener('click', closeForgot);
+  $('forgotNames').addEventListener('click', function (e) {
+    var b = e.target.closest && e.target.closest('button[data-id]');
+    if (b) forgotPick(b.getAttribute('data-id'));
+  });
+  $('forgotOtherBtn').addEventListener('click', function () { forgotPick($('forgotOther').value); });
+  document.addEventListener('visibilitychange', function () {
+    if (document.visibilityState !== 'visible' || fatal) return;
+    keepAwake();
+    if ($('kiosk').hidden === false) {
+      var live = stream && stream.getVideoTracks().some(function (t) { return t.readyState === 'live'; });
+      if (!live) startCamera().catch(function () {});
+    }
+    poll();
+    flush();
+  });
+  window.addEventListener('online', function () { flush(); poll(); });
+
+  loadDecoder(0);
+  poll();
+  flush();
+  tickClock();
+  setInterval(tickClock, 1000);
+  getStartUnion();
+
+  function getStartUnion() {
+    var tries = 0;
+    var t = setInterval(function () {
+      if (S && S.union) {
+        $('startUnion').textContent = S.union;
+        clearInterval(t);
+      } else if (++tries > 40) {
+        clearInterval(t);
+      }
+    }, 250);
+  }
+})();
+</script>
+</body>
+</html>
