@@ -1,0 +1,908 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>班際閃避球 · Aeterna</title>
+<meta name="description" content="Aeterna 高中班際閃避球比賽 · Senior Inter-class Dodgeball by Aeterna, QES.">
+<meta name="theme-color" content="#000000">
+<link rel="icon" href="photos/icon-192.png">
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Italiana&family=Outfit:wght@300;400;600&family=Noto+Serif+TC:wght@400&display=swap');
+
+* { margin: 0; padding: 0; box-sizing: border-box; user-select: none; }
+
+html, body {
+    width: 100%;
+    margin: 0;
+    padding: 0;
+    background-color: #000000;
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+}
+
+body {
+    min-height: 900vh;
+    font-family: 'Outfit', 'Noto Serif TC', sans-serif;
+    color: #ffffff;
+    overflow-x: hidden;
+}
+
+::-webkit-scrollbar { display: none; width: 0; }
+
+#webgl {
+    position: fixed;
+    top: 0; left: 0;
+    width: 100%; height: 100%;
+    z-index: 1;
+    outline: none;
+}
+
+/* Custom cursor: mouse only. Touch keeps the native behaviour. */
+.cursor-inner, .cursor-outer { display: none; }
+@media (pointer: fine) {
+    body, * { cursor: none !important; }
+    .cursor-inner {
+        display: block;
+        position: fixed; top: 0; left: 0;
+        width: 6px; height: 6px;
+        border: 2px solid rgba(255, 255, 255, 1);
+        border-radius: 50%;
+        transform: translate(-50%, -50%);
+        pointer-events: none;
+        z-index: 9999;
+    }
+    .cursor-outer {
+        display: block;
+        position: fixed; top: 0; left: 0;
+        width: 40px; height: 40px;
+        border: 1.5px solid rgba(255, 255, 255, 0.7);
+        border-radius: 50%;
+        transform: translate(-50%, -50%);
+        pointer-events: none;
+        z-index: 9998;
+        transition: width 0.3s, height 0.3s, background 0.3s;
+    }
+    .cursor-outer.hover { width: 56px; height: 56px; background: rgba(255, 255, 255, 0.08); }
+}
+
+.cinematic-container {
+    position: fixed;
+    top: 0; left: 0;
+    width: 100%; height: 100%;
+    z-index: 10;
+    pointer-events: none;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding: 0 60px 40px 60px;
+}
+
+.main-header {
+    display: flex; justify-content: space-between; align-items: center;
+    width: 100%; z-index: 20;
+    pointer-events: auto;
+    padding: 20px 0;
+    gap: 16px;
+}
+.brand { font-size: 14px; font-weight: 600; letter-spacing: 5px; text-transform: uppercase; color: #fff; text-decoration: none; }
+.header-nav { display: flex; align-items: center; gap: 24px; }
+.nav-link {
+    color: #ffffff; text-decoration: none;
+    font-size: 10px; text-transform: uppercase; letter-spacing: 2px;
+    font-weight: 500; transition: color 0.3s;
+}
+html[lang^="zh"] .nav-link { font-size: 12px; letter-spacing: 3px; }
+.nav-link:hover { color: #fbc75a; }
+.nav-dot { width: 3px; height: 3px; background: rgba(255, 255, 255, 0.2); border-radius: 50%; }
+.header-actions { display: flex; align-items: center; gap: 14px; }
+.lang-btn {
+    background: none; border: 0; padding: 8px 4px;
+    color: rgba(255, 255, 255, 0.75);
+    font: 500 11px 'Outfit', 'Noto Serif TC', sans-serif; letter-spacing: 2px;
+    transition: color 0.3s;
+}
+.lang-btn:hover { color: #fff; }
+.contact-btn {
+    display: inline-flex; align-items: center; gap: 8px;
+    padding: 10px 24px;
+    background: #ffffff; color: #000000;
+    text-decoration: none;
+    font-size: 10px; text-transform: uppercase; letter-spacing: 1px; font-weight: 600;
+    border-radius: 20px;
+    transition: transform 0.3s, background 0.3s;
+    white-space: nowrap;
+}
+html[lang^="zh"] .contact-btn { font-size: 12px; letter-spacing: 2px; }
+.btn-circle {
+    display: inline-block; width: 6px; height: 6px;
+    border: 1px solid #000000; border-radius: 50%; background: transparent;
+}
+.contact-btn:hover { transform: scale(1.05); background: #f0f0f0; }
+a:focus-visible, button:focus-visible { outline: 2px solid #fbc75a; outline-offset: 4px; }
+
+.slide { position: absolute; bottom: 12%; pointer-events: none; }
+
+#slide-1 { left: 0; width: 100%; }
+#slide-1 .slide-title { margin-left: 60px; }
+#slide-1 .desc-row { position: relative; display: flex; width: 100%; }
+#slide-1 .col-1 {
+    margin-left: 60px;
+    width: calc(25vw - 60px);
+    max-width: calc(25vw - 60px);
+}
+#slide-1 .col-2 {
+    position: absolute;
+    left: calc(25vw + 40px);
+    width: calc(25vw - 60px);
+    max-width: calc(25vw - 60px);
+}
+
+#slide-2 { left: 0; width: 100%; }
+#slide-2-img {
+    position: fixed;
+    top: 90px;
+    left: 60px;
+    width: calc(25vw - 60px);
+    aspect-ratio: 1 / 1;
+    overflow: hidden;
+    z-index: 2;
+    pointer-events: none;
+    clip-path: inset(0 0 100% 0);
+    transition: clip-path 1.8s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.8s ease;
+    opacity: 0;
+}
+#slide-2-img svg {
+    display: block;
+    width: 100%; height: 100%;
+    transform: scale(1.15);
+    transition: transform 1.8s cubic-bezier(0.16, 1, 0.3, 1);
+}
+#slide-2-img.active { clip-path: inset(0 0 0 0); opacity: 1; }
+#slide-2-img.active svg { transform: scale(1); }
+
+#slide-2 .slide-title { margin-left: calc(25vw + 40px); }
+#slide-2 .slide-desc {
+    margin-left: calc(50vw + 20px);
+    width: calc(25vw - 60px);
+    max-width: calc(25vw - 60px);
+}
+
+#slide-3 {
+    left: calc(50vw + 20px);
+    width: calc(25vw - 60px);
+    max-width: calc(25vw - 60px);
+}
+#slide-3 .slide-title { white-space: nowrap; }
+
+#slide-4 { left: calc(25% + 40px); max-width: 600px; }
+
+.slide-title {
+    font-family: 'Italiana', 'Noto Serif TC', serif;
+    font-size: 116px;
+    line-height: 1.0;
+    font-weight: 400;
+    letter-spacing: 2px;
+    margin-bottom: 20px;
+    color: #fff6ed;
+    text-shadow: 0 2px 24px rgba(0, 0, 0, 0.55);
+}
+html[lang^="zh"] .slide-title { font-size: 104px; line-height: 1.12; letter-spacing: 8px; }
+.slide-desc {
+    font-size: 16px; line-height: 1.7; font-weight: 300;
+    color: #d1d5db; letter-spacing: 0.5px;
+    text-shadow: 0 1px 12px rgba(0, 0, 0, 0.8);
+    opacity: 0;
+    transform: translateY(30px);
+    transition: opacity 0.8s cubic-bezier(0.25, 1, 0.5, 1),
+                transform 0.8s cubic-bezier(0.25, 1, 0.5, 1);
+    transition-delay: 0.4s;
+}
+html[lang^="zh"] .slide-desc { line-height: 1.95; letter-spacing: 1px; }
+.slide.active .slide-desc { opacity: 1; transform: translateY(0); }
+
+.slide-title .char {
+    display: inline-block;
+    opacity: 0;
+    transform: translateY(50px);
+    filter: blur(12px);
+    transition: opacity 0.8s cubic-bezier(0.25, 1, 0.5, 1),
+                transform 0.8s cubic-bezier(0.25, 1, 0.5, 1),
+                filter 0.8s cubic-bezier(0.25, 1, 0.5, 1);
+}
+.slide.active .slide-title .char { opacity: 1; transform: translateY(0); filter: blur(0); }
+.slide.active { pointer-events: auto; }
+
+.story-dashes {
+    position: absolute; top: 50%; left: 50%;
+    transform: translate(-50%, -50%);
+    display: flex; flex-direction: column; gap: 12px;
+}
+.story-dash { width: 2px; height: 40px; background: rgba(255, 255, 255, 0.15); border-radius: 2px; }
+.story-dash-fill { width: 100%; height: 0%; background: #ffffff; border-radius: 2px; }
+
+.grid-horizontal-line {
+    position: fixed; top: 70px; left: 0; right: 0;
+    width: 100%; height: 1px;
+    background: rgba(255, 255, 255, 0.12);
+    z-index: 5; pointer-events: none;
+}
+.grid-lines {
+    position: fixed; top: 0; left: 40px; right: 40px;
+    width: calc(100% - 80px); height: 100vh;
+    display: flex; justify-content: space-between;
+    z-index: 5; pointer-events: none;
+}
+.grid-line {
+    position: relative; width: 1px; height: 100%;
+    background: rgba(255, 255, 255, 0.12);
+}
+.grid-line:nth-child(3) { margin-top: 70px; height: calc(100vh - 70px); }
+.grid-dot {
+    position: absolute; left: 50%;
+    transform: translate(-50%, -50%);
+    width: 6px; height: 6px; border-radius: 50%;
+    background: rgba(255, 255, 255, 0.35);
+    box-shadow: 0 0 4px rgba(255, 255, 255, 0.15);
+}
+
+/* Narrower screens: the 25vw columns become one readable column. */
+@media (max-width: 1100px) {
+    .slide-title { font-size: 84px; }
+    html[lang^="zh"] .slide-title { font-size: 76px; }
+}
+@media (max-width: 820px) {
+    .cinematic-container { padding: 0 20px 28px 20px; }
+    .header-nav { display: none; }
+    .contact-btn { padding: 9px 16px; }
+    .slide-title, html[lang^="zh"] .slide-title { font-size: clamp(46px, 14vw, 84px); margin-bottom: 14px; }
+    .slide-desc { font-size: 15px; }
+    #slide-1, #slide-2, #slide-3, #slide-4 { left: 20px; right: 20px; width: auto; max-width: none; bottom: 7%; }
+    #slide-1 .slide-title, #slide-2 .slide-title { margin-left: 0; }
+    #slide-1 .desc-row { display: block; }
+    #slide-1 .col-1, #slide-1 .col-2, #slide-2 .slide-desc {
+        position: static; margin-left: 0; width: auto; max-width: 34em;
+    }
+    #slide-1 .col-2 { display: none; }
+    #slide-3 .slide-title { white-space: normal; }
+    #slide-2-img { top: 86px; left: 20px; width: min(42vw, 200px); }
+    .grid-lines { left: 12px; right: 12px; width: calc(100% - 24px); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .slide-title .char, .slide-desc, #slide-2-img, #slide-2-img svg { transition-duration: 0.01s !important; transition-delay: 0s !important; }
+    .slide-title .char { filter: none; transform: none; }
+    .slide-desc { transform: none; }
+}
+</style>
+</head>
+<body>
+<div class="cursor-inner"></div>
+<div class="cursor-outer"></div>
+
+<div class="cinematic-container">
+  <div class="main-header">
+    <a class="brand" href="index.html">Aeterna</a>
+    <nav class="header-nav" aria-label="Sections">
+      <a href="#slide-1" class="nav-link" data-t="nav1"></a>
+      <span class="nav-dot"></span>
+      <a href="#slide-2" class="nav-link" data-t="nav2"></a>
+      <span class="nav-dot"></span>
+      <a href="#slide-3" class="nav-link" data-t="nav3"></a>
+      <span class="nav-dot"></span>
+      <a href="#slide-4" class="nav-link" data-t="nav4"></a>
+    </nav>
+    <div class="header-actions">
+      <button type="button" class="lang-btn" id="lang-btn"></button>
+      <a href="index.html" class="contact-btn"><span data-t="back"></span> <span class="btn-circle"></span></a>
+    </div>
+  </div>
+
+  <div class="slide" id="slide-1">
+    <h1 class="slide-title" data-t="t1"></h1>
+    <div class="desc-row">
+      <p class="slide-desc col-1" data-t="d1a"></p>
+      <p class="slide-desc col-2" data-t="d1b"></p>
+    </div>
+  </div>
+  <div class="slide-image-mask" id="slide-2-img" aria-hidden="true">
+    <!-- A dodgeball court from above: two halves, the centre line, two teams and a throw in flight. -->
+    <svg viewBox="0 0 400 400" xmlns="http://www.w3.org/2000/svg">
+      <defs>
+        <radialGradient id="cg" cx="50%" cy="45%" r="75%">
+          <stop offset="0" stop-color="#2a1a12"/><stop offset="1" stop-color="#07050a"/>
+        </radialGradient>
+        <radialGradient id="bg" cx="38%" cy="35%" r="70%">
+          <stop offset="0" stop-color="#ffb066"/><stop offset=".55" stop-color="#f47a1f"/><stop offset="1" stop-color="#8a3a0c"/>
+        </radialGradient>
+      </defs>
+      <rect width="400" height="400" fill="url(#cg)"/>
+      <g fill="none" stroke="#e8930f" stroke-opacity=".55" stroke-width="2">
+        <rect x="40" y="70" width="320" height="260"/>
+        <line x1="200" y1="70" x2="200" y2="330" stroke-opacity=".85"/>
+        <line x1="120" y1="70" x2="120" y2="330" stroke-dasharray="6 8"/>
+        <line x1="280" y1="70" x2="280" y2="330" stroke-dasharray="6 8"/>
+        <circle cx="200" cy="200" r="28" stroke-opacity=".4"/>
+      </g>
+      <g fill="#fbc75a">
+        <circle cx="78" cy="118" r="7"/><circle cx="96" cy="196" r="7"/><circle cx="70" cy="270" r="7"/><circle cx="150" cy="150" r="7"/><circle cx="160" cy="250" r="7"/><circle cx="104" cy="306" r="7"/>
+      </g>
+      <g fill="#b490ef">
+        <circle cx="322" cy="124" r="7"/><circle cx="300" cy="212" r="7"/><circle cx="330" cy="292" r="7"/><circle cx="246" cy="160" r="7"/><circle cx="252" cy="262" r="7"/><circle cx="296" cy="96" r="7"/>
+      </g>
+      <path d="M160 250 Q 215 150 262 120" fill="none" stroke="#fff6ed" stroke-opacity=".7" stroke-width="2" stroke-dasharray="3 7"/>
+      <circle cx="268" cy="117" r="13" fill="url(#bg)"/>
+      <path d="M257 112 Q 268 122 280 113" fill="none" stroke="#5a3f96" stroke-width="2"/>
+    </svg>
+  </div>
+  <div class="slide" id="slide-2">
+    <h2 class="slide-title" data-t="t2"></h2>
+    <p class="slide-desc" data-t="d2"></p>
+  </div>
+  <div class="slide" id="slide-3">
+    <h2 class="slide-title" data-t="t3"></h2>
+    <p class="slide-desc" data-t="d3"></p>
+  </div>
+  <div class="slide" id="slide-4">
+    <h2 class="slide-title" data-t="t4"></h2>
+    <p class="slide-desc" data-t="d4"></p>
+  </div>
+</div>
+
+<div class="grid-horizontal-line"></div>
+<div class="grid-lines" aria-hidden="true">
+  <div class="grid-line"><div class="grid-dot top"></div><div class="grid-dot bottom"></div></div>
+  <div class="grid-line"><div class="grid-dot top"></div><div class="grid-dot bottom"></div></div>
+  <div class="grid-line"><div class="grid-dot top"></div><div class="grid-dot bottom"></div></div>
+  <div class="grid-line"><div class="grid-dot top"></div><div class="grid-dot bottom"></div></div>
+  <div class="grid-line story-progress-container">
+    <div class="grid-dot top"></div>
+    <div class="grid-dot bottom"></div>
+    <div class="story-dashes">
+      <div class="story-dash"><div class="story-dash-fill" id="dash-fill-1"></div></div>
+      <div class="story-dash"><div class="story-dash-fill" id="dash-fill-2"></div></div>
+      <div class="story-dash"><div class="story-dash-fill" id="dash-fill-3"></div></div>
+      <div class="story-dash"><div class="story-dash-fill" id="dash-fill-4"></div></div>
+    </div>
+  </div>
+</div>
+
+<canvas id="webgl" aria-label="A dodgeball turning slowly among rising sparks"></canvas>
+
+<script type="importmap">
+{
+  "imports": {
+    "three": "https://cdn.jsdelivr.net/npm/three@0.160.0/build/three.module.js",
+    "three/examples/jsm/loaders/GLTFLoader.js": "https://cdn.jsdelivr.net/npm/three@0.160.0/examples/jsm/loaders/GLTFLoader.js"
+  }
+}
+</script>
+<script type="module">
+import * as THREE from 'three';
+import { GLTFLoader } from 'three/examples/jsm/loaders/GLTFLoader.js';
+
+// ---- Copy (zh + en) ----
+const COPY = {
+    zh: {
+        title: '班際閃避球 · Aeterna',
+        nav1: '閃避', nav2: '班對班', nav3: '反應', nav4: '日期',
+        back: '返回 Aeterna', lang: 'EN',
+        t1: '班際<br>閃避球',
+        d1a: '閃避球一向深受我校學生歡迎。今年 Aeterna 延續伊中傳統，把班際閃避球的精彩瞬間帶給大家。',
+        d1b: '在切磋球技的同時，一展反應速度及體育精神，以此增進同學之間的友誼，留下最熱血的回憶。',
+        t2: '班對班',
+        d2: '比賽分為初賽、準決賽及決賽，同學們以班際形式跟其他班別比拼。一個球場，兩條底線，一班人。',
+        t3: '反應',
+        d3: '接住、閃開、還擊。勝負只在一瞬之間，而全班的打氣聲，會陪你站到最後一個。',
+        t4: '敬請<br>期待',
+        d4: '高中組（中四至中六）於 11 月舉行，初中組（中一至中三）於 4 月舉行。比賽日期、賽程及報名詳情將於稍後公佈。'
+    },
+    en: {
+        title: 'Inter-class Dodgeball · Aeterna',
+        nav1: 'Dodge', nav2: 'Class vs Class', nav3: 'Reflex', nav4: 'Dates',
+        back: 'Back to Aeterna', lang: '中',
+        t1: 'Inter-class <br>Dodgeball',
+        d1a: 'Dodgeball has always been hugely popular at QES. This year Aeterna carries the tradition on, bringing the best moments of inter-class dodgeball back to the hall.',
+        d1b: 'Reflexes and sportsmanship on show, friendships made stronger along the way, and the most fired-up memories of the school year.',
+        t2: 'Class <br>vs Class',
+        d2: 'Preliminary rounds, semifinals and a final, class against class. One court, two baselines, the whole class behind you.',
+        t3: 'Reflex',
+        d3: 'Catch it, dodge it, throw it back. A match turns in a split second, and your class keeps cheering until the last player stands.',
+        t4: 'Coming <br>Soon',
+        d4: 'Seniors (F.4 to F.6) play in November and juniors (F.1 to F.3) in April. Match dates, the draw and how to sign up will be announced soon.'
+    }
+};
+
+const qsLang = new URLSearchParams(location.search).get('lang');
+let lang = qsLang === 'en' || qsLang === 'zh' ? qsLang : 'zh';
+try { const s = localStorage.getItem('ae-dodge-lang'); if (!qsLang && (s === 'en' || s === 'zh')) lang = s; } catch (e) {}
+
+const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+const coarse = window.matchMedia('(pointer: coarse)').matches;
+
+const canvas = document.querySelector('#webgl');
+let scene, camera, renderer;
+let gltfModel;     // the ball
+let modelPivot;    // pivot group for centred rotation
+let spinGroup;     // slow spin so the lettering passes the light
+let mixer;
+const clock = new THREE.Clock();
+let currentScroll = 0;
+
+let mouseX = 0, mouseY = 0, targetMouseX = 0, targetMouseY = 0;
+let cursorX = window.innerWidth / 2, cursorY = window.innerHeight / 2;
+let outerCursorX = window.innerWidth / 2, outerCursorY = window.innerHeight / 2;
+
+let bgMaterial;
+const shaderUniforms = {
+    uTime: { value: 0 },
+    uResolution: { value: new THREE.Vector2(window.innerWidth, window.innerHeight) },
+    uMouse: { value: new THREE.Vector2(0, 0) },
+    uScroll: { value: 0 }
+};
+
+let sparkParticles;
+const sparkCount = coarse ? 260 : 450;
+const sparkData = [];
+
+const sizes = { width: window.innerWidth, height: window.innerHeight };
+const pixelCap = coarse ? 1.5 : 2;
+
+// ---- Text ----
+function splitTitle(title) {
+    const parts = title.innerHTML.split(/(<br\s*\/?>)/i);
+    let html = '', n = 0;
+    parts.forEach(part => {
+        if (part.toLowerCase().startsWith('<br')) { html += part; return; }
+        for (const ch of part) {
+            if (ch === ' ') html += ' ';
+            else html += `<span class="char" style="transition-delay: ${n++ * 0.035}s">${ch}</span>`;
+        }
+    });
+    title.innerHTML = html;
+    title.setAttribute('aria-label', title.textContent);
+}
+
+function applyLang() {
+    const c = COPY[lang];
+    document.documentElement.lang = lang === 'zh' ? 'zh-Hant' : 'en';
+    document.title = c.title;
+    document.querySelectorAll('[data-t]').forEach(el => { el.innerHTML = c[el.dataset.t]; });
+    document.querySelectorAll('.slide-title').forEach(splitTitle);
+    const btn = document.getElementById('lang-btn');
+    btn.textContent = c.lang;
+    btn.setAttribute('aria-label', lang === 'zh' ? 'Switch to English' : '切換至中文');
+}
+
+// ---- Scene ----
+function createSparkTexture() {
+    const c = document.createElement('canvas');
+    c.width = 16; c.height = 16;
+    const ctx = c.getContext('2d');
+    const g = ctx.createRadialGradient(8, 8, 0, 8, 8, 8);
+    g.addColorStop(0, 'rgba(255, 255, 255, 1)');
+    g.addColorStop(0.25, 'rgba(255, 255, 255, 0.85)');
+    g.addColorStop(0.6, 'rgba(255, 255, 255, 0.3)');
+    g.addColorStop(1, 'rgba(0, 0, 0, 0)');
+    ctx.fillStyle = g;
+    ctx.fillRect(0, 0, 16, 16);
+    return new THREE.CanvasTexture(c);
+}
+
+function createSparks() {
+    const geometry = new THREE.BufferGeometry();
+    const positions = new Float32Array(sparkCount * 3);
+    const colors = new Float32Array(sparkCount * 3);
+
+    for (let i = 0; i < sparkCount; i++) {
+        positions[i * 3] = (Math.random() - 0.5) * 6.5;
+        positions[i * 3 + 1] = (Math.random() - 0.5) * 5.0 - 0.5;
+        positions[i * 3 + 2] = (Math.random() - 0.5) * 6.5;
+
+        if (Math.random() < 0.6) {
+            // ball orange
+            colors[i * 3] = 1.0;
+            colors[i * 3 + 1] = 0.42 + Math.random() * 0.15;
+            colors[i * 3 + 2] = 0.06 + Math.random() * 0.1;
+        } else {
+            // Aeterna lilac
+            colors[i * 3] = 0.66 + Math.random() * 0.12;
+            colors[i * 3 + 1] = 0.52 + Math.random() * 0.12;
+            colors[i * 3 + 2] = 1.0;
+        }
+
+        sparkData.push({
+            speedX: (Math.random() - 0.5) * 0.4,
+            speedY: 0.15 + Math.random() * 0.3,
+            speedZ: (Math.random() - 0.5) * 0.4,
+            swaySpeed: 0.5 + Math.random() * 1.5,
+            swayRadius: 0.05 + Math.random() * 0.15,
+            phase: Math.random() * Math.PI * 2
+        });
+    }
+
+    geometry.setAttribute('position', new THREE.BufferAttribute(positions, 3));
+    geometry.setAttribute('color', new THREE.BufferAttribute(colors, 3));
+
+    const material = new THREE.PointsMaterial({
+        size: 0.025,
+        vertexColors: true,
+        transparent: true,
+        opacity: 0.85,
+        blending: THREE.AdditiveBlending,
+        depthWrite: false,
+        map: createSparkTexture()
+    });
+
+    sparkParticles = new THREE.Points(geometry, material);
+    scene.add(sparkParticles);
+}
+
+// Pebbled rubber grip, same as ball3d.js.
+function pebble(m) {
+    let tex = null;
+    m.traverse(o => {
+        if (!o.isMesh || !o.material || o.material.name !== 'dodgeball') return;
+        if (!tex) {
+            const cv = document.createElement('canvas'); cv.width = cv.height = 64;
+            const g = cv.getContext('2d'); g.fillStyle = '#000'; g.fillRect(0, 0, 64, 64);
+            for (let i = 0; i < 140; i++) {
+                const x = (Math.sin(i * 12.9898) * 43758.5453 % 1 + 1) % 1 * 64, y = (Math.sin(i * 78.233) * 43758.5453 % 1 + 1) % 1 * 64, r = 1.6 + (i % 3) * .5;
+                for (let dx = -64; dx <= 64; dx += 64) for (let dy = -64; dy <= 64; dy += 64) {
+                    const gr = g.createRadialGradient(x + dx, y + dy, 0, x + dx, y + dy, r);
+                    gr.addColorStop(0, '#fff'); gr.addColorStop(1, 'rgba(255,255,255,0)'); g.fillStyle = gr; g.fillRect(x + dx - r, y + dy - r, r * 2, r * 2);
+                }
+            }
+            tex = new THREE.CanvasTexture(cv); tex.wrapS = tex.wrapT = THREE.RepeatWrapping; tex.repeat.set(26, 13);
+        }
+        o.material.bumpMap = tex; o.material.bumpScale = .1; o.material.needsUpdate = true;
+    });
+}
+
+function placeModel(obj) {
+    gltfModel = obj;
+    modelPivot = new THREE.Group();
+    spinGroup = new THREE.Group();
+    scene.add(modelPivot);
+    modelPivot.add(spinGroup);
+    spinGroup.add(gltfModel);
+
+    gltfModel.traverse(child => {
+        if (child.isMesh) {
+            child.castShadow = true;
+            child.receiveShadow = true;
+            if (child.material) {
+                // Satin rubber: a little sheen under the key light, still reads as a ball.
+                child.material.roughness = Math.min(child.material.roughness ?? 0.6, 0.5);
+                child.material.flatShading = false;
+                if (child.material.map) child.material.map.anisotropy = 16;
+            }
+        }
+    });
+
+    // Scale so the ball is 1.55 units across, then centre it on the pivot.
+    const box0 = new THREE.Box3().setFromObject(gltfModel);
+    const s0 = box0.getSize(new THREE.Vector3());
+    const maxDim = Math.max(s0.x, s0.y, s0.z);
+    gltfModel.scale.setScalar(1.55 / (maxDim > 0.0001 ? maxDim : 1));
+    gltfModel.updateMatrixWorld(true);
+    const centre = new THREE.Box3().setFromObject(gltfModel).getCenter(new THREE.Vector3());
+    gltfModel.position.sub(centre);
+    modelPivot.position.y = 0.3;
+}
+
+function loadModel() {
+    new GLTFLoader().load(
+        'models/dodgeball.glb',
+        gltf => {
+            pebble(gltf.scene);
+            if (gltf.animations && gltf.animations.length) {
+                mixer = new THREE.AnimationMixer(gltf.scene);
+                gltf.animations.forEach(clip => mixer.clipAction(clip).play());
+            }
+            placeModel(gltf.scene);
+        },
+        undefined,
+        error => {
+            console.error('Dodgeball model failed, using a plain ball:', error);
+            placeModel(new THREE.Mesh(new THREE.SphereGeometry(1, 64, 48), new THREE.MeshStandardMaterial({ color: '#f47a1f', roughness: 0.5 })));
+        }
+    );
+}
+
+function createBackgroundShader() {
+    const vertexShader = `
+        varying vec2 vUv;
+        void main() {
+            vUv = uv;
+            gl_Position = projectionMatrix * modelViewMatrix * vec4(position, 1.0);
+        }
+    `;
+
+    const fragmentShader = `
+        varying vec2 vUv;
+        uniform float uTime;
+        uniform vec2 uResolution;
+        uniform vec2 uMouse;
+        uniform float uScroll;
+
+        void main() {
+            vec2 uv = (gl_FragCoord.xy - 0.5 * uResolution.xy) / uResolution.y;
+            float aspect = uResolution.x / uResolution.y;
+
+            float time = uTime * 0.08;
+            float scroll = uScroll;
+
+            float angle1 = 0.6;
+            float angle2 = -0.7;
+            float angle3 = 1.2;
+
+            float freq1 = 2.4;
+            float freq2 = 3.2;
+            float freq3 = 4.0;
+
+            vec2 warpedUv = uv;
+            float scrollDeform = scroll * 5.0;
+
+            warpedUv.x += sin(uv.y * 2.5 + time * 0.2 + scrollDeform) * 0.35;
+            warpedUv.y += cos(uv.x * 2.5 - time * 0.15 - scrollDeform * 0.8) * 0.35;
+            warpedUv.x += sin(uv.y * 1.2 - time * 0.1 - scrollDeform * 1.5) * 0.25;
+            warpedUv.y += cos(uv.x * 1.2 + time * 0.18 + scrollDeform * 1.2) * 0.25;
+
+            vec2 scrollDrift = vec2(scroll * 0.04, -scroll * 0.02);
+            vec2 mouseShift = vec2(uMouse.x * aspect * 0.05, uMouse.y * 0.05);
+            warpedUv += scrollDrift + mouseShift;
+
+            vec2 dir1 = vec2(cos(angle1), sin(angle1));
+            vec2 dir2 = vec2(cos(angle2), sin(angle2));
+            vec2 dir3 = vec2(cos(angle3), sin(angle3));
+
+            float w1 = sin(dot(warpedUv, dir1) * freq1 + time * 1.0);
+            float w2 = cos(dot(warpedUv, dir2) * freq2 - time * 1.4 + w1 * 0.4);
+            float w3 = sin(dot(warpedUv, dir3) * freq3 + time * 1.8 + w2 * 0.5);
+
+            float waveField = w1 * 0.50 + w2 * 0.35 + w3 * 0.15;
+
+            float wideSheen = pow(max(0.0, 1.0 - abs(waveField - 0.1)), 2.5);
+            float crispSpecular = pow(max(0.0, 1.0 - abs(waveField - 0.15)), 8.0);
+            float crest = wideSheen * 0.5 + crispSpecular * 0.9;
+
+            // Top: molten ball orange. Bottom: Aeterna night purple.
+            vec3 c0_shadow = vec3(0.0010, 0.0006, 0.0004);
+            vec3 c0_wave1  = vec3(0.095, 0.040, 0.012);
+            vec3 c0_wave2  = vec3(0.055, 0.022, 0.006);
+            vec3 c0_crest  = vec3(0.50, 0.28, 0.12);
+
+            vec3 c1_shadow = vec3(0.0008, 0.0005, 0.0014);
+            vec3 c1_wave1  = vec3(0.045, 0.024, 0.085);
+            vec3 c1_wave2  = vec3(0.026, 0.014, 0.052);
+            vec3 c1_crest  = vec3(0.34, 0.24, 0.58);
+
+            float t = smoothstep(0.0, 1.0, scroll);
+            vec3 colShadow = mix(c0_shadow, c1_shadow, t);
+            vec3 colWave1  = mix(c0_wave1, c1_wave1, t);
+            vec3 colWave2  = mix(c0_wave2, c1_wave2, t);
+            vec3 colCrest  = mix(c0_crest, c1_crest, t);
+
+            vec3 color = colShadow;
+            color = mix(color, colWave2, smoothstep(-0.6, 0.2, waveField));
+            color = mix(color, colWave1, smoothstep(0.0, 0.8, waveField));
+            color += colCrest * crest * 1.4;
+
+            float vignette = 1.0 - dot(uv, uv) * 0.12;
+            color *= vignette;
+
+            gl_FragColor = vec4(color, 1.0);
+        }
+    `;
+
+    bgMaterial = new THREE.ShaderMaterial({
+        vertexShader, fragmentShader,
+        uniforms: shaderUniforms,
+        depthWrite: false,
+        depthTest: false
+    });
+
+    const bgMesh = new THREE.Mesh(new THREE.PlaneGeometry(30, 30), bgMaterial);
+    bgMesh.position.set(0.0, 0.0, -8.0);
+    bgMesh.renderOrder = -10;
+    camera.add(bgMesh);
+}
+
+function onWindowResize() {
+    sizes.width = window.innerWidth;
+    sizes.height = window.innerHeight;
+    camera.aspect = sizes.width / sizes.height;
+    camera.updateProjectionMatrix();
+    renderer.setSize(sizes.width, sizes.height);
+    renderer.setPixelRatio(Math.min(window.devicePixelRatio, pixelCap));
+    shaderUniforms.uResolution.value.set(sizes.width * renderer.getPixelRatio(), sizes.height * renderer.getPixelRatio());
+}
+
+// ---- Loop ----
+function updateGridDots(scroll) {
+    document.querySelectorAll('.grid-dot').forEach((dot, i) => {
+        const startY = (i * 17) % 80 + 10;
+        let speed = 90 + (i * 55) % 180;
+        if (i % 2 === 0) speed = -speed;
+        let y = startY + scroll * speed;
+        y = ((y % 100) + 100) % 100;
+        dot.style.top = `${y}%`;
+    });
+}
+
+function updateSlides(scroll) {
+    for (let i = 1; i <= 4; i++) {
+        const fill = document.getElementById(`dash-fill-${i}`);
+        const start = (i - 1) * 0.25;
+        const p = Math.max(0, Math.min(1, (scroll - start) / 0.25));
+        fill.style.height = `${p * 100}%`;
+    }
+    const on = (v, a, b) => v >= a && v <= b;
+    document.getElementById('slide-1').classList.toggle('active', on(scroll, -0.10, 0.12));
+    const a2 = on(scroll, 0.28, 0.40);
+    document.getElementById('slide-2').classList.toggle('active', a2);
+    document.getElementById('slide-2-img').classList.toggle('active', a2);
+    document.getElementById('slide-3').classList.toggle('active', on(scroll, 0.56, 0.68));
+    document.getElementById('slide-4').classList.toggle('active', on(scroll, 0.84, 1.05));
+}
+
+const cursorOuter = document.querySelector('.cursor-outer');
+const cursorInner = document.querySelector('.cursor-inner');
+const lookAt = new THREE.Vector3();
+const targetPos = new THREE.Vector3();
+
+function animate() {
+    requestAnimationFrame(animate);
+    if (document.hidden) return;
+    const deltaTime = Math.min(clock.getDelta(), 0.1);
+    if (mixer) mixer.update(deltaTime);
+
+    const maxScroll = document.documentElement.scrollHeight - window.innerHeight;
+    const targetScroll = maxScroll > 0 ? window.scrollY / maxScroll : 0;
+    currentScroll += (targetScroll - currentScroll) * (reduceMotion ? 1 : 0.025);
+
+    mouseX += (targetMouseX - mouseX) * 0.05;
+    mouseY += (targetMouseY - mouseY) * 0.05;
+
+    outerCursorX += (cursorX - outerCursorX) * 0.2;
+    outerCursorY += (cursorY - outerCursorY) * 0.2;
+    cursorOuter.style.left = `${outerCursorX}px`;
+    cursorOuter.style.top = `${outerCursorY}px`;
+
+    if (modelPivot) {
+        modelPivot.rotation.y = mouseX * 0.25;
+        modelPivot.rotation.x = mouseY * 0.15;
+        if (!reduceMotion) spinGroup.rotation.y += deltaTime * 0.18;
+    }
+
+    if (sparkParticles && !reduceMotion) {
+        const positions = sparkParticles.geometry.attributes.position.array;
+        const time = clock.getElapsedTime();
+        const scrollVelocity = Math.abs(targetScroll - currentScroll);
+        const speedMultiplier = 1.0 + scrollVelocity * 9.0;
+        const turbulence = scrollVelocity * 0.8;
+
+        for (let i = 0; i < sparkCount; i++) {
+            const idx = i * 3;
+            const d = sparkData[i];
+            positions[idx]     += d.speedX * deltaTime * speedMultiplier;
+            positions[idx + 1] += d.speedY * deltaTime * speedMultiplier;
+            positions[idx + 2] += d.speedZ * deltaTime * speedMultiplier;
+
+            const sway = d.swayRadius * (1.0 + turbulence * 4.0);
+            positions[idx]     += Math.sin(time * d.swaySpeed + d.phase) * sway * deltaTime;
+            positions[idx + 2] += Math.cos(time * d.swaySpeed + d.phase) * sway * deltaTime;
+
+            if (positions[idx + 1] > 3.0 || Math.abs(positions[idx]) > 3.5 || Math.abs(positions[idx + 2]) > 3.5) {
+                positions[idx + 1] = -2.5;
+                positions[idx]     = (Math.random() - 0.5) * 3.0;
+                positions[idx + 2] = (Math.random() - 0.5) * 3.0;
+            }
+        }
+        sparkParticles.geometry.attributes.position.needsUpdate = true;
+    }
+
+    // Camera orbits the ball once over the whole page.
+    const phi = currentScroll * Math.PI * 2.0;
+    const y = 0.35 + Math.sin(currentScroll * Math.PI) * 0.8;
+    let radius = 4.2 - Math.sin(currentScroll * Math.PI) * 0.6;
+
+    // First screen: frame the ball to the right of the text (centred on phones, text sits under it).
+    const narrow = sizes.width <= 820;
+    if (narrow) radius *= 1.4;
+    const tp = Math.min(1.0, currentScroll / 0.28);
+    const ease = (Math.cos(tp * Math.PI) + 1.0) * 0.5;
+    lookAt.set(narrow ? 0 : -0.9 * ease, narrow ? -0.9 : -0.15, 0);
+    targetPos.set(radius * Math.sin(phi), y, radius * Math.cos(phi));
+    camera.position.lerp(targetPos, reduceMotion ? 1 : 0.025);
+    camera.lookAt(lookAt);
+
+    shaderUniforms.uTime.value = reduceMotion ? 0 : clock.getElapsedTime();
+    shaderUniforms.uMouse.value.set(mouseX, -mouseY);
+    shaderUniforms.uScroll.value = currentScroll;
+
+    updateSlides(currentScroll);
+    updateGridDots(currentScroll);
+    renderer.render(scene, camera);
+}
+
+function setupNavigation() {
+    const targets = [0.0, 0.34, 0.62, 0.94];
+    document.querySelectorAll('.nav-link').forEach((link, i) => {
+        link.addEventListener('click', e => {
+            e.preventDefault();
+            const maxScroll = document.documentElement.scrollHeight - window.innerHeight;
+            window.scrollTo({ top: maxScroll * targets[i], behavior: reduceMotion ? 'auto' : 'smooth' });
+        });
+    });
+    document.getElementById('lang-btn').addEventListener('click', () => {
+        lang = lang === 'zh' ? 'en' : 'zh';
+        try { localStorage.setItem('ae-dodge-lang', lang); } catch (e) {}
+        applyLang();
+        updateSlides(currentScroll);
+    });
+    document.querySelectorAll('a, button').forEach(el => {
+        el.addEventListener('pointerenter', () => cursorOuter.classList.add('hover'));
+        el.addEventListener('pointerleave', () => cursorOuter.classList.remove('hover'));
+    });
+}
+
+window.addEventListener('mousemove', e => {
+    cursorX = e.clientX;
+    cursorY = e.clientY;
+    cursorInner.style.left = `${cursorX}px`;
+    cursorInner.style.top = `${cursorY}px`;
+    targetMouseX = (e.clientX / window.innerWidth) * 2 - 1;
+    targetMouseY = (e.clientY / window.innerHeight) * 2 - 1;
+});
+window.addEventListener('resize', () => onWindowResize());
+
+// ---- Boot ----
+applyLang();
+
+scene = new THREE.Scene();
+scene.background = new THREE.Color('#000000');
+scene.fog = new THREE.FogExp2('#000000', 0.01);
+
+camera = new THREE.PerspectiveCamera(50, sizes.width / sizes.height, 0.1, 100);
+camera.position.set(0, 0.2, 3.0);
+scene.add(camera);
+
+createBackgroundShader();
+
+renderer = new THREE.WebGLRenderer({ canvas, antialias: true, alpha: false, powerPreference: 'high-performance' });
+renderer.shadowMap.enabled = true;
+renderer.shadowMap.type = THREE.PCFSoftShadowMap;
+renderer.toneMapping = THREE.ACESFilmicToneMapping;
+renderer.toneMappingExposure = 2.2;
+
+scene.add(new THREE.AmbientLight('#ffffff', 0.1));
+
+const keyLight = new THREE.SpotLight('#ffffff', 11.0);
+keyLight.position.set(4, 6, 3);
+keyLight.angle = Math.PI / 4;
+keyLight.penumbra = 0.9;
+keyLight.castShadow = true;
+keyLight.shadow.mapSize.width = keyLight.shadow.mapSize.height = coarse ? 1024 : 2048;
+keyLight.shadow.camera.near = 1.0;
+keyLight.shadow.camera.far = 15;
+keyLight.shadow.bias = -0.001;
+scene.add(keyLight);
+
+const rimLight = new THREE.DirectionalLight('#e9e0ff', 10.0);
+rimLight.position.set(-5, 3, -4);
+scene.add(rimLight);
+
+const fillLight = new THREE.DirectionalLight('#fff3e6', 0.8);
+fillLight.position.set(-2, -4, 2);
+scene.add(fillLight);
+
+createSparks();
+loadModel();
+onWindowResize();
+setupNavigation();
+animate();
+</script>
+</body>
+</html>
